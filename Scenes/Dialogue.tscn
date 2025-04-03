@@ -1,0 +1,110 @@
+[gd_scene format=3 uid="uid://u7ilqcq7ber0"]
+
+[node name="Dialogue" type="CanvasLayer"]
+visible = false
+
+[node name="Vocal" type="AudioStreamPlayer" parent="."]
+
+[node name="D" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -11.0
+offset_top = 131.0
+offset_right = 29.0
+offset_bottom = 171.0
+scale = Vector2(1.5, 1.5)
+
+[node name="Border" type="ColorRect" parent="D"]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 364.0
+offset_right = 1269.0
+offset_bottom = 610.0
+color = Color(0.533037, 0.533037, 0.533037, 1)
+
+[node name="Intern" type="ColorRect" parent="D"]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 418.0
+offset_right = 1250.0
+offset_bottom = 584.0
+
+[node name="Text" type="Label" parent="D"]
+layout_mode = 0
+offset_left = 66.0
+offset_top = 427.0
+offset_right = 1241.0
+offset_bottom = 576.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "PROVA PROVA"
+autowrap_mode = 3
+
+[node name="Name" type="Label" parent="D"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 370.0
+offset_right = 1239.0
+offset_bottom = 412.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "PROVA PROVA"
+autowrap_mode = 3
+
+[node name="LeftPosition" type="Control" parent="D"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 130.0
+offset_top = 185.0
+offset_right = 170.0
+offset_bottom = 225.0
+
+[node name="RightPosition" type="Control" parent="D"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 950.0
+offset_top = 185.0
+offset_right = 990.0
+offset_bottom = 225.0
+
+[node name="Face" type="TextureRect" parent="D"]
+layout_mode = 0
+offset_left = 950.0
+offset_top = 185.0
+offset_right = 1130.0
+offset_bottom = 365.0
+
+[node name="Choices" type="Control" parent="D"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Border" type="ColorRect" parent="D/Choices"]
+layout_mode = 0
+offset_left = 1069.0
+offset_top = 184.0
+offset_right = 1269.0
+offset_bottom = 364.0
+color = Color(0.533037, 0.533037, 0.533037, 1)
+
+[node name="Buttons" type="Control" parent="D/Choices"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Button" type="Button" parent="D/Choices/Buttons"]
+layout_mode = 0
+offset_left = 1089.0
+offset_top = 289.0
+offset_right = 1249.0
+offset_bottom = 364.0
+text = "PROVA"
+
+[node name="Button2" type="Button" parent="D/Choices/Buttons"]
+layout_mode = 0
+offset_left = 1089.0
+offset_top = 199.0
+offset_right = 1249.0
+offset_bottom = 274.0
+text = "PROVA"

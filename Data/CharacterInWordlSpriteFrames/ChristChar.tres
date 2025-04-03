@@ -1,0 +1,29 @@
+[gd_resource type="SpriteFrames" load_steps=3 format=3 uid="uid://btc7og7bplrsu"]
+
+[ext_resource type="Texture2D" uid="uid://cowmrmvk672l6" path="res://Resources/Images/Characters/ChristChar/Idle/1.png" id="1_4xdg4"]
+[ext_resource type="Texture2D" uid="uid://c1gc6r3gvpu87" path="res://Resources/Images/Characters/ChristChar/Idle/2.png" id="2_wj3fh"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_4xdg4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_wj3fh")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_4xdg4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_wj3fh")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 8.0
+}]

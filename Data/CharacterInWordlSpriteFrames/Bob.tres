@@ -1,0 +1,43 @@
+[gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://chy7l81r42krv"]
+
+[ext_resource type="Texture2D" uid="uid://c43muvr676br5" path="res://Resources/Images/Characters/Bob/Idle/1.png" id="1_o24qj"]
+[ext_resource type="Texture2D" uid="uid://buss7lne6mf2r" path="res://Resources/Images/Characters/Bob/Idle/2.png" id="2_mlaau"]
+[ext_resource type="Texture2D" uid="uid://je6sx5rp741m" path="res://Resources/Images/Characters/Bob/Idle/3.png" id="3_rbu8k"]
+[ext_resource type="Texture2D" uid="uid://bxc8dhtmkppb5" path="res://Resources/Images/Characters/Bob/Idle/4.png" id="4_54gxf"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_o24qj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_mlaau")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_rbu8k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_54gxf")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_o24qj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_mlaau")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_rbu8k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_54gxf")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 8.0
+}]

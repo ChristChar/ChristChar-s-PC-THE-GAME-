@@ -1,0 +1,192 @@
+[gd_scene load_steps=27 format=3 uid="uid://cq0kvubmmwpij"]
+
+[ext_resource type="Script" uid="uid://00dhvlf16uo6" path="res://Scripts/InWorld/AutoGenerateCollision.gd" id="1_7hlmd"]
+[ext_resource type="Texture2D" uid="uid://bw81o7oma2ta1" path="res://Resources/Images/Textures/Stone.jpg" id="1_mamrf"]
+[ext_resource type="Script" uid="uid://bh4nnc5ukqkxd" path="res://Scripts/InWorld/Map.gd" id="1_y65il"]
+[ext_resource type="AudioStream" uid="uid://cfbfhdvedj24x" path="res://Resources/Sounds/Musics/Cave.mp3" id="2_8x2e2"]
+[ext_resource type="Texture2D" uid="uid://bdgribnrdrsk0" path="res://Resources/Images/BattleBackground/Cave.png" id="3_b8y1b"]
+[ext_resource type="Material" uid="uid://cfcjyov2rhcx7" path="res://Resources/Materials/Stone.tres" id="4_2ea7n"]
+[ext_resource type="Script" uid="uid://ccx5pux84i63m" path="res://Scripts/InWorld/ReturnInMainMApArea.gd" id="4_g071v"]
+[ext_resource type="PackedScene" uid="uid://3o7mpjtxqimg" path="res://Resources/Models/Tavolo di rocky.gltf" id="5_g071v"]
+[ext_resource type="Texture2D" uid="uid://ct7a1m6hlxetw" path="res://Resources/Images/InWorld/Encounters/Rocky.png" id="8_6svfb"]
+[ext_resource type="Script" uid="uid://cok8o2x1y3jxe" path="res://Scripts/InWorld/InteractBattle.gd" id="9_6svfb"]
+[ext_resource type="Resource" uid="uid://bwamgyifsfjni" path="res://Data/Dialogue/Rocky.dialogue" id="10_k05gw"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_k05gw"]
+sky_top_color = Color(0.0874073, 0.113254, 0.149197, 1)
+sky_horizon_color = Color(0.21717, 0.218613, 0.221768, 1)
+ground_bottom_color = Color(0.108876, 0.0888005, 0.0654791, 1)
+ground_horizon_color = Color(0.21717, 0.218613, 0.221768, 1)
+energy_multiplier = 8.0
+
+[sub_resource type="Sky" id="Sky_b8y1b"]
+sky_material = SubResource("ProceduralSkyMaterial_k05gw")
+
+[sub_resource type="Environment" id="Environment_bisad"]
+background_mode = 2
+sky = SubResource("Sky_b8y1b")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xxuqk"]
+size = Vector3(20, 0.001, 20)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2ea7n"]
+albedo_texture = ExtResource("1_mamrf")
+uv1_triplanar = true
+uv1_triplanar_sharpness = 0.233259
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_7hlmd"]
+material = SubResource("StandardMaterial3D_2ea7n")
+size = Vector2(20, 20)
+
+[sub_resource type="BoxMesh" id="BoxMesh_k8v2c"]
+material = ExtResource("4_2ea7n")
+size = Vector3(3, 5, 10)
+
+[sub_resource type="BoxMesh" id="BoxMesh_mamrf"]
+material = ExtResource("4_2ea7n")
+size = Vector3(3, 5, 10.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_2ea7n"]
+material = ExtResource("4_2ea7n")
+size = Vector3(3, 5, 20)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_w2i03"]
+size = Vector3(7.52173, 1.77588, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_y65il"]
+size = Vector3(2.15126, 2.26868, 2.05035)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b8y1b"]
+atlas = ExtResource("8_6svfb")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bisad"]
+atlas = ExtResource("8_6svfb")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8y7gy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b8y1b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bisad")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_h8c61"]
+radius = 0.335878
+
+[node name="SubMap" type="Node3D"]
+script = ExtResource("1_y65il")
+EnemyCount = 0
+Music = ExtResource("2_8x2e2")
+BattleBackground = ExtResource("3_b8y1b")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_bisad")
+
+[node name="Pavimento" type="StaticBody3D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pavimento"]
+shape = SubResource("BoxShape3D_xxuqk")
+debug_color = Color(0, 0.6, 0.7, 0.42)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pavimento"]
+mesh = SubResource("PlaneMesh_7hlmd")
+skeleton = NodePath("../..")
+
+[node name="PlayerSpawn" type="Node3D" parent="." groups=["SubPlayerSpawn"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.344303, 7.20033)
+
+[node name="Walls" type="Node3D" parent="."]
+
+[node name="Wall" type="StaticBody3D" parent="Walls"]
+script = ExtResource("1_7hlmd")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Walls/Wall"]
+transform = Transform3D(0.906308, 0, 0.422618, 0, 1, 0, -0.422618, 0, 0.906308, -6.5455, 2.5, 5.10953)
+mesh = SubResource("BoxMesh_k8v2c")
+
+[node name="Wall3" type="StaticBody3D" parent="Walls"]
+script = ExtResource("1_7hlmd")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Walls/Wall3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 2.5, -3.51425)
+mesh = SubResource("BoxMesh_mamrf")
+
+[node name="Wall4" type="StaticBody3D" parent="Walls"]
+script = ExtResource("1_7hlmd")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Walls/Wall4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 2.5, -3.21029)
+mesh = SubResource("BoxMesh_mamrf")
+
+[node name="Wall5" type="StaticBody3D" parent="Walls"]
+script = ExtResource("1_7hlmd")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Walls/Wall5"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 2.5, -9)
+mesh = SubResource("BoxMesh_2ea7n")
+
+[node name="Wall2" type="StaticBody3D" parent="Walls"]
+script = ExtResource("1_7hlmd")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Walls/Wall2"]
+transform = Transform3D(0.906308, 0, -0.422618, 0, 1, 0, 0.422618, 0, 0.906308, 6.77428, 2.5, 5.10953)
+mesh = SubResource("BoxMesh_k8v2c")
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.545953, 0, 8.82129)
+script = ExtResource("4_g071v")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.737671, 0.946221, 0)
+shape = SubResource("BoxShape3D_w2i03")
+debug_color = Color(0, 0.6, 0.7, 0.42)
+
+[node name="Rocky\'s table" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.92493)
+collision_layer = 3
+collision_mask = 3
+
+[node name="blockbench_export" parent="Rocky\'s table" instance=ExtResource("5_g071v")]
+transform = Transform3D(-0.75, 0, -6.55671e-08, 0, 0.75, 0, 6.55671e-08, 0, -0.75, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rocky\'s table"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0229874, 1.15062, -0.182281)
+shape = SubResource("BoxShape3D_y65il")
+debug_color = Color(0, 0.6, 0.7, 0.42)
+
+[node name="Rocky" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.33881)
+collision_layer = 3
+collision_mask = 3
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Rocky"]
+transform = Transform3D(2, 0, 0, 0, 1.93185, 0.517638, 0, -0.517638, 1.93185, 0, 0.470926, 0)
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_8y7gy")
+animation = &"Idle"
+frame_progress = 0.117307
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rocky"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0102923, 0.262694, 0.0347319)
+shape = SubResource("SphereShape3D_h8c61")
+debug_color = Color(0, 0.6, 0.7, 0.42)
+
+[node name="InteractArea" type="Area3D" parent="Rocky"]
+script = ExtResource("9_6svfb")
+BattleJson = "res://Data/Json/Battles/Rocky.json"
+Dialogue = ExtResource("10_k05gw")
+AfterDestroy = true
+Flag = "Rocky"
+metadata/_custom_type_script = "uid://ddsm0t3kkty4w"

@@ -1,0 +1,53 @@
+[gd_scene load_steps=9 format=3 uid="uid://bxdlhqmyk6ecu"]
+
+[ext_resource type="PackedScene" uid="uid://dhgmslr3smdfr" path="res://Scenes/Player.tscn" id="1_gl6un"]
+[ext_resource type="Script" uid="uid://by8hsp3brvpke" path="res://Scripts/InWorld/Game.gd" id="1_j5yw3"]
+[ext_resource type="AudioStream" uid="uid://dnjyom8kl3bnr" path="res://Resources/Sounds/Musics/World.mp3" id="4_b2bpf"]
+[ext_resource type="Script" uid="uid://ctlk1sr1chmiv" path="res://Scripts/InWorld/MapMusic.gd" id="5_7lihs"]
+[ext_resource type="Script" uid="uid://cbhg52e5egqtj" path="res://Scripts/InWorld/Friend.gd" id="6_7lihs"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gl6un"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_olno0"]
+sky_material = SubResource("ProceduralSkyMaterial_gl6un")
+
+[sub_resource type="Environment" id="Environment_j5yw3"]
+background_mode = 2
+background_energy_multiplier = 1.5
+sky = SubResource("Sky_olno0")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="Game" type="Node3D" groups=["Game"]]
+script = ExtResource("1_j5yw3")
+
+[node name="Player" parent="." instance=ExtResource("1_gl6un")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3297, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_j5yw3")
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_b2bpf")
+volume_db = -15.0
+autoplay = true
+script = ExtResource("5_7lihs")
+
+[node name="Friend" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2, 0)
+script = ExtResource("6_7lihs")
+metadata/_custom_type_script = "uid://cbhg52e5egqtj"
+
+[node name="Friend2" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+script = ExtResource("6_7lihs")
+Teamate = 2
+metadata/_custom_type_script = "uid://cbhg52e5egqtj"
+
+[node name="Friend3" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2, 0)
+script = ExtResource("6_7lihs")
+Teamate = 3
+metadata/_custom_type_script = "uid://cbhg52e5egqtj"

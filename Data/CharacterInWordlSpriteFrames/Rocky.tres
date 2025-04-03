@@ -1,0 +1,29 @@
+[gd_resource type="SpriteFrames" load_steps=3 format=3 uid="uid://dogqij45k62lp"]
+
+[ext_resource type="Texture2D" uid="uid://4he1gwf6chot" path="res://Resources/Images/Characters/Rocky/Idle/1.png" id="1_4rxc3"]
+[ext_resource type="Texture2D" uid="uid://bfw53i80qdr8a" path="res://Resources/Images/Characters/Rocky/Idle/2.png" id="2_h6jin"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_4rxc3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_h6jin")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_4rxc3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_h6jin")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 8.0
+}]

@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_14"
+type="Resource"
+uid="uid://b5a6vu4k6jiq5"
+path="res://.godot/imported/Gino.dialogue-f0fd3baaec43cb4663c4b2ded47269ea.tres"
+
+[deps]
+
+source_file="res://Data/Dialogue/Gino.dialogue"
+dest_files=["res://.godot/imported/Gino.dialogue-f0fd3baaec43cb4663c4b2ded47269ea.tres"]
+
+[params]
+
+defaults=true

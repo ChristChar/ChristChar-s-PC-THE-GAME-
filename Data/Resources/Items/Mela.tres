@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://dwj83pif15oy6"]
+
+[ext_resource type="Script" uid="uid://6khx1axhc55i" path="res://Scripts/Resources/Item.gd" id="1_uyvat"]
+[ext_resource type="Texture2D" uid="uid://ykcewon3inky" path="res://Resources/Images/Items/Mela.png" id="2_f7ptq"]
+
+[resource]
+script = ExtResource("1_uyvat")
+Name = "Apple"
+Category = "Food"
+Description = "A beatifull apple. It can Heal 20 HP"
+texture = ExtResource("2_f7ptq")
+Heal = 20
+Energy = 0
+metadata/_custom_type_script = "uid://6khx1axhc55i"

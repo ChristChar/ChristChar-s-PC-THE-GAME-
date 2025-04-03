@@ -1,0 +1,184 @@
+[gd_scene load_steps=21 format=3 uid="uid://dhgmslr3smdfr"]
+
+[ext_resource type="Script" uid="uid://dxrpa5ejimorw" path="res://Scripts/Player/player.gd" id="1_x1eo7"]
+[ext_resource type="Texture2D" uid="uid://dkla1ff3y1mie" path="res://Resources/Images/InWorld/Player/Gino Idle.png" id="2_sgix7"]
+[ext_resource type="Texture2D" uid="uid://bim6vbhnhkb7s" path="res://Resources/Images/InWorld/Player/Gino_walking_cycle.png" id="3_ceeyd"]
+[ext_resource type="AudioStream" uid="uid://cd81vqy28vhr3" path="res://Resources/Sounds/BattleStart.mp3" id="5_5ixxa"]
+[ext_resource type="Texture2D" uid="uid://dhf6a0ln255wq" path="res://Resources/Images/Gui/InvBackground.png" id="5_52ee3"]
+[ext_resource type="PackedScene" uid="uid://1g6hpkx5cup3" path="res://Scenes/Gui/Team/TeamViewer.tscn" id="5_n5vdp"]
+[ext_resource type="Script" uid="uid://d1urxc80bg8j7" path="res://Scripts/Player/CameraArea.gd" id="6_nn08x"]
+[ext_resource type="PackedScene" uid="uid://5gp8r5p64hs6" path="res://Scenes/Gui/Inventory/Inventory.tscn" id="7_bhhdu"]
+[ext_resource type="PackedScene" uid="uid://b2rfce4icuvm" path="res://Scenes/Gui/InGameMenu/GameMenu.tscn" id="8_megsn"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5ixxa"]
+radius = 0.280227
+height = 1.22086
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i2an7"]
+atlas = ExtResource("2_sgix7")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_08etm"]
+atlas = ExtResource("2_sgix7")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yowa5"]
+atlas = ExtResource("2_sgix7")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hhv05"]
+atlas = ExtResource("3_ceeyd")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gggi5"]
+atlas = ExtResource("3_ceeyd")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lg6g8"]
+atlas = ExtResource("3_ceeyd")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gmwy5"]
+atlas = ExtResource("3_ceeyd")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yp471"]
+animations = [{
+"frames": [{
+"duration": 4.0,
+"texture": SubResource("AtlasTexture_i2an7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_08etm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yowa5")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hhv05")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gggi5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lg6g8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gmwy5")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 4.0
+}]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_52ee3"]
+size = Vector3(1, 0.890503, 0.886108)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bhhdu"]
+bg_color = Color(0, 0, 0, 0.392157)
+
+[node name="Player" type="CharacterBody3D" groups=["Friend", "Player"]]
+script = ExtResource("1_x1eo7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0229595, 0)
+shape = SubResource("CapsuleShape3D_5ixxa")
+debug_color = Color(0, 0.6, 0.7, 0.42)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(4, 0, 0, 0, 3.8637, 1.03528, 0, -1.03528, 3.8637, 0, 0, 0)
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_yp471")
+animation = &"Idle"
+frame_progress = 0.148459
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.75495, 0.655782, 0, -0.655782, 0.75495, 0, 4.08244, 4.41752)
+current = true
+
+[node name="Area3D" type="Area3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 0.917088, -0.398685, 0, 0.398685, 0.917088, 0, 0, 0)
+script = ExtResource("6_nn08x")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Camera3D/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.328186, -0.454529)
+shape = SubResource("BoxShape3D_52ee3")
+debug_color = Color(0, 0.6, 0.7, 0.42)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="TeamViewer" parent="CanvasLayer" instance=ExtResource("5_n5vdp")]
+visible = false
+
+[node name="CharacterObtained" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Background" type="Panel" parent="CanvasLayer/CharacterObtained"]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_bhhdu")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/CharacterObtained"]
+layout_mode = 0
+offset_left = 656.0
+offset_top = 165.0
+offset_right = 729.0
+offset_bottom = 250.0
+scale = Vector2(8, 8)
+mouse_filter = 0
+texture = ExtResource("5_52ee3")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/CharacterObtained"]
+layout_mode = 0
+offset_left = 787.0
+offset_top = 248.0
+offset_right = 1087.0
+offset_bottom = 548.0
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/CharacterObtained/PanelContainer"]
+layout_mode = 2
+
+[node name="OK" type="Button" parent="CanvasLayer/CharacterObtained"]
+layout_mode = 0
+offset_left = 727.0
+offset_top = 713.0
+offset_right = 1152.0
+offset_bottom = 792.0
+theme_override_font_sizes/font_size = 50
+text = "OK"
+
+[node name="Label" type="Label" parent="CanvasLayer/CharacterObtained"]
+layout_mode = 0
+offset_left = 676.0
+offset_top = 596.0
+offset_right = 1222.0
+offset_bottom = 665.0
+theme_override_font_sizes/font_size = 45
+text = "YOU OBTAIN CHARACTER"
+horizontal_alignment = 1
+
+[node name="Inventory" parent="CanvasLayer" instance=ExtResource("7_bhhdu")]
+visible = false
+
+[node name="GameMenu" parent="CanvasLayer" instance=ExtResource("8_megsn")]
+visible = false
+
+[node name="BattleStart" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_5ixxa")
+
+[connection signal="pressed" from="CanvasLayer/CharacterObtained/OK" to="." method="_on_ok_pressed"]

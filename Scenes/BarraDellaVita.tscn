@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5o8c4s6qp3he"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t8jae"]
+bg_color = Color(1, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8sfpf"]
+bg_color = Color(0, 1, 0, 1)
+
+[node name="BarraDellaVita" type="ProgressBar"]
+offset_left = -140.0
+offset_top = -8.0
+offset_right = 140.0
+offset_bottom = 8.0
+mouse_filter = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_t8jae")
+theme_override_styles/fill = SubResource("StyleBoxFlat_8sfpf")
+max_value = 1000.0
+step = 1.0
+value = 1000.0
+show_percentage = false

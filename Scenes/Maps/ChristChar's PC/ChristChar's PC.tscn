@@ -1,0 +1,216 @@
+[gd_scene load_steps=32 format=3 uid="uid://dc8gnk53v5dv"]
+
+[ext_resource type="Script" uid="uid://bh4nnc5ukqkxd" path="res://Scripts/InWorld/Map.gd" id="1_55c4v"]
+[ext_resource type="Script" uid="uid://bnq7rukbvf7pv" path="res://Scripts/Resources/BattleSpawnPool.gd" id="3_xbjrg"]
+[ext_resource type="Script" uid="uid://ddsm0t3kkty4w" path="res://Scripts/InWorld/InteractArea.gd" id="4_i20q6"]
+[ext_resource type="Script" uid="uid://dkngd86d1ulhj" path="res://Scripts/Resources/SpawnData.gd" id="4_vnrtp"]
+[ext_resource type="Texture2D" uid="uid://ftx0cn2062gf" path="res://Resources/Images/InWorld/Encounters/Virus.png" id="5_2tfhn"]
+[ext_resource type="Resource" uid="uid://b5a6vu4k6jiq5" path="res://Data/Dialogue/Gino.dialogue" id="5_xbjrg"]
+[ext_resource type="PackedScene" uid="uid://d01q21h2m3ic1" path="res://Resources/Models/Sasso caverna.gltf" id="6_vnrtp"]
+[ext_resource type="Texture2D" uid="uid://cf46l5o5elka6" path="res://Resources/Images/Characters/Gino/InWorld/1.png" id="6_xbjrg"]
+[ext_resource type="Resource" uid="uid://bbqx477v1b877" path="res://Data/Dialogue/Sassocaverna.dialogue" id="7_i20q6"]
+[ext_resource type="AudioStream" uid="uid://dnjyom8kl3bnr" path="res://Resources/Sounds/Musics/World.mp3" id="7_v8pw2"]
+[ext_resource type="Texture2D" uid="uid://c5w6myqyeapw3" path="res://Resources/Images/Characters/Timmy/InWorld/Idle.png" id="9_lb50r"]
+[ext_resource type="Script" uid="uid://c112futsqvxgx" path="res://Scripts/InWorld/MiniGameArea.gd" id="10_lk8df"]
+[ext_resource type="Resource" uid="uid://omw187ff0346" path="res://Data/Dialogue/Timmy.dialogue" id="11_0whpa"]
+
+[sub_resource type="Resource" id="Resource_1se7k"]
+script = ExtResource("4_vnrtp")
+Weight = 2
+Type = "Trojan"
+metadata/_custom_type_script = "uid://dkngd86d1ulhj"
+
+[sub_resource type="Resource" id="Resource_shq8t"]
+script = ExtResource("4_vnrtp")
+Weight = 1
+Type = "Spyware"
+metadata/_custom_type_script = "uid://dkngd86d1ulhj"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4grl1"]
+atlas = ExtResource("5_2tfhn")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wgcyy"]
+atlas = ExtResource("5_2tfhn")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ee60x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4grl1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wgcyy")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[sub_resource type="Resource" id="Resource_6f1e5"]
+script = ExtResource("3_xbjrg")
+Spawn_Pool = Array[ExtResource("4_vnrtp")]([SubResource("Resource_1se7k"), SubResource("Resource_shq8t")])
+World_Sprite = SubResource("SpriteFrames_ee60x")
+metadata/_custom_type_script = "uid://bnq7rukbvf7pv"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_olno0"]
+size = Vector3(100, 0.001, 100)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_nadxs"]
+size = Vector2(100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vnrtp"]
+atlas = ExtResource("6_xbjrg")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2tfhn"]
+atlas = ExtResource("6_xbjrg")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lb50r"]
+atlas = ExtResource("6_xbjrg")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7xuh3"]
+animations = [{
+"frames": [{
+"duration": 4.0,
+"texture": SubResource("AtlasTexture_vnrtp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2tfhn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lb50r")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_b4ant"]
+radius = 0.660525
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fp6t3"]
+atlas = ExtResource("9_lb50r")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f10xp"]
+atlas = ExtResource("9_lb50r")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yalmx"]
+atlas = ExtResource("9_lb50r")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fejkt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fp6t3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f10xp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yalmx")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lhlek"]
+size = Vector3(2.27344, 2.44324, 1.80505)
+
+[node name="Map" type="Node3D"]
+script = ExtResource("1_55c4v")
+EnemyCount = 20
+SpaenPool = Dictionary[String, ExtResource("3_xbjrg")]({
+"Virus": SubResource("Resource_6f1e5")
+})
+Music = ExtResource("7_v8pw2")
+
+[node name="Pavimento" type="StaticBody3D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pavimento"]
+shape = SubResource("BoxShape3D_olno0")
+debug_color = Color(0, 0.6, 0.7, 0.42)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pavimento"]
+mesh = SubResource("PlaneMesh_nadxs")
+skeleton = NodePath("../..")
+
+[node name="PlayerSpawn" type="Node3D" parent="." groups=["PlayerSpawn"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.27196, 0)
+
+[node name="Gino" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.70505, 0.529312, 0)
+collision_layer = 3
+collision_mask = 3
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Gino"]
+transform = Transform3D(4, 0, 0, 0, 3.8637, 1.03528, 0, -1.03528, 3.8637, 0, 0.0455712, 0)
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_7xuh3")
+animation = &"Idle"
+frame_progress = 0.493568
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Gino"]
+shape = SubResource("SphereShape3D_b4ant")
+debug_color = Color(0, 0.6, 0.7, 0.42)
+
+[node name="InteractArea" type="Area3D" parent="Gino"]
+script = ExtResource("4_i20q6")
+Dialogue = ExtResource("5_xbjrg")
+AfterDestroy = true
+Flag = "Gino"
+metadata/_custom_type_script = "uid://ddsm0t3kkty4w"
+
+[node name="Timmy" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.0549, 0.804427, 0)
+collision_layer = 3
+collision_mask = 3
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Timmy"]
+transform = Transform3D(4, 0, 0, 0, 3.8637, 1.03528, 0, -1.03528, 3.8637, 0, 0.0455712, 0)
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_fejkt")
+animation = &"Idle"
+frame_progress = 0.270839
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Timmy"]
+shape = SubResource("SphereShape3D_b4ant")
+debug_color = Color(0, 0.6, 0.7, 0.42)
+
+[node name="InteractArea" type="Area3D" parent="Timmy"]
+script = ExtResource("10_lk8df")
+MiniGame = "res://Scenes/Minigames/TakeTheChickenNuggets.tscn"
+Dialogue = ExtResource("11_0whpa")
+AfterDestroy = true
+Flag = "Timmy"
+metadata/_custom_type_script = "uid://ddsm0t3kkty4w"
+
+[node name="Sassocaverna" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.69285, 0, -7.3037)
+collision_layer = 3
+collision_mask = 3
+
+[node name="blockbench_export" parent="Sassocaverna" instance=ExtResource("6_vnrtp")]
+transform = Transform3D(-2, 0, -1.74846e-07, 0, 2, 0, 1.74846e-07, 0, -2, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sassocaverna"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00585938, 1.31171, -0.538879)
+shape = SubResource("BoxShape3D_lhlek")
+debug_color = Color(0, 0.6, 0.7, 0.42)
+
+[node name="InteractArea" type="Area3D" parent="Sassocaverna"]
+script = ExtResource("4_i20q6")
+Dialogue = ExtResource("7_i20q6")
+metadata/_custom_type_script = "uid://ddsm0t3kkty4w"
+
+[node name="PlayerSpawn" type="Node3D" parent="Sassocaverna"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.959082, 1.03494)

@@ -1,0 +1,9 @@
+~ Start
+Gino: Oh, hello!
+ChristChar: Gino, do you want to join my team to experience a fantastic turn-based RPG adventure?!?!?
+Gino: What are you talking about?
+ChristChar: Come on Gino, you know it
+Gino: nope... Alright, I will join your team becouse we are best friends!
+ChritCahr: YIPPIE!
+do! Team.ObtainCharacter("Gino")
+=> END

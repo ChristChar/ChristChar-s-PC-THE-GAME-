@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://dr4cvg6ip27cw"]
+
+[ext_resource type="Script" uid="uid://6khx1axhc55i" path="res://Scripts/Resources/Item.gd" id="1_7jd12"]
+[ext_resource type="Texture2D" uid="uid://c76qnpklak7j3" path="res://Resources/Images/Items/Bastone.png" id="2_7jd12"]
+
+[resource]
+script = ExtResource("1_7jd12")
+Name = "Stick"
+Category = "Resources"
+Description = "A wooden stick. You can throw it at one of your enemy to deal 25 damage"
+texture = ExtResource("2_7jd12")
+Heal = -25
+Energy = 0
+metadata/_custom_type_script = "uid://6khx1axhc55i"

@@ -1,0 +1,137 @@
+{
+	"Normal":{
+		"Color":[170,170,170],
+		"Effectiveness": {
+			"Meme":2,
+			"AI":2,
+			"Gun": 2,
+			"Cute": 2
+		}
+	},
+	"AI":{
+		"Color":[255,255,255],
+		"Effectiveness": {
+			"Meme":0.5,
+			"Malware":2,
+			"Gun": 2,
+			"Cute": 0.5
+		}
+	},
+	"Malware":{
+		"Color":[255,0,0],
+		"Effectiveness": {
+			"Meme":0.5,
+			"AI":0.5,
+			"Evil":2,
+			"Fighter":2,
+			"Antivirus": 2,
+			"Gun": 2,
+			"Cute": 0.5
+		}
+	},
+	"Player":{
+		"Color":[200, 100,0],
+		"Effectiveness": {
+			"Meme":2,
+			"Malware":2,
+			"Evil":0.5,
+			"Antivirus": 0.5,
+			"Gun": 2
+		}
+	},
+	"Fighter": {
+		"Color":[240, 50,50],
+		"Effectiveness": {
+			"Magic": 2,
+			"AI":0.5,
+			"Food": 0.5,
+			"Evil": 0.5,
+			"Cute": 2,
+			"Gun": 2
+		}
+	},
+	"Cute":{
+		"Color":[255, 200, 200],
+		"Effectiveness": {
+			"Gun": 2,
+			"Magic": 0.5
+		}
+	},
+	"Gun":{
+		"Color":[10, 10, 10],
+		"Effectiveness": {
+			"Magic": 2,
+			"Water": 2,
+			"Antivirus": 2,
+			"Meme": 0.5
+		}
+	},
+	"Food":{
+		"Color":[250, 150, 20],
+		"Effectiveness": {
+			"Player": 2,
+			"AI": 0.5,
+			"Malware": 0.5,
+			"Water":2,
+			"Grass": 0.5
+		}
+	},
+	"Magic":{
+		"Color":[255,0,255],
+		"Effectiveness": {
+			"AI":0.5,
+			"Evil":0.5,
+			"Water":0.5,
+			"Fire":0.5,
+			"Grass":0.5,
+			"Food": 2,
+			"Cute": 2
+		}
+	},
+	"Meme":{
+		"Color":[150,150,255],
+		"Effectiveness": {
+			"AI":2,
+			"Normal": 0.5,
+			"Cute": 2
+		}
+	},
+	"Evil":{
+		"Color":[30,0,0],
+		"Effectiveness": {
+			"Magic":2,
+			"Player":2,
+			"Fighter":2,
+			"Cute": 0.5
+		}
+	},
+	"Antivirus": {
+		"Color":[0,0,255],
+		"Effectiveness": {
+			"Fighter":0.5
+		}
+	},
+	"Water":{
+		"Color":[200,200,255],
+		"Effectiveness": {
+			"Grass":2,
+			"Fire":0.5,
+			"Food":0.5
+		}
+	},
+	"Fire":{
+		"Color":[255,200,0],
+		"Effectiveness": {
+			"Water":2,
+			"Grass":0.5
+		}
+	},
+	"Grass":{
+		"Color":[0,255,0],
+		"Effectiveness": {
+			"Fire":2,
+			"Water":0.5,
+			"Food": 0.5
+		}
+	}
+}

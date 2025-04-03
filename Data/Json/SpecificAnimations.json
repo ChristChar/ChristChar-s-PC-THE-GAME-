@@ -1,0 +1,24 @@
+{
+	"Gino":{
+		"Fail": {
+			"Loop":false,
+			"Framerate": 10
+		},
+		"Dying": {
+			"Loop":false,
+			"Framerate": 9
+		}
+	},
+	"Timmy":{
+		"Fail": {
+			"Loop":false,
+			"Framerate": 8
+		}
+	},
+	"ChristChar":{
+		"Dying": {
+			"Loop":false,
+			"Framerate": 11
+		}
+	}
+}

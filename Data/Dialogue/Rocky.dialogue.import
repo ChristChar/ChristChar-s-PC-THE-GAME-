@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_14"
+type="Resource"
+uid="uid://bwamgyifsfjni"
+path="res://.godot/imported/Rocky.dialogue-43745921e6f11d150f5079da757aad0f.tres"
+
+[deps]
+
+source_file="res://Data/Dialogue/Rocky.dialogue"
+dest_files=["res://.godot/imported/Rocky.dialogue-43745921e6f11d150f5079da757aad0f.tres"]
+
+[params]
+
+defaults=true

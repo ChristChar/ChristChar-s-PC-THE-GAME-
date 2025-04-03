@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_14"
+type="Resource"
+uid="uid://bblfn4soqxqo2"
+path="res://.godot/imported/TurnBackInMainMap.dialogue-5bb9ec1d82758273950580fc812a6336.tres"
+
+[deps]
+
+source_file="res://Data/Dialogue/TurnBackInMainMap.dialogue"
+dest_files=["res://.godot/imported/TurnBackInMainMap.dialogue-5bb9ec1d82758273950580fc812a6336.tres"]
+
+[params]
+
+defaults=true

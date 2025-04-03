@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=3 uid="uid://bihos6fps1weo"]
+
+[ext_resource type="Script" uid="uid://boawtyr8d7bok" path="res://Scripts/Minigames/TakeTheChickenNuggets/ciotola.gd" id="1_7xrrg"]
+[ext_resource type="Script" uid="uid://bqtvcw5sb7e3m" path="res://Scripts/Minigames/TakeTheChickenNuggets/take_the_chicken_nuggets.gd" id="1_tu7oq"]
+[ext_resource type="Texture2D" uid="uid://dat2g8uscylfl" path="res://Resources/Images/Minigames/TakeTheChickenNuggets/Bowl.png" id="2_tu7oq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jwn73"]
+size = Vector2(324, 59)
+
+[node name="TakeTheChickenNuggets" type="CanvasLayer"]
+script = ExtResource("1_tu7oq")
+
+[node name="TextureRect" type="ColorRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0.593435, 0.790881, 0.932084, 1)
+
+[node name="Score" type="Label" parent="."]
+offset_left = 836.0
+offset_top = 37.0
+offset_right = 1007.0
+offset_bottom = 174.0
+theme_override_font_sizes/font_size = 100
+text = "100"
+
+[node name="Ciotola" type="Area2D" parent="."]
+position = Vector2(500, 750)
+script = ExtResource("1_7xrrg")
+
+[node name="Sprite2D" type="Sprite2D" parent="Ciotola"]
+scale = Vector2(6, 6)
+texture = ExtResource("2_tu7oq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ciotola"]
+position = Vector2(0, -24.5)
+shape = SubResource("RectangleShape2D_jwn73")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 20.0
+autostart = true
+
+[node name="NuggetSpawn" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="NuggetSpawn" to="." method="_on_nugget_spawn_timeout"]

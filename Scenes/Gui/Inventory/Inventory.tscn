@@ -1,0 +1,105 @@
+[gd_scene load_steps=6 format=3 uid="uid://5gp8r5p64hs6"]
+
+[ext_resource type="Script" uid="uid://cl4heyesv7wsh" path="res://Scripts/Player/Gui/Inventory/inventory.gd" id="1_sb13g"]
+[ext_resource type="Texture2D" uid="uid://dhf6a0ln255wq" path="res://Resources/Images/Gui/InvBackground.png" id="2_wes33"]
+[ext_resource type="Script" uid="uid://chml8p04eiy8o" path="res://Scripts/Player/Gui/Inventory/Handle_items.gd" id="3_kyynw"]
+[ext_resource type="Texture2D" uid="uid://ykcewon3inky" path="res://Resources/Images/Items/Mela.png" id="4_tqgwd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kyynw"]
+bg_color = Color(0, 0, 0, 0.392157)
+
+[node name="Inventory" type="Control" groups=["Inventory"]]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_sb13g")
+
+[node name="Background" type="Panel" parent="."]
+layout_mode = 0
+offset_top = -6.0
+offset_right = 1920.0
+offset_bottom = 1074.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_kyynw")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 138.0
+offset_right = 379.0
+offset_bottom = 238.0
+scale = Vector2(8, 8)
+mouse_filter = 0
+texture = ExtResource("2_wes33")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="Items" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 251.0
+offset_top = 192.0
+offset_right = 892.0
+offset_bottom = 876.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Items"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 635.0
+offset_bottom = 684.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Items/ScrollContainer"]
+layout_mode = 2
+script = ExtResource("3_kyynw")
+
+[node name="Infos" type="Panel" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 947.0
+offset_top = 193.0
+offset_right = 1588.0
+offset_bottom = 877.0
+
+[node name="Item" type="TextureRect" parent="Infos"]
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 0
+offset_left = 38.0
+offset_top = 120.0
+offset_right = 338.0
+offset_bottom = 420.0
+texture = ExtResource("4_tqgwd")
+expand_mode = 1
+
+[node name="Name" type="Label" parent="Infos"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 17.0
+offset_right = 596.0
+offset_bottom = 103.0
+theme_override_font_sizes/font_size = 60
+text = "NAME"
+
+[node name="descrizioe" type="Label" parent="Infos"]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 438.0
+offset_right = 597.0
+offset_bottom = 674.0
+theme_override_font_sizes/font_size = 40
+text = "Questa è una descrizione di un oggetto inesistente, per questo non sto scirvendo niente."
+autowrap_mode = 3
+
+[node name="Button" type="Button" parent="Infos"]
+layout_mode = 0
+offset_left = 369.0
+offset_top = 308.0
+offset_right = 607.0
+offset_bottom = 405.0
+theme_override_font_sizes/font_size = 50
+text = "USE"
+
+[connection signal="pressed" from="Infos/Button" to="." method="_on_button_pressed"]

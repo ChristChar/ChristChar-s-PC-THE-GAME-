@@ -1,0 +1,176 @@
+{
+	"Hit": {
+		"Power": 40,
+		"Chance": 95,
+		"Energy": 25,
+		"Move type": "Fisica",
+		"Type": "Normal",
+		"Description": "colpisce l'aversario in modo poco doloroso"
+	},
+	"HYPER BEAM": {
+		"Power": 150,
+		"Chance": 75,
+		"Energy": 100,
+		"Move type": "Special",
+		"Type": "Magic",
+		"Description": "Pokemon don't sue me pls",
+		"Animation": {
+			"Type": "Laser",
+			"Width": 50,
+			"Color": [255,255,255]
+		}
+	},
+	"Shot": {
+		"Power": 120,
+		"Chance": 65,
+		"Move type": "Fisica",
+		"Type": "Gun",
+		"Energy": 40,
+		"Description": "PRENDI IL FUCILE E SPARA",
+		"Animation": {
+			"Type": "ThrowObject",
+			"Sprite": "res://Resources/Images/BattleAnimations/Proiettile.png",
+			"Speed": 0.25,
+			"Spinning": false
+		}
+	},
+	"Bullet rain": {
+		"Power": 130,
+		"Chance": 85,
+		"Move type": "Special",
+		"Type": "Gun",
+		"Energy": 80,
+		"Description": "Make rain bullets!!",
+		"Animation": {
+			"Type": "ThrowObject",
+			"Sprite": "res://Resources/Images/BattleAnimations/Proiettile.png",
+			"Speed": 0.3,
+			"Spinning": false
+		}
+	},
+	"Pizzathrow": {
+		"Power": 75,
+		"Chance": 70,
+		"Move type": "Fisica",
+		"Type": "Food",
+		"Energy": 50,
+		"Target": "All",
+		"Animation": {
+			"Type": "ThrowObject",
+			"Sprite": "res://Resources/Images/BattleAnimations/Pizza.png",
+			"Speed": 0.15,
+			"Spinning": true
+		},
+		"Description": "Laancia la pizza all'aversario"
+	},
+	"Taskill": {
+		"Power": 65,
+		"Chance": 90,
+		"Energy":45,
+		"Move type": "Speciale",
+		"Type": "Player",
+		"Description": "Esegue Taskill sul CMD"
+	},
+	"Debug Mode": {
+		"Chance": 100,
+		"Move type": "Status",
+		"Type": "Player",
+		"Energy": 30,
+		"Stat": [
+		  {
+			"Stat": "DIF",
+			"Power": 2
+		  }
+		],
+		"Description": "Attiva la modalità debug aumentando significativamente la difesa."
+  },
+	"Roar": {
+		"Chance": 100,
+		"Move type": "Status",
+		"Has Target": true,
+		"Type": "Normal",
+		"Energy": 15,
+		"Stat":[
+			{
+				"Stat":"ATT",
+				"Power": -1
+			},
+		],
+		"Description": "ROAR (traduzione: abbassa l'attaco avversario)"
+	},
+	"Dance": {
+		"Chance": 90,
+		"Move type": "Status",
+		"Type": "Meme",
+		"Energy": 40,
+		"Stat":[
+			{
+				"Stat":"ATT",
+				"Power": 1
+			},
+			{
+				"Stat": "DIF",
+				"Power": 1
+			}
+		],
+		"Description": "Aumenta attacco e difesa"
+	},
+	"SPINNING": {
+		"Chance": 95,
+		"Move type": "Status",
+		"Type": "Meme",
+		"Energy": 40,
+		"Stat":[
+			{
+				"Stat":"PI",
+				"Power": 3
+			},
+			{
+				"Stat": "INT",
+				"Power": -1
+			}
+		],
+		"Description": "Diminuisce l'intellizenza ma aumenta di molto il poteere informatico"
+	},
+	"Rickroll": {
+		"Power": 65,
+		"Chance": 90,
+		"Move type": "Speciale",
+		"Type": "Meme",
+		"Energy": 45,
+		"Description": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+		"Animation": {
+			"Type": "Follow",
+			"Speed": 0.1,
+			"Sound": "res://Resources/Sounds/Rickroll.mp3",
+			"CharacterAnimation": {
+				"Sprites": "res://Resources/Images/BattleAnimations/CharacterAnimation/Rickroll/",
+				"FPS": 12,
+				"AnimName": "Rickroll"
+			}
+		}
+	},
+	"Magic heal": {
+		"Chance": 100,
+		"Has Target": true,
+		"Move type": "Status",
+		"Type": "Magic",
+		"Energy": 50,
+		"Script": [
+			{
+				"Script": "Heal",
+				"Chance": 100,
+				"Power": 80
+			}
+		],
+		"Description": "Cura il target"
+	},
+	"Delete System32": {
+		"Chance": 75,
+		"Power": 120,
+		"Energy": 70,
+		"Move type": "Speciale",
+		"Type": "Malware",
+		"Description": "FA MALE"
+	}
+}

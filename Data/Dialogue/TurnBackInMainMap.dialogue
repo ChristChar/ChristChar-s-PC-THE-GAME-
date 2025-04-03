@@ -1,0 +1,7 @@
+~ start
+Do you want to turn back?
+- yes
+	do!  get_tree().root.get_child(-1).ReturnToMainMap("Sassocaverna/PlayerSpawn")
+	do! Team.Pause = false
+- nope
+=> END

@@ -1,0 +1,120 @@
+[gd_scene load_steps=6 format=3 uid="uid://dmfih6652kuif"]
+
+[ext_resource type="Script" uid="uid://d02e1j002x5qt" path="res://Scripts/Player/Gui/MapSelection/map_selector.gd" id="1_1f5gq"]
+[ext_resource type="Script" uid="uid://dpqab475g8ewm" path="res://Scripts/Player/Gui/MapSelection/MapsButtonsGeneration.gd" id="1_1fdk6"]
+[ext_resource type="Texture2D" uid="uid://cuh1c2hcf7xih" path="res://Resources/Images/Maps/Preview/ChristChar's PC.png" id="1_5kh2e"]
+[ext_resource type="Script" uid="uid://cq18xelra6581" path="res://Scripts/Player/Gui/MapSelection/MapPreview.gd" id="2_ktaqm"]
+[ext_resource type="Texture2D" uid="uid://bmnavwfaafmpw" path="res://Resources/Images/Icone/People.png" id="3_ktaqm"]
+
+[node name="Menu" type="Control" groups=["Menu"]]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MapSelector" type="Control" parent="." groups=["MapSelector"]]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_1f5gq")
+
+[node name="Maps" type="PanelContainer" parent="MapSelector"]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 153.0
+offset_right = 900.0
+offset_bottom = 1044.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MapSelector/Maps"]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="MapSelector/Maps/ScrollContainer"]
+layout_mode = 2
+columns = 6
+script = ExtResource("1_1fdk6")
+
+[node name="Infos" type="Panel" parent="MapSelector"]
+layout_mode = 0
+offset_left = 1000.0
+offset_top = 153.0
+offset_right = 1749.0
+offset_bottom = 1044.0
+
+[node name="Preview" type="SubViewportContainer" parent="MapSelector/Infos"]
+layout_mode = 0
+offset_left = 74.0
+offset_top = 127.0
+offset_right = 114.0
+offset_bottom = 167.0
+
+[node name="SubViewport" type="SubViewport" parent="MapSelector/Infos/Preview"]
+handle_input_locally = false
+size = Vector2i(360, 300)
+render_target_update_mode = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="MapSelector/Infos/Preview/SubViewport"]
+texture = ExtResource("1_5kh2e")
+offset = Vector2(180, 150)
+script = ExtResource("2_ktaqm")
+
+[node name="Name" type="Label" parent="MapSelector/Infos"]
+layout_mode = 0
+offset_left = 75.0
+offset_top = 15.0
+offset_right = 294.0
+offset_bottom = 118.0
+theme_override_font_sizes/font_size = 75
+text = "NAME"
+
+[node name="Description" type="Label" parent="MapSelector/Infos"]
+layout_mode = 0
+offset_left = 82.0
+offset_top = 465.0
+offset_right = 652.0
+offset_bottom = 594.0
+theme_override_font_sizes/font_size = 25
+text = "UNA BELLISSSIMA DESCRIZIONE PUZZOLENTE HAHAHAHAHHA"
+autowrap_mode = 3
+
+[node name="Start" type="Button" parent="MapSelector/Infos"]
+layout_mode = 0
+offset_left = 79.0
+offset_top = 750.0
+offset_right = 668.0
+offset_bottom = 861.0
+theme_override_font_sizes/font_size = 75
+text = "START!"
+
+[node name="Infos" type="Label" parent="MapSelector/Infos"]
+layout_mode = 0
+offset_left = 144.0
+offset_top = 593.0
+offset_right = 205.0
+offset_bottom = 648.0
+theme_override_font_sizes/font_size = 40
+text = "0/0"
+
+[node name="People" type="TextureRect" parent="MapSelector/Infos"]
+layout_mode = 0
+offset_left = 95.0
+offset_top = 598.0
+offset_right = 139.0
+offset_bottom = 648.0
+texture = ExtResource("3_ktaqm")
+
+[node name="Label" type="Label" parent="MapSelector"]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 6.0
+offset_right = 874.0
+offset_bottom = 143.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.552941)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 5
+theme_override_font_sizes/font_size = 100
+text = "MAP SELECTION"
+
+[connection signal="pressed" from="MapSelector/Infos/Start" to="MapSelector" method="_on_start_pressed"]

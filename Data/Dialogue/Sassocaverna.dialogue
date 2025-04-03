@@ -1,0 +1,6 @@
+~ start
+Do you want to enter the Rockcave?
+- yes
+	do!  get_tree().root.get_child(-1).ChangeMap("res://Scenes/Maps/ChristChar's PC/Submaps/Sassocaverna.tscn", "PlayerSpawn")
+- nope
+=> END

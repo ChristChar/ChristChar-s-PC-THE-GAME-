@@ -1,0 +1,16 @@
+~ start
+ChristChar: Timmy, do you want to join my team to experience a fantastic turn-based RPG adventure?!?!?
+Timmy: NOPE
+ChristChar: PLSSSS
+Timmy: I will join your team only if you give to me 30 chicken nuggets
+=> END
+
+~ Win
+Timmy: Wow, you did it!
+Timmy: I will join your stupid team
+do! Team.ObtainCharacter("Timmy")
+=> END
+
+~ Lose
+Timmy: Wow, you suck
+=> END

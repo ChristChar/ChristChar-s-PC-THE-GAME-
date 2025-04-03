@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_14"
+type="Resource"
+uid="uid://bbqx477v1b877"
+path="res://.godot/imported/Sassocaverna.dialogue-a4f3e916853f798e847fd3bd38a19d2b.tres"
+
+[deps]
+
+source_file="res://Data/Dialogue/Sassocaverna.dialogue"
+dest_files=["res://.godot/imported/Sassocaverna.dialogue-a4f3e916853f798e847fd3bd38a19d2b.tres"]
+
+[params]
+
+defaults=true

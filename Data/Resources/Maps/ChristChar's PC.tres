@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="MapData" load_steps=5 format=3 uid="uid://fvpwo05ewuqs"]
+
+[ext_resource type="Script" uid="uid://cbprm8smb1ptw" path="res://Scripts/Resources/MapDeclaretion.gd" id="1_1ahhb"]
+[ext_resource type="PackedScene" uid="uid://dc8gnk53v5dv" path="res://Scenes/Maps/ChristChar's PC/ChristChar's PC.tscn" id="1_dme5a"]
+[ext_resource type="Texture2D" uid="uid://6xtj7i0fduwj" path="res://Resources/Images/Maps/Icons/ChristChar's PC.jpg" id="1_qvb65"]
+[ext_resource type="Texture2D" uid="uid://cuh1c2hcf7xih" path="res://Resources/Images/Maps/Preview/ChristChar's PC.png" id="2_ugq64"]
+
+[resource]
+script = ExtResource("1_1ahhb")
+Name = "ChristChar's PC"
+Description = "This is your PC,  here you can... Uhmm... Do nothing, al least in this game"
+Unlock = true
+Scene = ExtResource("1_dme5a")
+Preview = ExtResource("2_ugq64")
+Icon = ExtResource("1_qvb65")
+CharactersToFindFlags = Array[String](["Gino", "Timmy", "Rocky"])
+metadata/_custom_type_script = "uid://cbprm8smb1ptw"

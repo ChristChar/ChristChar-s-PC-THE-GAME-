@@ -1,0 +1,10 @@
+~ start
+ChristChar: Hello Rocky, do you want to join my team?
+Rocky: ...
+=> END
+
+~ AfterBattle
+ChristChar: Rocky! Why do you this to me!
+Rocky: ...
+do! Team.ObtainCharacter("Rocky")
+=> END

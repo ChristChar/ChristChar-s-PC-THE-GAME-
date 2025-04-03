@@ -1,0 +1,155 @@
+{
+	"Gino":{
+		"IsEnemy": false,
+		"Types": ["AI","Meme"],
+		"Stats": {
+			"HP":   100,
+			"ATT":  50,
+			"PI":   125,
+			"DIF":  75,
+			"INT":  45,
+			"SPEED":100
+		},
+		"Moves": {"1":["Hit", "Rickroll", "Dance", "Roar", "HYPER BEAM"]},
+		"Exp": 200,
+		"Category": "Main",
+		"MaxEnergia": 150,
+		"EnergiaRegeneration": 15
+	},
+	"Timmy":{
+		"IsEnemy": false,
+		"Types": ["AI","Food"],
+		"Stats": {
+			"HP":   50,
+			"ATT":  150,
+			"PI":   100,
+			"DIF":  50,
+			"INT":  15,
+			"SPEED": 100
+		},
+		"Moves": {"1":["Pizzathrow", "Rickroll", "Dance", "Roar"]},
+		"Exp": 200,
+		"Category": "Main",
+		"MaxEnergia": 300,
+		"EnergiaRegeneration": 15
+	},
+	"Rocky":{
+		"IsEnemy": false,
+		"Types": ["AI", "Gun"],
+		"Stats": {
+			"HP":   45,
+			"ATT":  50,
+			"PI":   120,
+			"DIF":  120,
+			"INT":  120,
+			"SPEED": 20
+		},
+		"Moves": {"1":["Rickroll", "Bullet rain", "Hit"], "5":["Bullet rain"]},
+		"Exp": 200,
+		"Category": "Main",
+		"MaxEnergia": 100,
+		"EnergiaRegeneration":30 
+	},
+	"ChristChar":{
+		"IsEnemy": false,
+		"Types": ["Player"],
+		"Stats": {
+			"HP":   80,
+			"ATT":  2,
+			"PI":   150,
+			"DIF":  60,
+			"INT":  120,
+			"SPEED":120
+		},
+		"Moves": {"1":["Hit","Rickroll","SPINNING"], "5":["Taskill"], "12":["Debug Mode"]},
+		"Exp": 200,
+		"Category": "Main",
+		"MaxEnergia": 200,
+		"EnergiaRegeneration": 10
+	},
+	"Bob":{
+		"IsEnemy": false,
+		"Types": ["Meme", "Food"],
+		"Stats": {
+			"HP":   150,
+			"ATT":  75,
+			"PI":   85,
+			"DIF":  150,
+			"INT":  60,
+			"SPEED":40
+		},
+		"Moves": {"1":["Magic heal", "Rickroll"]},
+		"Exp": 200,
+		"Category": "Friends",
+		"MaxEnergia": 100,
+		"EnergiaRegeneration": 35
+	},
+	"Pixy":{
+		"IsEnemy": false,
+		"Types": ["Player","Cute","Gun","Fighter"],
+		"Stats": {
+			"HP":   40,
+			"ATT":  150,
+			"PI":   35,
+			"DIF":  70,
+			"INT":  80,
+			"SPEED":120
+		},
+		"Moves": {"1":["Shot"]},
+		"Exp": 200,
+		"Category": "Friends",
+		"MaxEnergia": 200,
+		"EnergiaRegeneration": 40
+	},
+	"Trojan": {
+		"IsEnemy": true,
+		"Types": ["Malware"],
+		"Stats": {
+			"HP":   75,
+			"ATT":  100,
+			"PI":   200,
+			"DIF":  50,
+			"INT":  5,
+			"SPEED":125
+		},
+		"Moves": {"1":["Hit"], "10":["Delete System32"]},
+		"Exp": 164,
+		"Category": "Virus",
+		"MaxEnergia": 350,
+		"EnergiaRegeneration": 10
+	},
+	"Spyware": {
+		"IsEnemy": true,
+		"Types": ["Malware"],
+		"Stats": {
+			"HP":   50,
+			"ATT":  50,
+			"PI":   50,
+			"DIF":  50,
+			"INT":  100,
+			"SPEED":250
+		},
+		"Moves": {"1":["Hit"]},
+		"Exp": 81,
+		"Category": "Virus",
+		"MaxEnergia": 105,
+		"EnergiaRegeneration": 30
+	},
+	"Mucca":{
+		"IsEnemy": true,
+		"Types": ["Normal"],
+		"Stats": {
+			"HP":   75,
+			"ATT":  25,
+			"PI":   2,
+			"DIF":  65,
+			"INT":  25,
+			"SPEED":65
+		},
+		"Moves": {"1":["Hit", "Roar"]},
+		"Exp": 45,
+		"Category": "Animale",
+		"MaxEnergia": 120,
+		"EnergiaRegeneration": 5
+	},
+}
