@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_14"
+type="Resource"
+uid="uid://dvexwbgfwtd1m"
+path="res://.godot/imported/I hate u.dialogue-0bcd39b91a6668eb4d1a54f7a0fd6010.tres"
+
+[deps]
+
+source_file="res://Data/Dialogue/Casual NPC/I hate u.dialogue"
+dest_files=["res://.godot/imported/I hate u.dialogue-0bcd39b91a6668eb4d1a54f7a0fd6010.tres"]
+
+[params]
+
+defaults=true

@@ -18,3 +18,10 @@ max_value = 1000.0
 step = 1.0
 value = 1000.0
 show_percentage = false
+
+[node name="Effects" type="GridContainer" parent="."]
+layout_mode = 0
+offset_top = 18.0
+offset_right = 40.0
+offset_bottom = 50.0
+columns = 7

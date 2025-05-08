@@ -1,0 +1,8 @@
+~ start
+Dude: I like cats
+- me too!
+	Dude: WOW
+- Cats suck!
+	Dude: HOW DARE YOU, INSULT THE PERFECT BEING. NOW YOU WILL GO TO HELL, ATTACK DEAR TROJAN
+	do! Team.GenerateBattleFromJSON("res://Data/Json/Battles/TrojanOP.json")
+=> END

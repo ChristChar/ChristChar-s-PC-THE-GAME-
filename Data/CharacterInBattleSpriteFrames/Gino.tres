@@ -1,0 +1,106 @@
+[gd_resource type="SpriteFrames" load_steps=20 format=3 uid="uid://c3cbr6jsk7h7"]
+
+[ext_resource type="Texture2D" uid="uid://1roh3gb13vju" path="res://Resources/Images/Characters/Gino/Dead/1.png" id="1_emohb"]
+[ext_resource type="Texture2D" uid="uid://bd2nxq2e7xy7c" path="res://Resources/Images/Characters/Gino/Dying/00001.png" id="2_anedw"]
+[ext_resource type="Texture2D" uid="uid://b6b0s1ewxcdcq" path="res://Resources/Images/Characters/Gino/Dying/00002.png" id="3_dghb0"]
+[ext_resource type="Texture2D" uid="uid://cxrwm1tqdelw2" path="res://Resources/Images/Characters/Gino/Dying/00003.png" id="4_e8gpi"]
+[ext_resource type="Texture2D" uid="uid://ctkg7i8yhfp2p" path="res://Resources/Images/Characters/Gino/Dying/00004.png" id="5_dy2gu"]
+[ext_resource type="Texture2D" uid="uid://b4dc1kavejup3" path="res://Resources/Images/Characters/Gino/Dying/00005.png" id="6_3wytr"]
+[ext_resource type="Texture2D" uid="uid://fke7026cvx4p" path="res://Resources/Images/Characters/Gino/Dying/00006.png" id="7_tv4o2"]
+[ext_resource type="Texture2D" uid="uid://d0pxm60actfmr" path="res://Resources/Images/Characters/Gino/Fail/1.png" id="8_clq3j"]
+[ext_resource type="Texture2D" uid="uid://c82vjr8h8obby" path="res://Resources/Images/Characters/Gino/Fail/2.png" id="9_e5hv4"]
+[ext_resource type="Texture2D" uid="uid://df47qnv8fxpnh" path="res://Resources/Images/Characters/Gino/Fail/3.png" id="10_x2bdi"]
+[ext_resource type="Texture2D" uid="uid://8iy7f01as6y0" path="res://Resources/Images/Characters/Gino/Fail/4.png" id="11_lx2lq"]
+[ext_resource type="Texture2D" uid="uid://dbt8eussneh6d" path="res://Resources/Images/Characters/Gino/Fail/5.png" id="12_egx1t"]
+[ext_resource type="Texture2D" uid="uid://bpb4iy0gwwor8" path="res://Resources/Images/Characters/Gino/Fail/6.png" id="13_4him0"]
+[ext_resource type="Texture2D" uid="uid://bvodigxbelc5h" path="res://Resources/Images/Characters/Gino/Fail/7.png" id="14_b6qpv"]
+[ext_resource type="Texture2D" uid="uid://258fkprwk8k3" path="res://Resources/Images/Characters/Gino/Fail/8.png" id="15_0ynq5"]
+[ext_resource type="Texture2D" uid="uid://ds8bbt6lunwsw" path="res://Resources/Images/Characters/Gino/Idle/1.png" id="16_e1qqu"]
+[ext_resource type="Texture2D" uid="uid://ditmor6dc08i" path="res://Resources/Images/Characters/Gino/Idle/2.png" id="17_fqwrv"]
+[ext_resource type="Texture2D" uid="uid://cspilo0xbv87d" path="res://Resources/Images/Characters/Gino/Nap/1.png" id="18_3rjsi"]
+[ext_resource type="Texture2D" uid="uid://cknd3aiurefs6" path="res://Resources/Images/Characters/Gino/Nap/2.png" id="19_gmvbm"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_emohb")
+}],
+"loop": true,
+"name": &"Dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_anedw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_dghb0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_e8gpi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_dy2gu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_3wytr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_tv4o2")
+}],
+"loop": false,
+"name": &"Dying",
+"speed": 9.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_clq3j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_e5hv4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_x2bdi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_lx2lq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_egx1t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_4him0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_b6qpv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_0ynq5")
+}],
+"loop": false,
+"name": &"Fail",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_e1qqu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_fqwrv")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("18_3rjsi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_gmvbm")
+}],
+"loop": true,
+"name": &"Nap",
+"speed": 5.0
+}]

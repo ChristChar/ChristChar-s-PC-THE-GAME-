@@ -1,0 +1,38 @@
+[gd_resource type="SpriteFrames" load_steps=3 format=3 uid="uid://hdvgyh4lecoe"]
+
+[ext_resource type="Texture2D" uid="uid://cpekfua0boeo1" path="res://Resources/Images/Characters/Ransomware/Dead/New Drawing3 (1).png" id="1_3yh61"]
+[ext_resource type="Texture2D" uid="uid://cmixmlx1fyjvo" path="res://Resources/Images/Characters/Ransomware/Idle/New Drawing3 (1).png" id="2_0r2jn"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_3yh61")
+}],
+"loop": true,
+"name": &"Dead",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Dying",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Fail",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_0r2jn")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Nap",
+"speed": 5.0
+}]

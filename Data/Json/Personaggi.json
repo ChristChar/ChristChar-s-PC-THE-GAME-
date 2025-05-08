@@ -10,11 +10,11 @@
 			"INT":  45,
 			"SPEED":100
 		},
-		"Moves": {"1":["Hit", "Rickroll", "Dance", "Roar", "HYPER BEAM"]},
+		"Moves": {"1":["ImagesTsunami", "Rickroll", "Dance", "Roar", "HYPER BEAM"]},
 		"Exp": 200,
 		"Category": "Main",
 		"MaxEnergia": 150,
-		"EnergiaRegeneration": 15
+		"EnergiaRegeneration": 35
 	},
 	"Timmy":{
 		"IsEnemy": false,
@@ -27,7 +27,7 @@
 			"INT":  15,
 			"SPEED": 100
 		},
-		"Moves": {"1":["Pizzathrow", "Rickroll", "Dance", "Roar"]},
+		"Moves": {"1":["Pizzathrow", "Rickroll", "Dance", "Roar","Toxic Player", "Punch"]},
 		"Exp": 200,
 		"Category": "Main",
 		"MaxEnergia": 300,
@@ -78,11 +78,28 @@
 			"INT":  60,
 			"SPEED":40
 		},
-		"Moves": {"1":["Magic heal", "Rickroll"]},
+		"Moves": {"1":["Magic heal", "Rickroll","Magic Energy"]},
 		"Exp": 200,
 		"Category": "Friends",
 		"MaxEnergia": 100,
 		"EnergiaRegeneration": 35
+	},
+	"Inkerbot":{
+		"IsEnemy": false,
+		"Types": ["Player"],
+		"Stats": {
+			"HP":    75,
+			"ATT":   125,
+			"PI":    125,
+			"DIF":   50,
+			"INT":   50,
+			"SPEED": 150
+		},
+		"Moves": {"1":["Punch","Taskill"]},
+		"Exp": 200,
+		"Category": "Friends",
+		"MaxEnergia": 300,
+		"EnergiaRegeneration": 20
 	},
 	"Pixy":{
 		"IsEnemy": false,
@@ -95,7 +112,7 @@
 			"INT":  80,
 			"SPEED":120
 		},
-		"Moves": {"1":["Shot"]},
+		"Moves": {"1":["Shot", "Cutenesswave","Punch"]},
 		"Exp": 200,
 		"Category": "Friends",
 		"MaxEnergia": 200,
@@ -118,6 +135,23 @@
 		"MaxEnergia": 350,
 		"EnergiaRegeneration": 10
 	},
+	"Ransomware": {
+		"IsEnemy": true,
+		"Types": ["Malware"],
+		"Stats": {
+			"HP":   110,
+			"ATT":  60,
+			"PI":   100,
+			"DIF":  110,
+			"INT":  15,
+			"SPEED":75
+		},
+		"Moves": {"1":["Hit"], "10":["Cript Data"]},
+		"Exp": 165,
+		"Category": "Virus",
+		"MaxEnergia": 300,
+		"EnergiaRegeneration": 35
+	},
 	"Spyware": {
 		"IsEnemy": true,
 		"Types": ["Malware"],
@@ -134,6 +168,40 @@
 		"Category": "Virus",
 		"MaxEnergia": 105,
 		"EnergiaRegeneration": 30
+	},
+	"Shadowbyte": {
+		"IsEnemy": true,
+		"Types": ["Hacker","Player"],
+		"Stats": {
+			"HP":   75,
+			"ATT":  100,
+			"PI":   150,
+			"DIF":  50,
+			"INT":  100,
+			"SPEED":300
+		},
+		"Moves": {"1":["Hit","Delete System32","Debug Mode","Kernel overload"]},
+		"Exp": 250,
+		"Category": "Enemy",
+		"MaxEnergia": 200,
+		"EnergiaRegeneration": 30
+	},
+	"Glitchybot": {
+		"IsEnemy": true,
+		"Types": ["Malware"],
+		"Stats": {
+			"HP":   40,
+			"ATT":  60,
+			"PI":   75,
+			"DIF":   30,
+			"INT":   20,
+			"SPEED": 301
+		},
+		"Moves": {"1":["Hit","Cookie spam"]},
+		"Exp": 52,
+		"Category": "Enemy",
+		"MaxEnergia": 150,
+		"EnergiaRegeneration": 50
 	},
 	"Mucca":{
 		"IsEnemy": true,

@@ -1,59 +1,120 @@
-[gd_scene load_steps=9 format=3 uid="uid://bec78xh4tyok"]
+[gd_scene load_steps=19 format=3 uid="uid://bema6m4xajow8"]
 
-[ext_resource type="Script" uid="uid://bpotej3xl3tx2" path="res://Scripts/InWorld/npc.gd" id="1_yjoqr"]
-[ext_resource type="Texture2D" uid="uid://qqqexkhacbcq" path="res://Resources/Images/InWorld/Encounters/Cow.png" id="2_jarpc"]
+[ext_resource type="Script" uid="uid://cf2gkbqfujiud" path="res://Scripts/InWorld/NPCs/npc.gd" id="1_tdvfm"]
+[ext_resource type="Texture2D" uid="uid://p4obnlllegvr" path="res://Resources/Images/InWorld/Npc/Base.png" id="2_17t5b"]
+[ext_resource type="Texture2D" uid="uid://da518ufymqclh" path="res://Resources/Images/InWorld/Npc/Shirts/1.png" id="3_faxwx"]
+[ext_resource type="Texture2D" uid="uid://dq57enaaoxogb" path="res://Resources/Images/InWorld/Npc/Shirts/2.png" id="4_fcq3e"]
+[ext_resource type="Texture2D" uid="uid://4qsy4l7xg6pc" path="res://Resources/Images/InWorld/Npc/Shirts/3.png" id="5_m0lvl"]
+[ext_resource type="Script" uid="uid://ddsm0t3kkty4w" path="res://Scripts/InWorld/NPCs/InteractArea.gd" id="6_faxwx"]
+[ext_resource type="Resource" uid="uid://crqc6h3cbl7o4" path="res://Data/Dialogue/Casual NPC/I like cats.dialogue" id="7_fcq3e"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kdthi"]
-size = Vector2(94, 56)
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xdsde"]
+radius = 0.3
+height = 1.2
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_l5w1y"]
-atlas = ExtResource("2_jarpc")
-region = Rect2(0, 0, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_analj"]
+atlas = ExtResource("2_17t5b")
+region = Rect2(0, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_iuumi"]
-atlas = ExtResource("2_jarpc")
-region = Rect2(32, 0, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_epuf7"]
+atlas = ExtResource("2_17t5b")
+region = Rect2(48, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_mr8tw"]
-atlas = ExtResource("2_jarpc")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_4qga4"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_dh6fi"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_l5w1y")
+"texture": SubResource("AtlasTexture_analj")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_iuumi")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_mr8tw")
+"texture": SubResource("AtlasTexture_epuf7")
 }],
 "loop": true,
-"name": &"default",
-"speed": 3.0
+"name": &"Walk",
+"speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_47yle"]
-radius = 136.015
+[sub_resource type="AtlasTexture" id="AtlasTexture_6qlrk"]
+atlas = ExtResource("3_faxwx")
+region = Rect2(0, 0, 48, 48)
 
-[node name="Npc" type="StaticBody2D"]
-script = ExtResource("1_yjoqr")
+[sub_resource type="AtlasTexture" id="AtlasTexture_kmuiu"]
+atlas = ExtResource("3_faxwx")
+region = Rect2(48, 0, 48, 48)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 27)
-shape = SubResource("RectangleShape2D_kdthi")
-debug_color = Color(0, 0.6, 0.7, 0.42)
+[sub_resource type="AtlasTexture" id="AtlasTexture_627ns"]
+atlas = ExtResource("4_fcq3e")
+region = Rect2(0, 0, 48, 48)
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(4, 4)
-sprite_frames = SubResource("SpriteFrames_4qga4")
-frame_progress = 0.400856
+[sub_resource type="AtlasTexture" id="AtlasTexture_evxu1"]
+atlas = ExtResource("4_fcq3e")
+region = Rect2(48, 0, 48, 48)
 
-[node name="InteractArea" type="Area2D" parent="."]
+[sub_resource type="AtlasTexture" id="AtlasTexture_al2uj"]
+atlas = ExtResource("5_m0lvl")
+region = Rect2(0, 0, 48, 48)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea"]
-position = Vector2(0, 26)
-shape = SubResource("CircleShape2D_47yle")
-debug_color = Color(0, 0.6, 0.7, 0.42)
+[sub_resource type="AtlasTexture" id="AtlasTexture_4yurw"]
+atlas = ExtResource("5_m0lvl")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r0hpd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6qlrk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kmuiu")
+}],
+"loop": true,
+"name": &"1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_627ns")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_evxu1")
+}],
+"loop": true,
+"name": &"2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_al2uj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4yurw")
+}],
+"loop": true,
+"name": &"3",
+"speed": 5.0
+}]
+
+[node name="Npc" type="CharacterBody3D"]
+script = ExtResource("1_tdvfm")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_xdsde")
+
+[node name="Base" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(2.5, 0, 0, 0, 2.41481, 0.647048, 0, -0.647048, 2.41481, 0, 0, 0)
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_dh6fi")
+animation = &"Walk"
+
+[node name="Shirt" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(2.5, 0, 0, 0, 2.41481, 0.647048, 0, -0.647048, 2.41481, 0, 0, 0.01)
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_r0hpd")
+animation = &"1"
+frame_progress = 0.896727
+
+[node name="InteractArea" type="Area3D" parent="."]
+script = ExtResource("6_faxwx")
+range = 1.5
+Dialogue = ExtResource("7_fcq3e")
+metadata/_custom_type_script = "uid://ddsm0t3kkty4w"

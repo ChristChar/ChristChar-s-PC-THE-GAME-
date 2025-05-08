@@ -18,7 +18,12 @@
 	"ChristChar":{
 		"Dying": {
 			"Loop":false,
-			"Framerate": 11
+			"Framerate": 12
+		}
+	},
+	"Shadowbyte":{
+		"Idle": {
+			"Framerate": 10
 		}
 	}
 }

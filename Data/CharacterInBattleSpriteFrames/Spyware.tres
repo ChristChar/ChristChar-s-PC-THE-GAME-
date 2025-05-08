@@ -1,0 +1,38 @@
+[gd_resource type="SpriteFrames" load_steps=3 format=3 uid="uid://c2s7cahtm3c0h"]
+
+[ext_resource type="Texture2D" uid="uid://d1b0kj38mme8h" path="res://Resources/Images/Characters/Spyware/Dead/1.png" id="1_ojqle"]
+[ext_resource type="Texture2D" uid="uid://d1b0kj38mme8h" path="res://Resources/Images/Characters/Spyware/Idle/1.png" id="2_67503"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ojqle")
+}],
+"loop": true,
+"name": &"Dead",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Dying",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Fail",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_67503")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Nap",
+"speed": 5.0
+}]

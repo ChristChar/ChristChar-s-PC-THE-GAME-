@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://bywcbh65f0evq"]
+
+[ext_resource type="Script" uid="uid://cchd64ldea2ud" path="res://Scripts/Battle/damage_text.gd" id="1_gf4tk"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_d0oxp"]
+viewport_path = NodePath("SubViewport")
+
+[node name="DamageText" type="CPUParticles2D"]
+z_index = 21
+emitting = false
+amount = 1
+texture = SubResource("ViewportTexture_d0oxp")
+lifetime = 2.0
+one_shot = true
+direction = Vector2(0, -1)
+initial_velocity_min = 500.0
+initial_velocity_max = 1000.0
+script = ExtResource("1_gf4tk")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+size = Vector2i(100, 75)
+
+[node name="Label" type="Label" parent="SubViewport"]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 50
+text = "128"

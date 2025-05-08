@@ -1,0 +1,38 @@
+[gd_resource type="SpriteFrames" load_steps=3 format=3 uid="uid://bm2t341wbcrea"]
+
+[ext_resource type="Texture2D" uid="uid://d1b0kj38mme8h" path="res://Resources/Images/Characters/Trojan/Dead/1.png" id="1_j6gaa"]
+[ext_resource type="Texture2D" uid="uid://d1b0kj38mme8h" path="res://Resources/Images/Characters/Trojan/Idle/1.png" id="2_7r6o2"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_j6gaa")
+}],
+"loop": true,
+"name": &"Dead",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Dying",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Fail",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_7r6o2")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Nap",
+"speed": 5.0
+}]

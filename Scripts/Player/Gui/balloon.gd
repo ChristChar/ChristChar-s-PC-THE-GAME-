@@ -84,7 +84,7 @@ func _notification(what: int) -> void:
 func Hide_Character_Sprite():
 	Character_Sprite.texture = null
 
-func Set_Charatcer_Sprite(Character:String, Sprite:String, Size:Vector2 = Vector2(250,250), Position:Vector2 = Vector2(60,220)):
+func SetSprite(Character:String, Sprite:String, Size:Vector2 = Vector2(250,250), Position:Vector2 = Vector2(60,220)):
 	var texture = load(Sprites_path + Character + "/" + Sprite + ".png")
 	if texture:
 		Character_Sprite.custom_minimum_size = Size

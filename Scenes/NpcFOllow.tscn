@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5e2i6n4t33jr"]
+
+[ext_resource type="Script" uid="uid://dbq6gpeatgjd7" path="res://Scripts/InWorld/Path/npcFolow.gd" id="1_yc2sv"]
+[ext_resource type="PackedScene" uid="uid://bema6m4xajow8" path="res://Scenes/NPC.tscn" id="2_hal08"]
+
+[node name="NpcFOllow" type="PathFollow3D"]
+script = ExtResource("1_yc2sv")
+
+[node name="Npc" parent="." instance=ExtResource("2_hal08")]

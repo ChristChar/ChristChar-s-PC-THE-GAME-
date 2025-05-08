@@ -1,16 +1,30 @@
-[gd_resource type="SpriteFrames" load_steps=3 format=3 uid="uid://btc7og7bplrsu"]
+[gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://btc7og7bplrsu"]
 
-[ext_resource type="Texture2D" uid="uid://cowmrmvk672l6" path="res://Resources/Images/Characters/ChristChar/Idle/1.png" id="1_4xdg4"]
-[ext_resource type="Texture2D" uid="uid://c1gc6r3gvpu87" path="res://Resources/Images/Characters/ChristChar/Idle/2.png" id="2_wj3fh"]
+[ext_resource type="Texture2D" uid="uid://j8p0bb4ej01d" path="res://Resources/Images/Characters/ChristChar/InWorld/Idle.png" id="1_70re8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_klgfd"]
+atlas = ExtResource("1_70re8")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vcme3"]
+atlas = ExtResource("1_70re8")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pm74o"]
+atlas = ExtResource("1_70re8")
+region = Rect2(96, 0, 48, 48)
 
 [resource]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_4xdg4")
+"texture": SubResource("AtlasTexture_klgfd")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_wj3fh")
+"texture": SubResource("AtlasTexture_vcme3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pm74o")
 }],
 "loop": true,
 "name": &"Idle",
@@ -18,10 +32,13 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_4xdg4")
+"texture": SubResource("AtlasTexture_klgfd")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_wj3fh")
+"texture": SubResource("AtlasTexture_vcme3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pm74o")
 }],
 "loop": true,
 "name": &"Walk",

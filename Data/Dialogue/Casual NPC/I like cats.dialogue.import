@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_14"
+type="Resource"
+uid="uid://crqc6h3cbl7o4"
+path="res://.godot/imported/I like cats.dialogue-97685cbb8193be84b7579665afc6dee0.tres"
+
+[deps]
+
+source_file="res://Data/Dialogue/Casual NPC/I like cats.dialogue"
+dest_files=["res://.godot/imported/I like cats.dialogue-97685cbb8193be84b7579665afc6dee0.tres"]
+
+[params]
+
+defaults=true

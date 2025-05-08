@@ -1,0 +1,46 @@
+[gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://d06lh8eau05ah"]
+
+[ext_resource type="Texture2D" uid="uid://cirmi1qc8jso0" path="res://Resources/Images/Characters/Shadowbyte/Idle/0.png" id="1_oa2wo"]
+[ext_resource type="Texture2D" uid="uid://l44jnkdb4xf3" path="res://Resources/Images/Characters/Shadowbyte/Idle/1.png" id="2_erjk4"]
+[ext_resource type="Texture2D" uid="uid://dbjy336sbubr3" path="res://Resources/Images/Characters/Shadowbyte/Idle/2.png" id="3_g4xxy"]
+[ext_resource type="Texture2D" uid="uid://del4a5onttv8m" path="res://Resources/Images/Characters/Shadowbyte/Idle/3.png" id="4_fgc8u"]
+
+[resource]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"Dead",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Dying",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Fail",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_oa2wo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_erjk4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_g4xxy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_fgc8u")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 10.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Nap",
+"speed": 5.0
+}]

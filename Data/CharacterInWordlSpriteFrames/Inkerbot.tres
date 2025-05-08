@@ -1,0 +1,29 @@
+[gd_resource type="SpriteFrames" load_steps=3 format=3 uid="uid://cm58jfn3gkiym"]
+
+[ext_resource type="Texture2D" uid="uid://j2b6hun34v8c" path="res://Resources/Images/Characters/Inkerbot/Idle/1.png" id="1_54uqh"]
+[ext_resource type="Texture2D" uid="uid://c8nk6eajm80n2" path="res://Resources/Images/Characters/Inkerbot/Idle/2.png" id="2_oms6e"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_54uqh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_oms6e")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_54uqh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_oms6e")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 8.0
+}]

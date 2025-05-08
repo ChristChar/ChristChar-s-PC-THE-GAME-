@@ -10,3 +10,8 @@ func update():
 		NewButton.IsCurrentMove = true
 		NewButton.Move = move
 		add_child(NewButton)
+	for i in range(4 - character.Current_Moves.size()):
+		var NewButton = LearnableMoveButton.new()
+		NewButton.IsCurrentMove = true
+		NewButton.Move = "None"
+		add_child(NewButton)

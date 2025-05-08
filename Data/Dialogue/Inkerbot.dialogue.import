@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_14"
+type="Resource"
+uid="uid://coacmd8sorrru"
+path="res://.godot/imported/Inkerbot.dialogue-7557e33312e697c05874b0f8e211f300.tres"
+
+[deps]
+
+source_file="res://Data/Dialogue/Inkerbot.dialogue"
+dest_files=["res://.godot/imported/Inkerbot.dialogue-7557e33312e697c05874b0f8e211f300.tres"]
+
+[params]
+
+defaults=true

@@ -1,0 +1,78 @@
+[gd_resource type="SpriteFrames" load_steps=13 format=3 uid="uid://pmoh0va2xsx6"]
+
+[ext_resource type="Texture2D" uid="uid://d1lo58pc4n5bx" path="res://Resources/Images/Characters/ChristChar/Dead/00005.png" id="1_6maoa"]
+[ext_resource type="Texture2D" uid="uid://cu0sclfju1r4" path="res://Resources/Images/Characters/ChristChar/Dying/00000.png" id="2_1wmjn"]
+[ext_resource type="Texture2D" uid="uid://dwytlf5u1swxq" path="res://Resources/Images/Characters/ChristChar/Dying/00001.png" id="3_a1ja0"]
+[ext_resource type="Texture2D" uid="uid://d1oihbq0eo7hh" path="res://Resources/Images/Characters/ChristChar/Dying/00002.png" id="4_w0qjn"]
+[ext_resource type="Texture2D" uid="uid://bbbfnqesposn3" path="res://Resources/Images/Characters/ChristChar/Dying/00003.png" id="5_cop6l"]
+[ext_resource type="Texture2D" uid="uid://ctmi07fp58rah" path="res://Resources/Images/Characters/ChristChar/Dying/00004.png" id="6_72kj5"]
+[ext_resource type="Texture2D" uid="uid://2k461cq1koi1" path="res://Resources/Images/Characters/ChristChar/Dying/00005.png" id="7_5b8sl"]
+[ext_resource type="Texture2D" uid="uid://lmobmphkn144" path="res://Resources/Images/Characters/ChristChar/Fail/1.png" id="8_hwm6i"]
+[ext_resource type="Texture2D" uid="uid://cowmrmvk672l6" path="res://Resources/Images/Characters/ChristChar/Idle/1.png" id="9_5jekt"]
+[ext_resource type="Texture2D" uid="uid://c1gc6r3gvpu87" path="res://Resources/Images/Characters/ChristChar/Idle/2.png" id="10_xnbrx"]
+[ext_resource type="Texture2D" uid="uid://uaepfqyrk5jk" path="res://Resources/Images/Characters/ChristChar/Nap/1.png" id="11_jywwi"]
+[ext_resource type="Texture2D" uid="uid://8xrhpl6b5hp8" path="res://Resources/Images/Characters/ChristChar/Nap/2.png" id="12_h8vhy"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_6maoa")
+}],
+"loop": true,
+"name": &"Dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_1wmjn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_a1ja0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_w0qjn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_cop6l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_72kj5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_5b8sl")
+}],
+"loop": false,
+"name": &"Dying",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_hwm6i")
+}],
+"loop": true,
+"name": &"Fail",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_5jekt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_xnbrx")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_jywwi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_h8vhy")
+}],
+"loop": true,
+"name": &"Nap",
+"speed": 5.0
+}]

@@ -17,6 +17,9 @@ func ChangeMap(Map:String, Spawn:NodePath):
 		$SubMap.global_position.y += 15
 		$Map.visible = false
 		for friend in get_tree().get_nodes_in_group("Friend"):
+			if friend is Player:
+				var Camera: Camera3D = friend.get_node("Camera3D")
+				Camera.fov = $SubMap.Camera_fov
 			friend.global_position = $SubMap.get_node(Spawn).global_position+ Vector3(randf_range(-1, 1),0, randf_range(-1, 1))
 		$Music.stream = $SubMap.Music
 		CurrentMap = $SubMap
@@ -33,6 +36,9 @@ func SubChangeMap(Map:String, Spawn:NodePath):
 	if $SubMap:
 		$SubMap.global_position.y += 15
 		for friend in get_tree().get_nodes_in_group("Friend"):
+			if friend is Player:
+				var Camera: Camera3D = friend.get_node("Camera3D")
+				Camera.fov = $SubMap.Camera_fov
 			friend.global_position = $SubMap.get_node(Spawn).global_position+ Vector3(randf_range(-1, 1),0, randf_range(-1, 1))
 		$Music.stream = $SubMap.Music
 		CurrentMap = $SubMap
@@ -46,6 +52,9 @@ func ReturnToMainMap(Spawn:NodePath):
 		$Map.visible = true
 		$Music.stream = $Map.Music
 		for friend in get_tree().get_nodes_in_group("Friend"):
+			if friend is Player:
+				var Camera: Camera3D = friend.get_node("Camera3D")
+				Camera.fov = $Map.Camera_fov
 			friend.global_position = $Map.get_node(Spawn).global_position + Vector3(randf_range(-1, 1),0, randf_range(-1, 1))
 		$WorldEnvironment.environment = Enviroment
 		CurrentMap = $Map

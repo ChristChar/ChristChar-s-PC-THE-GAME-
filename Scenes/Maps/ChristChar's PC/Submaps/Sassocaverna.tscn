@@ -8,8 +8,8 @@
 [ext_resource type="Material" uid="uid://cfcjyov2rhcx7" path="res://Resources/Materials/Stone.tres" id="4_2ea7n"]
 [ext_resource type="Script" uid="uid://ccx5pux84i63m" path="res://Scripts/InWorld/ReturnInMainMApArea.gd" id="4_g071v"]
 [ext_resource type="PackedScene" uid="uid://3o7mpjtxqimg" path="res://Resources/Models/Tavolo di rocky.gltf" id="5_g071v"]
-[ext_resource type="Texture2D" uid="uid://ct7a1m6hlxetw" path="res://Resources/Images/InWorld/Encounters/Rocky.png" id="8_6svfb"]
-[ext_resource type="Script" uid="uid://cok8o2x1y3jxe" path="res://Scripts/InWorld/InteractBattle.gd" id="9_6svfb"]
+[ext_resource type="Texture2D" uid="uid://ct7a1m6hlxetw" path="res://Resources/Images/Characters/Rocky/InWorld/Rocky.png" id="8_6svfb"]
+[ext_resource type="Script" uid="uid://cok8o2x1y3jxe" path="res://Scripts/InWorld/NPCs/InteractBattle.gd" id="9_6svfb"]
 [ext_resource type="Resource" uid="uid://bwamgyifsfjni" path="res://Data/Dialogue/Rocky.dialogue" id="10_k05gw"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_k05gw"]

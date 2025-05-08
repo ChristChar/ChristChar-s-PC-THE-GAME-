@@ -1,0 +1,62 @@
+[gd_resource type="SpriteFrames" load_steps=9 format=3 uid="uid://cupmoxryh203m"]
+
+[ext_resource type="Texture2D" uid="uid://evia1c6uexp3" path="res://Resources/Images/Characters/Timmy/Dead/1.png" id="1_28k8l"]
+[ext_resource type="Texture2D" uid="uid://d1ok3i1mrepg4" path="res://Resources/Images/Characters/Timmy/Fail/1.png" id="2_yuj6j"]
+[ext_resource type="Texture2D" uid="uid://bpr7hx8s7jxjh" path="res://Resources/Images/Characters/Timmy/Fail/2.png" id="3_agmg5"]
+[ext_resource type="Texture2D" uid="uid://cx7l3i3lllvwg" path="res://Resources/Images/Characters/Timmy/Fail/3.png" id="4_3g168"]
+[ext_resource type="Texture2D" uid="uid://gk8lfc8try32" path="res://Resources/Images/Characters/Timmy/Fail/4.png" id="5_jjtxh"]
+[ext_resource type="Texture2D" uid="uid://bjk10sfvdoq1b" path="res://Resources/Images/Characters/Timmy/Fail/5.png" id="6_61pfg"]
+[ext_resource type="Texture2D" uid="uid://bkt11fnwjavcy" path="res://Resources/Images/Characters/Timmy/Idle/1.png" id="7_6t36q"]
+[ext_resource type="Texture2D" uid="uid://b83f2yos00rp2" path="res://Resources/Images/Characters/Timmy/Idle/2.png" id="8_c2sxe"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_28k8l")
+}],
+"loop": true,
+"name": &"Dead",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Dying",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_yuj6j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_agmg5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_3g168")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_jjtxh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_61pfg")
+}],
+"loop": false,
+"name": &"Fail",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_6t36q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_c2sxe")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Nap",
+"speed": 5.0
+}]

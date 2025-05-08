@@ -5,7 +5,7 @@ var currentCharacter: CharacterData
 const Move_type_color = {
 	"Status":Color(0.6,0.6,0.6),
 	"Fisica":Color(1,0,0),
-	"Speciale":Color(0,1,0)
+	"Special":Color(0,1,0)
 }
 
 func Open(Character: String):

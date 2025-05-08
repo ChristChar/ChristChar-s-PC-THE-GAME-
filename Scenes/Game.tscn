@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://by8hsp3brvpke" path="res://Scripts/InWorld/Game.gd" id="1_j5yw3"]
 [ext_resource type="AudioStream" uid="uid://dnjyom8kl3bnr" path="res://Resources/Sounds/Musics/World.mp3" id="4_b2bpf"]
 [ext_resource type="Script" uid="uid://ctlk1sr1chmiv" path="res://Scripts/InWorld/MapMusic.gd" id="5_7lihs"]
-[ext_resource type="Script" uid="uid://cbhg52e5egqtj" path="res://Scripts/InWorld/Friend.gd" id="6_7lihs"]
+[ext_resource type="Script" uid="uid://cbhg52e5egqtj" path="res://Scripts/InWorld/NPCs/Friend.gd" id="6_7lihs"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gl6un"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)

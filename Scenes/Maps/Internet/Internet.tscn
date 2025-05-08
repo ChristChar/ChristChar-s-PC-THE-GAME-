@@ -1,0 +1,1095 @@
+[gd_scene load_steps=42 format=3 uid="uid://dc3yt213os33k"]
+
+[ext_resource type="Script" uid="uid://bh4nnc5ukqkxd" path="res://Scripts/InWorld/Map.gd" id="1_6uk2h"]
+[ext_resource type="Script" uid="uid://bnq7rukbvf7pv" path="res://Scripts/Resources/BattleSpawnPool.gd" id="2_h55wy"]
+[ext_resource type="Script" uid="uid://dkngd86d1ulhj" path="res://Scripts/Resources/SpawnData.gd" id="3_ihniw"]
+[ext_resource type="Texture2D" uid="uid://ftx0cn2062gf" path="res://Resources/Images/InWorld/Encounters/Virus.png" id="4_flw3d"]
+[ext_resource type="AudioStream" uid="uid://dnjyom8kl3bnr" path="res://Resources/Sounds/Musics/World.mp3" id="5_a46cf"]
+[ext_resource type="PackedScene" uid="uid://b83fbc4e7njwv" path="res://Resources/Models/Edifici/Edificio Google.gltf" id="6_0h2o1"]
+[ext_resource type="PackedScene" uid="uid://cem7vcm7euamy" path="res://Resources/Models/Edifici/Edificio generico.gltf" id="7_5kffo"]
+[ext_resource type="PackedScene" uid="uid://dv8sls87lph4v" path="res://Resources/Models/Edifici/Edificio generico basso.gltf" id="8_y3ysd"]
+[ext_resource type="PackedScene" uid="uid://chr0yq2huw68i" path="res://Resources/Models/Edifici/Edificio_YT.gltf" id="9_y3ysd"]
+[ext_resource type="ArrayMesh" uid="uid://ca4t6thlqey2h" path="res://Resources/Models/Edifici/Microsoft.obj" id="10_ns53s"]
+[ext_resource type="PackedScene" uid="uid://y3pbyt7ph8bo" path="res://Resources/Models/Edifici/Gamejolt.gltf" id="11_q7crl"]
+[ext_resource type="PackedScene" uid="uid://b0hvrp5jpsiiy" path="res://Resources/Models/Edifici/Itch.gltf" id="12_avd0k"]
+[ext_resource type="PackedScene" uid="uid://dbjt0qw0ylnm4" path="res://Resources/Models/Edifici/PvP area.gltf" id="13_avd0k"]
+[ext_resource type="PackedScene" uid="uid://c3sltgocw5l1f" path="res://Resources/Models/Edifici/ChatGPT.gltf" id="14_momky"]
+[ext_resource type="Script" uid="uid://cwp5tnc5s3qvg" path="res://Scripts/InWorld/Path/PathManager.gd" id="15_i5au3"]
+[ext_resource type="Script" uid="uid://b611kwaco5xoa" path="res://Scripts/InWorld/Path/path.gd" id="16_spxj2"]
+
+[sub_resource type="Resource" id="Resource_1se7k"]
+script = ExtResource("3_ihniw")
+Weight = 2
+Type = "Trojan"
+metadata/_custom_type_script = "uid://dkngd86d1ulhj"
+
+[sub_resource type="Resource" id="Resource_shq8t"]
+script = ExtResource("3_ihniw")
+Weight = 1
+Type = "Spyware"
+metadata/_custom_type_script = "uid://dkngd86d1ulhj"
+
+[sub_resource type="Resource" id="Resource_lb50r"]
+script = ExtResource("3_ihniw")
+Weight = 2
+Type = "Ransomware"
+metadata/_custom_type_script = "uid://dkngd86d1ulhj"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4grl1"]
+atlas = ExtResource("4_flw3d")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wgcyy"]
+atlas = ExtResource("4_flw3d")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ee60x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4grl1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wgcyy")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[sub_resource type="Resource" id="Resource_6f1e5"]
+script = ExtResource("2_h55wy")
+Spawn_Pool = Array[ExtResource("3_ihniw")]([SubResource("Resource_1se7k"), SubResource("Resource_shq8t"), SubResource("Resource_lb50r")])
+World_Sprite = SubResource("SpriteFrames_ee60x")
+metadata/_custom_type_script = "uid://bnq7rukbvf7pv"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_olno0"]
+size = Vector3(100, 0.001, 100)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_nadxs"]
+size = Vector2(100, 100)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_u24np"]
+size = Vector3(6.0784, 8.74925, 3.30381)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d6nf5"]
+size = Vector3(2.54427, 8.13071, 2.57236)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5kffo"]
+size = Vector3(5.05953, 6.09836, 2.57236)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gstcq"]
+size = Vector3(5.06446, 1.53264, 2.57236)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q7crl"]
+size = Vector3(6.95125, 8.13071, 2.57236)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_momky"]
+size = Vector3(10.6674, 6.01477, 10.9974)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_i5au3"]
+size = Vector3(4.32406, 8.13071, 2.57236)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ns53s"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_gstcq"]
+material = SubResource("StandardMaterial3D_ns53s")
+top_radius = 7.5
+bottom_radius = 7.5
+height = 0.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y3ysd"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ns53s"]
+material = SubResource("StandardMaterial3D_y3ysd")
+size = Vector3(21, 0.2, 10)
+
+[sub_resource type="BoxMesh" id="BoxMesh_q7crl"]
+material = SubResource("StandardMaterial3D_y3ysd")
+size = Vector3(52, 0.2, 10)
+
+[sub_resource type="BoxMesh" id="BoxMesh_gstcq"]
+material = SubResource("StandardMaterial3D_y3ysd")
+size = Vector3(5, 0.2, 100)
+
+[sub_resource type="Curve3D" id="Curve3D_7kqri"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 55, 0, 0),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_i5au3"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 15),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_q7crl"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -15),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[node name="Map" type="Node3D"]
+script = ExtResource("1_6uk2h")
+EnemyCount = 5
+SpaenPool = Dictionary[String, ExtResource("2_h55wy")]({
+"Virus": SubResource("Resource_6f1e5")
+})
+Music = ExtResource("5_a46cf")
+Camera_fov = 105.0
+
+[node name="Pavimento" type="StaticBody3D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pavimento"]
+shape = SubResource("BoxShape3D_olno0")
+debug_color = Color(0, 0.6, 0.7, 0.42)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pavimento"]
+mesh = SubResource("PlaneMesh_nadxs")
+skeleton = NodePath("../..")
+
+[node name="PlayerSpawn" type="Node3D" parent="." groups=["PlayerSpawn"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.272, 0)
+
+[node name="Edifici" type="Node3D" parent="."]
+
+[node name="Google" type="StaticBody3D" parent="Edifici"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.06823)
+collision_layer = 3
+collision_mask = 3
+
+[node name="blockbench_export" parent="Edifici/Google" instance=ExtResource("6_0h2o1")]
+transform = Transform3D(-1.25, 0, -1.88745e-07, 0, 1.25, 0, 1.88745e-07, 0, -1.25, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Edifici/Google"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0105996, 3.87463, -0.129307)
+shape = SubResource("BoxShape3D_u24np")
+
+[node name="Left Line" type="Node3D" parent="Edifici"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.22138, 0, -4.11616)
+
+[node name="Up" type="Node3D" parent="Edifici/Left Line"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2872, 0, -2.56491)
+
+[node name="Edificio" type="StaticBody3D" parent="Edifici/Left Line/Up"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.74947, 0, 0)
+
+[node name="blockbench_export" parent="Edifici/Left Line/Up/Edificio" instance=ExtResource("7_5kffo")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Edifici/Left Line/Up/Edificio"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0404158, 3.56535, -0.0937653)
+shape = SubResource("BoxShape3D_d6nf5")
+
+[node name="Edificio2" type="StaticBody3D" parent="Edifici/Left Line/Up"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.0148, 0, 0)
+
+[node name="blockbench_export" parent="Edifici/Left Line/Up/Edificio2" instance=ExtResource("7_5kffo")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Edifici/Left Line/Up/Edificio2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0404158, 3.56535, -0.0937653)
+shape = SubResource("BoxShape3D_d6nf5")
+
+[node name="Edificio3" type="StaticBody3D" parent="Edifici/Left Line/Up"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.1229, 0, 0)
+
+[node name="blockbench_export" parent="Edifici/Left Line/Up/Edificio3" instance=ExtResource("7_5kffo")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Edifici/Left Line/Up/Edificio3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0404158, 3.56535, -0.0937653)
+shape = SubResource("BoxShape3D_d6nf5")
+
+[node name="Edificio basso" type="StaticBody3D" parent="Edifici/Left Line/Up"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.3099, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Edifici/Left Line/Up/Edificio basso"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0404158, 1.40707, -0.0937653)
+shape = SubResource("BoxShape3D_d6nf5")
+
+[node name="blockbench_export" parent="Edifici/Left Line/Up/Edificio basso" instance=ExtResource("8_y3ysd")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="Edificio basso2" type="StaticBody3D" parent="Edifici/Left Line/Up"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.4531, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Edifici/Left Line/Up/Edificio basso2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0404158, 1.40707, -0.0937653)
+shape = SubResource("BoxShape3D_d6nf5")
+
+[node name="blockbench_export" parent="Edifici/Left Line/Up/Edificio basso2" instance=ExtResource("8_y3ysd")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="Edificio basso3" type="StaticBody3D" parent="Edifici/Left Line/Up"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.5773, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Edifici/Left Line/Up/Edificio basso3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0404158, 1.40707, -0.0937653)
+shape = SubResource("BoxShape3D_d6nf5")
+
+[node name="blockbench_export" parent="Edifici/Left Line/Up/Edificio basso3" instance=ExtResource("8_y3ysd")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="YT" type="StaticBody3D" parent="Edifici/Left Line/Up"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.3795, 0, 0)
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Edifici/Left Line/Up/YT"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0410788, 2.54918, -0.0937653)
+shape = SubResource("BoxShape3D_5kffo")
+
+[node name="blockbench_export2" parent="Edifici/Left Line/Up/YT" instance=ExtResource("9_y3ysd")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="Down" type="Node3D" parent="Edifici/Left Line"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.845875, 0, 2.31696)
+
+[node name="Edificio" type="StaticBody3D" parent="Edifici/Left Line/Down"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -8.74947, 0, 7.58733)
+
+[node name="blockbench_export" parent="Edifici/Left Line/Down/Edificio" instance=ExtResource("7_5kffo")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Edifici/Left Line/Down/Edificio"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0404158, 3.56535, -0.0937653)
+shape = SubResource("BoxShape3D_d6nf5")
+
+[node name="Edificio4" type="StaticBody3D" parent="Edifici/Left Line/Down"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -24.1429, 0, 7.58733)
+
+[node name="blockbench_export" parent="Edifici/Left Line/Down/Edificio4" instance=ExtResource("7_5kffo")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Edifici/Left Line/Down/Edificio4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0404158, 3.56535, -0.0937653)
+shape = SubResource("BoxShape3D_d6nf5")
+
+[node name="Edificio3" type="StaticBody3D" parent="Edifici/Left Line/Down"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -13.8688, 0, 7.58733)
+
+[node name="blockbench_export" parent="Edifici/Left Line/Down/Edificio3" instance=ExtResource("7_5kffo")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Edifici/Left Line/Down/Edificio3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0404158, 3.56535, -0.0937653)
+shape = SubResource("BoxShape3D_d6nf5")
+
+[node name="Edificio2" type="StaticBody3D" parent="Edifici/Left Line/Down"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -19.0108, 0, 7.58733)
+
+[node name="blockbench_export" parent="Edifici/Left Line/Down/Edificio2" instance=ExtResource("7_5kffo")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Edifici/Left Line/Down/Edificio2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0404158, 3.56535, -0.0937653)
+shape = SubResource("BoxShape3D_d6nf5")
+
+[node name="Edificio basso" type="StaticBody3D" parent="Edifici/Left Line/Down"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -11.3099, 0, 7.58733)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Edifici/Left Line/Down/Edificio basso"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0404158, 1.40707, -0.0937653)
+shape = SubResource("BoxShape3D_d6nf5")
+
+[node name="blockbench_export" parent="Edifici/Left Line/Down/Edificio basso" instance=ExtResource("8_y3ysd")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="Edificio basso2" type="StaticBody3D" parent="Edifici/Left Line/Down"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -16.4491, 0, 7.58733)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Edifici/Left Line/Down/Edificio basso2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0404158, 1.40707, -0.0937653)
+shape = SubResource("BoxShape3D_d6nf5")
+
+[node name="blockbench_export" parent="Edifici/Left Line/Down/Edificio basso2" instance=ExtResource("8_y3ysd")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="Edificio basso3" type="StaticBody3D" parent="Edifici/Left Line/Down"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -21.5733, 0, 7.58733)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Edifici/Left Line/Down/Edificio basso3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0404158, 1.40707, -0.0937653)
+shape = SubResource("BoxShape3D_d6nf5")
+
+[node name="blockbench_export" parent="Edifici/Left Line/Down/Edificio basso3" instance=ExtResource("8_y3ysd")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="Edificio basso4" type="StaticBody3D" parent="Edifici/Left Line/Down"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -26.6657, 0, 7.58733)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Edifici/Left Line/Down/Edificio basso4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0404158, 1.40707, -0.0937653)
+shape = SubResource("BoxShape3D_d6nf5")
+
+[node name="blockbench_export" parent="Edifici/Left Line/Down/Edificio basso4" instance=ExtResource("8_y3ysd")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="RightLine" type="Node3D" parent="Edifici"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.71047, 0, -2.4217)
+
+[node name="Up" type="Node3D" parent="Edifici/RightLine"]
+
+[node name="Edificio" type="StaticBody3D" parent="Edifici/RightLine/Up"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.6478, 0, -4.34957)
+
+[node name="blockbench_export" parent="Edifici/RightLine/Up/Edificio" instance=ExtResource("7_5kffo")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Edifici/RightLine/Up/Edificio"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0404158, 3.56535, -0.0937653)
+shape = SubResource("BoxShape3D_d6nf5")
+
+[node name="Microsoft" type="StaticBody3D" parent="Edifici/RightLine/Up"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.4604, 0, -4.34957)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Edifici/RightLine/Up/Microsoft"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0405226, 0.266315, -0.0937653)
+shape = SubResource("BoxShape3D_gstcq")
+
+[node name="Microsoft" type="MeshInstance3D" parent="Edifici/RightLine/Up/Microsoft"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+mesh = ExtResource("10_ns53s")
+skeleton = NodePath("../../../../..")
+
+[node name="Edificio basso" type="StaticBody3D" parent="Edifici/RightLine/Up"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.08735, 0, -4.34957)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Edifici/RightLine/Up/Edificio basso"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0404158, 1.40707, -0.0937653)
+shape = SubResource("BoxShape3D_d6nf5")
+
+[node name="blockbench_export" parent="Edifici/RightLine/Up/Edificio basso" instance=ExtResource("8_y3ysd")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="Edificio2" type="StaticBody3D" parent="Edifici/RightLine/Up"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.8633, 0, -4.34957)
+
+[node name="blockbench_export" parent="Edifici/RightLine/Up/Edificio2" instance=ExtResource("7_5kffo")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Edifici/RightLine/Up/Edificio2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0404158, 3.56535, -0.0937653)
+shape = SubResource("BoxShape3D_d6nf5")
+
+[node name="Edificio basso2" type="StaticBody3D" parent="Edifici/RightLine/Up"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.3029, 0, -4.34957)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Edifici/RightLine/Up/Edificio basso2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0404158, 1.40707, -0.0937653)
+shape = SubResource("BoxShape3D_d6nf5")
+
+[node name="blockbench_export" parent="Edifici/RightLine/Up/Edificio basso2" instance=ExtResource("8_y3ysd")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="Edificio3" type="StaticBody3D" parent="Edifici/RightLine/Up"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.9839, 0, -4.34957)
+
+[node name="blockbench_export" parent="Edifici/RightLine/Up/Edificio3" instance=ExtResource("7_5kffo")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Edifici/RightLine/Up/Edificio3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0404158, 3.56535, -0.0937653)
+shape = SubResource("BoxShape3D_d6nf5")
+
+[node name="Edificio basso3" type="StaticBody3D" parent="Edifici/RightLine/Up"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.4235, 0, -4.34957)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Edifici/RightLine/Up/Edificio basso3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0404158, 1.40707, -0.0937653)
+shape = SubResource("BoxShape3D_d6nf5")
+
+[node name="blockbench_export" parent="Edifici/RightLine/Up/Edificio basso3" instance=ExtResource("8_y3ysd")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="Down" type="Node3D" parent="Edifici/RightLine"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.0841, 0, 0.742787)
+
+[node name="Edificio" type="StaticBody3D" parent="Edifici/RightLine/Down"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -8.74947, 0, 7.58733)
+
+[node name="blockbench_export" parent="Edifici/RightLine/Down/Edificio" instance=ExtResource("7_5kffo")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Edifici/RightLine/Down/Edificio"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0404158, 3.56535, -0.0937653)
+shape = SubResource("BoxShape3D_d6nf5")
+
+[node name="Edificio4" type="StaticBody3D" parent="Edifici/RightLine/Down"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -24.1429, 0, 7.58733)
+
+[node name="blockbench_export" parent="Edifici/RightLine/Down/Edificio4" instance=ExtResource("7_5kffo")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Edifici/RightLine/Down/Edificio4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0404158, 3.56535, -0.0937653)
+shape = SubResource("BoxShape3D_d6nf5")
+
+[node name="Edificio3" type="StaticBody3D" parent="Edifici/RightLine/Down"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -13.8688, 0, 7.58733)
+
+[node name="blockbench_export" parent="Edifici/RightLine/Down/Edificio3" instance=ExtResource("7_5kffo")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Edifici/RightLine/Down/Edificio3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0404158, 3.56535, -0.0937653)
+shape = SubResource("BoxShape3D_d6nf5")
+
+[node name="Edificio2" type="StaticBody3D" parent="Edifici/RightLine/Down"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -19.0108, 0, 7.58733)
+
+[node name="blockbench_export" parent="Edifici/RightLine/Down/Edificio2" instance=ExtResource("7_5kffo")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Edifici/RightLine/Down/Edificio2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0404158, 3.56535, -0.0937653)
+shape = SubResource("BoxShape3D_d6nf5")
+
+[node name="Edificio basso" type="StaticBody3D" parent="Edifici/RightLine/Down"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -11.3099, 0, 7.58733)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Edifici/RightLine/Down/Edificio basso"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0404158, 1.40707, -0.0937653)
+shape = SubResource("BoxShape3D_d6nf5")
+
+[node name="blockbench_export" parent="Edifici/RightLine/Down/Edificio basso" instance=ExtResource("8_y3ysd")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="Edificio basso2" type="StaticBody3D" parent="Edifici/RightLine/Down"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -16.4491, 0, 7.58733)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Edifici/RightLine/Down/Edificio basso2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0404158, 1.40707, -0.0937653)
+shape = SubResource("BoxShape3D_d6nf5")
+
+[node name="blockbench_export" parent="Edifici/RightLine/Down/Edificio basso2" instance=ExtResource("8_y3ysd")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="Edificio basso3" type="StaticBody3D" parent="Edifici/RightLine/Down"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -21.5733, 0, 7.58733)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Edifici/RightLine/Down/Edificio basso3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0404158, 1.40707, -0.0937653)
+shape = SubResource("BoxShape3D_d6nf5")
+
+[node name="blockbench_export" parent="Edifici/RightLine/Down/Edificio basso3" instance=ExtResource("8_y3ysd")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="Edificio basso4" type="StaticBody3D" parent="Edifici/RightLine/Down"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -26.6657, 0, 7.58733)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Edifici/RightLine/Down/Edificio basso4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0404158, 1.40707, -0.0937653)
+shape = SubResource("BoxShape3D_d6nf5")
+
+[node name="blockbench_export" parent="Edifici/RightLine/Down/Edificio basso4" instance=ExtResource("8_y3ysd")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="Down Line" type="Node3D" parent="Edifici"]
+
+[node name="Edificio" type="StaticBody3D" parent="Edifici/Down Line"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.6979, 0, 8.54168)
+
+[node name="blockbench_export" parent="Edifici/Down Line/Edificio" instance=ExtResource("7_5kffo")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Edifici/Down Line/Edificio"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0404158, 3.56535, -0.0937653)
+shape = SubResource("BoxShape3D_d6nf5")
+
+[node name="Edificio2" type="StaticBody3D" parent="Edifici/Down Line"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5865, 0, 8.54168)
+
+[node name="blockbench_export" parent="Edifici/Down Line/Edificio2" instance=ExtResource("7_5kffo")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Edifici/Down Line/Edificio2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0404158, 3.56535, -0.0937653)
+shape = SubResource("BoxShape3D_d6nf5")
+
+[node name="Edificio3" type="StaticBody3D" parent="Edifici/Down Line"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.33162, 0, 8.54168)
+
+[node name="blockbench_export" parent="Edifici/Down Line/Edificio3" instance=ExtResource("7_5kffo")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Edifici/Down Line/Edificio3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0404158, 3.56535, -0.0937653)
+shape = SubResource("BoxShape3D_d6nf5")
+
+[node name="Edificio4" type="StaticBody3D" parent="Edifici/Down Line"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.22445, 0, 8.54168)
+
+[node name="blockbench_export" parent="Edifici/Down Line/Edificio4" instance=ExtResource("7_5kffo")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Edifici/Down Line/Edificio4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0404158, 3.56535, -0.0937653)
+shape = SubResource("BoxShape3D_d6nf5")
+
+[node name="Edificio5" type="StaticBody3D" parent="Edifici/Down Line"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.08821, 0, 8.54168)
+
+[node name="blockbench_export" parent="Edifici/Down Line/Edificio5" instance=ExtResource("7_5kffo")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Edifici/Down Line/Edificio5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0404158, 3.56535, -0.0937653)
+shape = SubResource("BoxShape3D_d6nf5")
+
+[node name="Gamejolt" type="StaticBody3D" parent="Edifici/Down Line"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.94251, 0, 8.54168)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Edifici/Down Line/Gamejolt"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0404158, 3.56535, -0.0937653)
+shape = SubResource("BoxShape3D_d6nf5")
+
+[node name="blockbench_export" parent="Edifici/Down Line/Gamejolt" instance=ExtResource("11_q7crl")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.0077157, 0, -0.0160151)
+
+[node name="Edificio basso" type="StaticBody3D" parent="Edifici/Down Line"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.1231, 0, 8.54168)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Edifici/Down Line/Edificio basso"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0404158, 1.40707, -0.0937653)
+shape = SubResource("BoxShape3D_d6nf5")
+
+[node name="blockbench_export" parent="Edifici/Down Line/Edificio basso" instance=ExtResource("8_y3ysd")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="Edificio basso2" type="StaticBody3D" parent="Edifici/Down Line"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.29967, 0, 8.54168)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Edifici/Down Line/Edificio basso2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.56992, 1.40707, -0.0937653)
+shape = SubResource("BoxShape3D_d6nf5")
+
+[node name="blockbench_export" parent="Edifici/Down Line/Edificio basso2" instance=ExtResource("8_y3ysd")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2.52692, 0, 0)
+
+[node name="Edificio basso3" type="StaticBody3D" parent="Edifici/Down Line"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.17917, 0, 8.54168)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Edifici/Down Line/Edificio basso3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.54969, 1.40707, -0.0937653)
+shape = SubResource("BoxShape3D_d6nf5")
+
+[node name="blockbench_export" parent="Edifici/Down Line/Edificio basso3" instance=ExtResource("8_y3ysd")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2.52692, 0, 0)
+
+[node name="Edificio basso4" type="StaticBody3D" parent="Edifici/Down Line"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.00176, 0, 8.54168)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Edifici/Down Line/Edificio basso4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.54969, 1.40707, -0.0937653)
+shape = SubResource("BoxShape3D_d6nf5")
+
+[node name="blockbench_export" parent="Edifici/Down Line/Edificio basso4" instance=ExtResource("8_y3ysd")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2.52692, 0, 0)
+
+[node name="Edificio6" type="StaticBody3D" parent="Edifici/Down Line"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.2184, 0, 8.54168)
+
+[node name="blockbench_export" parent="Edifici/Down Line/Edificio6" instance=ExtResource("7_5kffo")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Edifici/Down Line/Edificio6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0404158, 3.56535, -0.0937653)
+shape = SubResource("BoxShape3D_d6nf5")
+
+[node name="Edificio basso5" type="StaticBody3D" parent="Edifici/Down Line"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.13198, 0, 8.54168)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Edifici/Down Line/Edificio basso5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.54969, 1.40707, -0.0937653)
+shape = SubResource("BoxShape3D_d6nf5")
+
+[node name="blockbench_export" parent="Edifici/Down Line/Edificio basso5" instance=ExtResource("8_y3ysd")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2.52692, 0, 0)
+
+[node name="Itch" type="StaticBody3D" parent="Edifici/Down Line"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.1231, 0, 8.54168)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Edifici/Down Line/Itch"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.25293, 1.40707, -0.0937653)
+shape = SubResource("BoxShape3D_q7crl")
+
+[node name="blockbench_export" parent="Edifici/Down Line/Itch" instance=ExtResource("12_avd0k")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 5.10471, 0, 0)
+
+[node name="Up Line" type="Node3D" parent="Edifici"]
+
+[node name="Down" type="Node3D" parent="Edifici/Up Line"]
+
+[node name="Edificio" type="StaticBody3D" parent="Edifici/Up Line/Down"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -6.66044, 0, -9.4504)
+
+[node name="blockbench_export" parent="Edifici/Up Line/Down/Edificio" instance=ExtResource("7_5kffo")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Edifici/Up Line/Down/Edificio"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0404158, 3.56535, -0.0937653)
+shape = SubResource("BoxShape3D_d6nf5")
+
+[node name="Edificio4" type="StaticBody3D" parent="Edifici/Up Line/Down"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -22.0539, 0, -9.4504)
+
+[node name="blockbench_export" parent="Edifici/Up Line/Down/Edificio4" instance=ExtResource("7_5kffo")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Edifici/Up Line/Down/Edificio4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0404158, 3.56535, -0.0937653)
+shape = SubResource("BoxShape3D_d6nf5")
+
+[node name="Edificio3" type="StaticBody3D" parent="Edifici/Up Line/Down"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -11.7797, 0, -9.4504)
+
+[node name="blockbench_export" parent="Edifici/Up Line/Down/Edificio3" instance=ExtResource("7_5kffo")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Edifici/Up Line/Down/Edificio3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0404158, 3.56535, -0.0937653)
+shape = SubResource("BoxShape3D_d6nf5")
+
+[node name="Edificio2" type="StaticBody3D" parent="Edifici/Up Line/Down"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -16.9217, 0, -9.4504)
+
+[node name="blockbench_export" parent="Edifici/Up Line/Down/Edificio2" instance=ExtResource("7_5kffo")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Edifici/Up Line/Down/Edificio2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0404158, 3.56535, -0.0937653)
+shape = SubResource("BoxShape3D_d6nf5")
+
+[node name="Edificio basso" type="StaticBody3D" parent="Edifici/Up Line/Down"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -9.22087, 0, -9.4504)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Edifici/Up Line/Down/Edificio basso"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0404158, 1.40707, -0.0937653)
+shape = SubResource("BoxShape3D_d6nf5")
+
+[node name="blockbench_export" parent="Edifici/Up Line/Down/Edificio basso" instance=ExtResource("8_y3ysd")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="Edificio basso2" type="StaticBody3D" parent="Edifici/Up Line/Down"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -14.36, 0, -9.4504)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Edifici/Up Line/Down/Edificio basso2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0404158, 1.40707, -0.0937653)
+shape = SubResource("BoxShape3D_d6nf5")
+
+[node name="blockbench_export" parent="Edifici/Up Line/Down/Edificio basso2" instance=ExtResource("8_y3ysd")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="Edificio basso3" type="StaticBody3D" parent="Edifici/Up Line/Down"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -19.4842, 0, -9.4504)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Edifici/Up Line/Down/Edificio basso3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0404158, 1.40707, -0.0937653)
+shape = SubResource("BoxShape3D_d6nf5")
+
+[node name="blockbench_export" parent="Edifici/Up Line/Down/Edificio basso3" instance=ExtResource("8_y3ysd")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="Edificio basso4" type="StaticBody3D" parent="Edifici/Up Line/Down"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -24.5767, 0, -9.4504)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Edifici/Up Line/Down/Edificio basso4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0404158, 1.40707, -0.0937653)
+shape = SubResource("BoxShape3D_d6nf5")
+
+[node name="blockbench_export" parent="Edifici/Up Line/Down/Edificio basso4" instance=ExtResource("8_y3ysd")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="Edificio5" type="StaticBody3D" parent="Edifici/Up Line/Down"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 13.7841, 0, -9.4504)
+
+[node name="blockbench_export" parent="Edifici/Up Line/Down/Edificio5" instance=ExtResource("7_5kffo")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Edifici/Up Line/Down/Edificio5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0404158, 3.56535, -0.0937653)
+shape = SubResource("BoxShape3D_d6nf5")
+
+[node name="Edificio6" type="StaticBody3D" parent="Edifici/Up Line/Down"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -1.60928, 0, -9.4504)
+
+[node name="blockbench_export" parent="Edifici/Up Line/Down/Edificio6" instance=ExtResource("7_5kffo")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Edifici/Up Line/Down/Edificio6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0404158, 3.56535, -0.0937653)
+shape = SubResource("BoxShape3D_d6nf5")
+
+[node name="Edificio7" type="StaticBody3D" parent="Edifici/Up Line/Down"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 8.66486, 0, -9.4504)
+
+[node name="blockbench_export" parent="Edifici/Up Line/Down/Edificio7" instance=ExtResource("7_5kffo")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Edifici/Up Line/Down/Edificio7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0404158, 3.56535, -0.0937653)
+shape = SubResource("BoxShape3D_d6nf5")
+
+[node name="Edificio8" type="StaticBody3D" parent="Edifici/Up Line/Down"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 3.52285, 0, -9.4504)
+
+[node name="blockbench_export" parent="Edifici/Up Line/Down/Edificio8" instance=ExtResource("7_5kffo")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Edifici/Up Line/Down/Edificio8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0404158, 3.56535, -0.0937653)
+shape = SubResource("BoxShape3D_d6nf5")
+
+[node name="Edificio basso5" type="StaticBody3D" parent="Edifici/Up Line/Down"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 11.2237, 0, -9.4504)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Edifici/Up Line/Down/Edificio basso5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0404158, 1.40707, -0.0937653)
+shape = SubResource("BoxShape3D_d6nf5")
+
+[node name="blockbench_export" parent="Edifici/Up Line/Down/Edificio basso5" instance=ExtResource("8_y3ysd")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="Edificio basso6" type="StaticBody3D" parent="Edifici/Up Line/Down"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 6.08455, 0, -9.4504)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Edifici/Up Line/Down/Edificio basso6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0404158, 1.40707, -0.0937653)
+shape = SubResource("BoxShape3D_d6nf5")
+
+[node name="blockbench_export" parent="Edifici/Up Line/Down/Edificio basso6" instance=ExtResource("8_y3ysd")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="Edificio basso7" type="StaticBody3D" parent="Edifici/Up Line/Down"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0.960348, 0, -9.4504)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Edifici/Up Line/Down/Edificio basso7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0404158, 1.40707, -0.0937653)
+shape = SubResource("BoxShape3D_d6nf5")
+
+[node name="blockbench_export" parent="Edifici/Up Line/Down/Edificio basso7" instance=ExtResource("8_y3ysd")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="Edificio basso8" type="StaticBody3D" parent="Edifici/Up Line/Down"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -4.1321, 0, -9.4504)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Edifici/Up Line/Down/Edificio basso8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0404158, 1.40707, -0.0937653)
+shape = SubResource("BoxShape3D_d6nf5")
+
+[node name="blockbench_export" parent="Edifici/Up Line/Down/Edificio basso8" instance=ExtResource("8_y3ysd")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="Edificio9" type="StaticBody3D" parent="Edifici/Up Line/Down"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 34.2287, 0, -9.4504)
+
+[node name="Edificio10" type="StaticBody3D" parent="Edifici/Up Line/Down"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 18.8353, 0, -9.4504)
+
+[node name="blockbench_export" parent="Edifici/Up Line/Down/Edificio10" instance=ExtResource("7_5kffo")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Edifici/Up Line/Down/Edificio10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0404158, 3.56535, -0.0937653)
+shape = SubResource("BoxShape3D_d6nf5")
+
+[node name="Edificio11" type="StaticBody3D" parent="Edifici/Up Line/Down"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 29.1095, 0, -9.4504)
+
+[node name="Edificio12" type="StaticBody3D" parent="Edifici/Up Line/Down"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 23.9674, 0, -9.4504)
+
+[node name="blockbench_export" parent="Edifici/Up Line/Down/Edificio12" instance=ExtResource("7_5kffo")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Edifici/Up Line/Down/Edificio12"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0404158, 3.56535, -0.0937653)
+shape = SubResource("BoxShape3D_d6nf5")
+
+[node name="Edificio basso9" type="StaticBody3D" parent="Edifici/Up Line/Down"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 31.6683, 0, -9.4504)
+
+[node name="Edificio basso10" type="StaticBody3D" parent="Edifici/Up Line/Down"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 26.5291, 0, -9.4504)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Edifici/Up Line/Down/Edificio basso10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0404158, 1.40707, -0.0937653)
+shape = SubResource("BoxShape3D_d6nf5")
+
+[node name="Edificio basso11" type="StaticBody3D" parent="Edifici/Up Line/Down"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 21.4049, 0, -9.4504)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Edifici/Up Line/Down/Edificio basso11"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0404158, 1.40707, -0.0937653)
+shape = SubResource("BoxShape3D_d6nf5")
+
+[node name="blockbench_export" parent="Edifici/Up Line/Down/Edificio basso11" instance=ExtResource("8_y3ysd")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="Edificio basso12" type="StaticBody3D" parent="Edifici/Up Line/Down"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 16.3125, 0, -9.4504)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Edifici/Up Line/Down/Edificio basso12"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0404158, 1.40707, -0.0937653)
+shape = SubResource("BoxShape3D_d6nf5")
+
+[node name="blockbench_export" parent="Edifici/Up Line/Down/Edificio basso12" instance=ExtResource("8_y3ysd")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="Up" type="Node3D" parent="Edifici/Up Line"]
+
+[node name="PvP" type="StaticBody3D" parent="Edifici/Up Line/Up"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.3699, 0, -26.1947)
+
+[node name="blockbench_export" parent="Edifici/Up Line/Up/PvP" instance=ExtResource("13_avd0k")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Edifici/Up Line/Up/PvP"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.162949, 2.50739, 0.0248795)
+shape = SubResource("BoxShape3D_momky")
+
+[node name="Edificio" type="StaticBody3D" parent="Edifici/Up Line/Up"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.0296, 0, -22.0405)
+
+[node name="blockbench_export" parent="Edifici/Up Line/Up/Edificio" instance=ExtResource("7_5kffo")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Edifici/Up Line/Up/Edificio"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0404158, 3.56535, -0.0937653)
+shape = SubResource("BoxShape3D_d6nf5")
+
+[node name="Edificio basso" type="StaticBody3D" parent="Edifici/Up Line/Up"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.59, 0, -22.0405)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Edifici/Up Line/Up/Edificio basso"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0404158, 1.40707, -0.0937653)
+shape = SubResource("BoxShape3D_d6nf5")
+
+[node name="blockbench_export" parent="Edifici/Up Line/Up/Edificio basso" instance=ExtResource("8_y3ysd")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="Edificio2" type="StaticBody3D" parent="Edifici/Up Line/Up"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.88811, 0, -22.0405)
+
+[node name="blockbench_export" parent="Edifici/Up Line/Up/Edificio2" instance=ExtResource("7_5kffo")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Edifici/Up Line/Up/Edificio2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0404158, 3.56535, -0.0937653)
+shape = SubResource("BoxShape3D_d6nf5")
+
+[node name="ChatGPT" type="StaticBody3D" parent="Edifici/Up Line/Up"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.41414, 0, -22.0405)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Edifici/Up Line/Up/ChatGPT"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0745139, 3.56535, -0.0937653)
+shape = SubResource("BoxShape3D_i5au3")
+
+[node name="blockbench_export" parent="Edifici/Up Line/Up/ChatGPT" instance=ExtResource("14_momky")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="Edificio basso2" type="StaticBody3D" parent="Edifici/Up Line/Up"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.44854, 0, -22.0405)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Edifici/Up Line/Up/Edificio basso2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0404158, 1.40707, -0.0937653)
+shape = SubResource("BoxShape3D_d6nf5")
+
+[node name="blockbench_export" parent="Edifici/Up Line/Up/Edificio basso2" instance=ExtResource("8_y3ysd")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="Edificio3" type="StaticBody3D" parent="Edifici/Up Line/Up"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.64851, 0, -22.0405)
+
+[node name="blockbench_export" parent="Edifici/Up Line/Up/Edificio3" instance=ExtResource("7_5kffo")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Edifici/Up Line/Up/Edificio3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0404158, 3.56535, -0.0937653)
+shape = SubResource("BoxShape3D_d6nf5")
+
+[node name="Edificio basso3" type="StaticBody3D" parent="Edifici/Up Line/Up"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.08808, 0, -22.0405)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Edifici/Up Line/Up/Edificio basso3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0404158, 1.40707, -0.0937653)
+shape = SubResource("BoxShape3D_d6nf5")
+
+[node name="blockbench_export" parent="Edifici/Up Line/Up/Edificio basso3" instance=ExtResource("8_y3ysd")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="Edificio4" type="StaticBody3D" parent="Edifici/Up Line/Up"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.79001, 0, -22.0405)
+
+[node name="blockbench_export" parent="Edifici/Up Line/Up/Edificio4" instance=ExtResource("7_5kffo")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Edifici/Up Line/Up/Edificio4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0404158, 3.56535, -0.0937653)
+shape = SubResource("BoxShape3D_d6nf5")
+
+[node name="Edificio basso4" type="StaticBody3D" parent="Edifici/Up Line/Up"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.22958, 0, -22.0405)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Edifici/Up Line/Up/Edificio basso4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0404158, 1.40707, -0.0937653)
+shape = SubResource("BoxShape3D_d6nf5")
+
+[node name="blockbench_export" parent="Edifici/Up Line/Up/Edificio basso4" instance=ExtResource("8_y3ysd")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="Edificio5" type="StaticBody3D" parent="Edifici/Up Line/Up"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.9277, 0, -22.0405)
+
+[node name="blockbench_export" parent="Edifici/Up Line/Up/Edificio5" instance=ExtResource("7_5kffo")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Edifici/Up Line/Up/Edificio5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0404158, 3.56535, -0.0937653)
+shape = SubResource("BoxShape3D_d6nf5")
+
+[node name="Edificio basso5" type="StaticBody3D" parent="Edifici/Up Line/Up"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.3672, 0, -22.0405)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Edifici/Up Line/Up/Edificio basso5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0404158, 1.40707, -0.0937653)
+shape = SubResource("BoxShape3D_d6nf5")
+
+[node name="blockbench_export" parent="Edifici/Up Line/Up/Edificio basso5" instance=ExtResource("8_y3ysd")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="Edificio6" type="StaticBody3D" parent="Edifici/Up Line/Up"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.0692, 0, -22.0405)
+
+[node name="blockbench_export" parent="Edifici/Up Line/Up/Edificio6" instance=ExtResource("7_5kffo")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Edifici/Up Line/Up/Edificio6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0404158, 3.56535, -0.0937653)
+shape = SubResource("BoxShape3D_d6nf5")
+
+[node name="Edificio basso6" type="StaticBody3D" parent="Edifici/Up Line/Up"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.5087, 0, -22.0405)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Edifici/Up Line/Up/Edificio basso6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0404158, 1.40707, -0.0937653)
+shape = SubResource("BoxShape3D_d6nf5")
+
+[node name="blockbench_export" parent="Edifici/Up Line/Up/Edificio basso6" instance=ExtResource("8_y3ysd")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="Edificio7" type="StaticBody3D" parent="Edifici/Up Line/Up"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.1959, 0, -22.0405)
+
+[node name="blockbench_export" parent="Edifici/Up Line/Up/Edificio7" instance=ExtResource("7_5kffo")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Edifici/Up Line/Up/Edificio7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0404158, 3.56535, -0.0937653)
+shape = SubResource("BoxShape3D_d6nf5")
+
+[node name="Edificio basso7" type="StaticBody3D" parent="Edifici/Up Line/Up"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.6354, 0, -22.0405)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Edifici/Up Line/Up/Edificio basso7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0404158, 1.40707, -0.0937653)
+shape = SubResource("BoxShape3D_d6nf5")
+
+[node name="blockbench_export" parent="Edifici/Up Line/Up/Edificio basso7" instance=ExtResource("8_y3ysd")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="Street" type="Node3D" parent="."]
+
+[node name="Circle" type="MeshInstance3D" parent="Street"]
+mesh = SubResource("CylinderMesh_gstcq")
+skeleton = NodePath("../../Edifici/Google")
+
+[node name="Street" type="MeshInstance3D" parent="Street"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5087, 0, -0.36624)
+mesh = SubResource("BoxMesh_ns53s")
+skeleton = NodePath("../../Edifici/Google")
+
+[node name="Street2" type="MeshInstance3D" parent="Street"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.1494, 0, -0.374)
+mesh = SubResource("BoxMesh_ns53s")
+skeleton = NodePath("../../Edifici/Google")
+
+[node name="Street5" type="MeshInstance3D" parent="Street"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1593, 0, 14.8462)
+mesh = SubResource("BoxMesh_q7crl")
+skeleton = NodePath("../../Edifici/Google")
+
+[node name="Street6" type="MeshInstance3D" parent="Street"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1593, 0, -15.7164)
+mesh = SubResource("BoxMesh_q7crl")
+skeleton = NodePath("../../Edifici/Google")
+
+[node name="Street3" type="MeshInstance3D" parent="Street"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.2946, 0, -0.36624)
+mesh = SubResource("BoxMesh_gstcq")
+skeleton = NodePath("../../Edifici/Google")
+
+[node name="Street4" type="MeshInstance3D" parent="Street"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.0758, 0, -0.36624)
+mesh = SubResource("BoxMesh_gstcq")
+skeleton = NodePath("../../Edifici/Google")
+
+[node name="Path" type="Node3D" parent="."]
+script = ExtResource("15_i5au3")
+
+[node name="1" type="Path3D" parent="Path"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.2927, 0, 0)
+curve = SubResource("Curve3D_7kqri")
+script = ExtResource("16_spxj2")
+StartCross = Dictionary[NodePath, bool]({
+NodePath("../2"): false,
+NodePath("../3"): false
+})
+
+[node name="4" type="Path3D" parent="Path"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.2927, 0, -14.6519)
+curve = SubResource("Curve3D_7kqri")
+script = ExtResource("16_spxj2")
+StartCross = Dictionary[NodePath, bool]({
+NodePath("../3"): true
+})
+
+[node name="5" type="Path3D" parent="Path"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.2927, 0, 15.4467)
+curve = SubResource("Curve3D_7kqri")
+script = ExtResource("16_spxj2")
+StartCross = Dictionary[NodePath, bool]({
+NodePath("../2"): true
+})
+
+[node name="2" type="Path3D" parent="Path"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.2927, 0, 0)
+curve = SubResource("Curve3D_i5au3")
+script = ExtResource("16_spxj2")
+StartCross = Dictionary[NodePath, bool]({
+NodePath("../3"): false,
+NodePath("../1"): false
+})
+EndCross = Dictionary[NodePath, bool]({
+NodePath("../5"): false
+})
+
+[node name="3" type="Path3D" parent="Path"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.2927, 0, 0)
+curve = SubResource("Curve3D_q7crl")
+script = ExtResource("16_spxj2")
+StartCross = Dictionary[NodePath, bool]({
+NodePath("../1"): false,
+NodePath("../2"): false
+})
+EndCross = Dictionary[NodePath, bool]({
+NodePath("../4"): false
+})

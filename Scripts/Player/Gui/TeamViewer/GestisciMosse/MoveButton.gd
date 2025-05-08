@@ -8,6 +8,9 @@ func _ready():
 	custom_minimum_size = Vector2(100, 100)
 	text = Move
 	
+	if Move == "None":
+		disabled = true
+		return
 	# Ottieni il colore dal file dei dati
 	var bg_color = File.RGB_to_color(Data.Type_data[Data.Move_data[Move]["Type"]]["Color"])
 	
@@ -60,9 +63,9 @@ func _can_drop_data(at_position, data):
 
 func _drop_data(at_position, data):
 	var Character:CharacterData = $"../../..".currentCharacter
-	Character.Current_Moves.erase(Move)
+	if Move != "None":
+		Character.Current_Moves.erase(Move)
 	Character.Current_Moves.append(data)
-	Move = data
 	Move = data
 	_ready()
 	$"../../..".Update()

@@ -1,0 +1,38 @@
+[gd_resource type="SpriteFrames" load_steps=3 format=3 uid="uid://bj7nd4fdbfhbc"]
+
+[ext_resource type="Texture2D" uid="uid://bt44o4iiwjbs6" path="res://Resources/Images/Characters/Pixy/Idle/00000.png" id="1_tsvuv"]
+[ext_resource type="Texture2D" uid="uid://1xjwdpbbkdel" path="res://Resources/Images/Characters/Pixy/Idle/00001.png" id="2_0n0ti"]
+
+[resource]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"Dead",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Dying",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Fail",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_tsvuv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_0n0ti")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Nap",
+"speed": 5.0
+}]

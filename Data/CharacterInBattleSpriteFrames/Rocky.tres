@@ -1,0 +1,38 @@
+[gd_resource type="SpriteFrames" load_steps=3 format=3 uid="uid://d38ewnbhdoxek"]
+
+[ext_resource type="Texture2D" uid="uid://4he1gwf6chot" path="res://Resources/Images/Characters/Rocky/Idle/1.png" id="1_db38q"]
+[ext_resource type="Texture2D" uid="uid://bfw53i80qdr8a" path="res://Resources/Images/Characters/Rocky/Idle/2.png" id="2_i532i"]
+
+[resource]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"Dead",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Dying",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Fail",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_db38q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_i532i")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Nap",
+"speed": 5.0
+}]

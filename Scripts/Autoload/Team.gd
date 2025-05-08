@@ -1,3 +1,4 @@
+@tool
 extends Node
 
 var Flags = {}
@@ -10,6 +11,7 @@ var Maps
 var Inventory: Dictionary[ItemData, int] = {}
 var LastTalker: Node3D
 
+const animations = ["Idle","Dead","Fail", "Dying", "Nap"]
 const BattlePath = "res://Scenes/battagllia.tscn"
 
 signal FinishedBattle()
@@ -58,6 +60,7 @@ func _ready():
 	randomize()
 	CharactersData["Bob"] =  CharacterData.new("Bob", 10)
 	CharactersData["ChristChar"] =  CharacterData.new("ChristChar", 10)
+	CharactersData["Pixy"] =  CharacterData.new("Pixy", 16)
 	team = [CharactersData["ChristChar"], CharactersData["Bob"]]
 	LoadData()
 
@@ -111,3 +114,7 @@ func StartMiniGame(MiniGame: String):
 	var Game = load(MiniGame).instantiate()
 	add_child(Game)
 	return Game
+
+func _process(delta):
+	if Is_in_battle:
+		Pause = true

@@ -16,6 +16,7 @@ grow_vertical = 2
 script = ExtResource("1_2yx3q")
 
 [node name="Background" type="Panel" parent="."]
+layout_mode = 0
 offset_top = -6.0
 offset_right = 1920.0
 offset_bottom = 1074.0

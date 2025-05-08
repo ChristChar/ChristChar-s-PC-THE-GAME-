@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://byxyaxmqukwx2"]
+
+[sub_resource type="Gradient" id="Gradient_tchli"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.233918, 0.502924, 0.795322)
+colors = PackedColorArray(0.607843, 0, 0, 1, 0, 0, 1, 1, 0, 1, 0, 1, 0, 0, 0, 1)
+
+[node name="Poison" type="CPUParticles2D"]
+emitting = false
+amount = 64
+lifetime = 1.5
+explosiveness = 0.3
+randomness = 1.0
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 250)
+initial_velocity_min = 100.0
+initial_velocity_max = 500.0
+scale_amount_min = 10.0
+scale_amount_max = 35.0
+color_initial_ramp = SubResource("Gradient_tchli")

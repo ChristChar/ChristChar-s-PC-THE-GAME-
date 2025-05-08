@@ -39,7 +39,16 @@ window/stretch/mode="canvas_items"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg", "res://addons/tnowe_extra_controls/plugin.cfg")
+enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg", "res://addons/generaspriteframes/plugin.cfg", "res://addons/tnowe_extra_controls/plugin.cfg")
+
+[importer_defaults]
+
+3d_texture={
+&"compress/mode": 0
+}
+texture={
+&"detect_3d/compress_to": 0
+}
 
 [input]
 
@@ -93,7 +102,7 @@ Open_Inventory={
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://Data/Dialogue/Sassocaverna.dialogue", "res://Data/Dialogue/TurnBackInMainMap.dialogue", "res://Data/Dialogue/Rocky.dialogue", "res://Data/Dialogue/Gino.dialogue", "res://Data/Dialogue/Timmy.dialogue")
+locale/translations_pot_files=PackedStringArray("res://Data/Dialogue/Sassocaverna.dialogue", "res://Data/Dialogue/TurnBackInMainMap.dialogue", "res://Data/Dialogue/Rocky.dialogue", "res://Data/Dialogue/Gino.dialogue", "res://Data/Dialogue/Timmy.dialogue", "res://Data/Dialogue/Casual NPC/I hate u.dialogue", "res://Data/Dialogue/Casual NPC/I like cats.dialogue", "res://Data/Dialogue/Casual NPC/My yt channel.dialogue", "res://Data/Dialogue/Casual NPC/dark web.dialogue", "res://Data/Dialogue/Inkerbot.dialogue")
 
 [rendering]
 

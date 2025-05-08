@@ -1,0 +1,137 @@
+[gd_scene load_steps=23 format=3 uid="uid://chchubgkl3fba"]
+
+[ext_resource type="Script" uid="uid://bh4nnc5ukqkxd" path="res://Scripts/InWorld/Map.gd" id="1_x8vo7"]
+[ext_resource type="Script" uid="uid://bnq7rukbvf7pv" path="res://Scripts/Resources/BattleSpawnPool.gd" id="2_1ggut"]
+[ext_resource type="Script" uid="uid://dkngd86d1ulhj" path="res://Scripts/Resources/SpawnData.gd" id="3_mif0q"]
+[ext_resource type="Texture2D" uid="uid://ftx0cn2062gf" path="res://Resources/Images/InWorld/Encounters/Virus.png" id="4_fmr18"]
+[ext_resource type="AudioStream" uid="uid://dnjyom8kl3bnr" path="res://Resources/Sounds/Musics/World.mp3" id="5_y2w4u"]
+[ext_resource type="Texture2D" uid="uid://colhlsp18dqiu" path="res://Resources/Images/Characters/Pixy/InWorld/Idle.png" id="6_1blce"]
+[ext_resource type="Script" uid="uid://cok8o2x1y3jxe" path="res://Scripts/InWorld/NPCs/InteractBattle.gd" id="7_p7b75"]
+[ext_resource type="Resource" uid="uid://bwamgyifsfjni" path="res://Data/Dialogue/Rocky.dialogue" id="8_m7o65"]
+
+[sub_resource type="Resource" id="Resource_1se7k"]
+script = ExtResource("3_mif0q")
+Weight = 2
+Type = "Trojan"
+metadata/_custom_type_script = "uid://dkngd86d1ulhj"
+
+[sub_resource type="Resource" id="Resource_shq8t"]
+script = ExtResource("3_mif0q")
+Weight = 1
+Type = "Spyware"
+metadata/_custom_type_script = "uid://dkngd86d1ulhj"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4grl1"]
+atlas = ExtResource("4_fmr18")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wgcyy"]
+atlas = ExtResource("4_fmr18")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ee60x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4grl1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wgcyy")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[sub_resource type="Resource" id="Resource_6f1e5"]
+script = ExtResource("2_1ggut")
+Spawn_Pool = Array[ExtResource("3_mif0q")]([SubResource("Resource_1se7k"), SubResource("Resource_shq8t")])
+World_Sprite = SubResource("SpriteFrames_ee60x")
+metadata/_custom_type_script = "uid://bnq7rukbvf7pv"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_olno0"]
+size = Vector3(50, 0.001, 50)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bibvp"]
+albedo_color = Color(1, 0.791286, 0.804409, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_nadxs"]
+material = SubResource("StandardMaterial3D_bibvp")
+size = Vector2(50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p7b75"]
+atlas = ExtResource("6_1blce")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m7o65"]
+atlas = ExtResource("6_1blce")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d7uns"]
+atlas = ExtResource("6_1blce")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tj33d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p7b75")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m7o65")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d7uns")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_h7qeb"]
+radius = 0.660525
+
+[node name="Map" type="Node3D"]
+script = ExtResource("1_x8vo7")
+EnemyCount = 10
+SpaenPool = Dictionary[String, ExtResource("2_1ggut")]({
+"Virus": SubResource("Resource_6f1e5")
+})
+Music = ExtResource("5_y2w4u")
+SpawnRange = 25
+
+[node name="Pavimento" type="StaticBody3D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pavimento"]
+shape = SubResource("BoxShape3D_olno0")
+debug_color = Color(0, 0.6, 0.7, 0.42)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pavimento"]
+mesh = SubResource("PlaneMesh_nadxs")
+skeleton = NodePath("../..")
+
+[node name="PlayerSpawn" type="Node3D" parent="." groups=["PlayerSpawn"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.27196, 0)
+
+[node name="Pixy" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.70505, 0.529312, 0)
+collision_layer = 3
+collision_mask = 3
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Pixy"]
+transform = Transform3D(4, 0, 0, 0, 3.8637, 1.03528, 0, -1.03528, 3.8637, 0, 0.365066, 0)
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_tj33d")
+animation = &"Idle"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pixy"]
+shape = SubResource("SphereShape3D_h7qeb")
+debug_color = Color(0, 0.6, 0.7, 0.42)
+
+[node name="InteractArea" type="Area3D" parent="Pixy"]
+script = ExtResource("7_p7b75")
+BattleJson = "res://Data/Json/Battles/Shadowbyte.json"
+Dialogue = ExtResource("8_m7o65")
+metadata/_custom_type_script = "uid://ddsm0t3kkty4w"

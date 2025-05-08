@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="MapData" load_steps=5 format=3 uid="uid://bgcehxrqy1rf6"]
+
+[ext_resource type="Texture2D" uid="uid://6xtj7i0fduwj" path="res://Resources/Images/Maps/Icons/ChristChar's PC.jpg" id="1_rc7df"]
+[ext_resource type="Texture2D" uid="uid://cuh1c2hcf7xih" path="res://Resources/Images/Maps/Preview/ChristChar's PC.png" id="2_gsp88"]
+[ext_resource type="PackedScene" uid="uid://dc3yt213os33k" path="res://Scenes/Maps/Internet/Internet.tscn" id="3_rc7df"]
+[ext_resource type="Script" uid="uid://cbprm8smb1ptw" path="res://Scripts/Resources/MapDeclaretion.gd" id="4_qmsbe"]
+
+[resource]
+script = ExtResource("4_qmsbe")
+Name = "Internet"
+Description = "THE WORLD WIDE WEB, A PLACE WHERE YOU CAN DO A LOT OF THINGS"
+Unlock = true
+Scene = ExtResource("3_rc7df")
+Preview = ExtResource("2_gsp88")
+Icon = ExtResource("1_rc7df")
+CharactersToFindFlags = Array[String](["Gino", "Timmy", "Rocky"])
+metadata/_custom_type_script = "uid://cbprm8smb1ptw"

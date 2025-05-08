@@ -3,9 +3,61 @@
 		"Power": 40,
 		"Chance": 95,
 		"Energy": 25,
+		"Target": "Enemy",
 		"Move type": "Fisica",
 		"Type": "Normal",
-		"Description": "colpisce l'aversario in modo poco doloroso"
+		"Description": "hits the opponent with low power"
+	},
+	"Toxic Player": {
+		"Power": 40,
+		"Chance": 90,
+		"Energy": 40,
+		"Target": "Enemy",
+		"Move type": "Status",
+		"Type": "Gamer",
+		"Description": "Ez",
+		"Status": {
+			"Poison": {
+				"Chance": 100,
+				"Data": 20
+			}
+		},
+		"Animation": {
+			"Type": "ObjectGust",
+			"Sprites": [
+				"res://Resources/Images/BattleAnimations/Toxic Texts/1.png",
+				"res://Resources/Images/BattleAnimations/Toxic Texts/2.png",
+				"res://Resources/Images/BattleAnimations/Toxic Texts/3.png",
+				"res://Resources/Images/BattleAnimations/Toxic Texts/4.png"
+			],
+			"Speed": 1750,
+			"Spinning": false
+		}
+	},
+	"Punch": {
+		"Power": 40,
+		"Chance": 90,
+		"Energy": 35,
+		"Target": "Enemy",
+		"Move type": "Fisica",
+		"Type": "Fighter",
+		"Description": "A PUNCH IN THE FACE"
+	},
+	"Cutenesswave": {
+		"Power": 55,
+		"Chance": 100,
+		"Energy": 50,
+		"Move type": "Special",
+		"Type": "Cute",
+		"Target": "All",
+		"Description": "hits all the oppnents with its cuteness",
+		"Animation": {
+			"Type": "ExpandingCircle",
+			"Speed": 2500,
+			"Opponent": false,
+			"Color": [255, 200, 200, 150],
+			"Radius": 1500
+		}
 	},
 	"HYPER BEAM": {
 		"Power": 150,
@@ -13,11 +65,13 @@
 		"Energy": 100,
 		"Move type": "Special",
 		"Type": "Magic",
+		"Target": "Enemy",
 		"Description": "Pokemon don't sue me pls",
 		"Animation": {
 			"Type": "Laser",
 			"Width": 50,
-			"Color": [255,255,255]
+			"Color": [255,255,255],
+			"Sound": "res://Resources/Sounds/BattleSounds/Moves/HYPER BEAM.mp3",
 		}
 	},
 	"Shot": {
@@ -26,7 +80,8 @@
 		"Move type": "Fisica",
 		"Type": "Gun",
 		"Energy": 40,
-		"Description": "PRENDI IL FUCILE E SPARA",
+		"Target": "Enemy",
+		"Description": "Pew pew",
 		"Animation": {
 			"Type": "ThrowObject",
 			"Sprite": "res://Resources/Images/BattleAnimations/Proiettile.png",
@@ -35,11 +90,12 @@
 		}
 	},
 	"Bullet rain": {
-		"Power": 130,
-		"Chance": 85,
+		"Power": 100,
+		"Chance": 80,
 		"Move type": "Special",
 		"Type": "Gun",
 		"Energy": 80,
+		"Target": "All",
 		"Description": "Make rain bullets!!",
 		"Animation": {
 			"Type": "ThrowObject",
@@ -48,12 +104,36 @@
 			"Spinning": false
 		}
 	},
+	"ImagesTsunami": {
+		"Power": 65,
+		"Chance": 100,
+		"Move type": "Special",
+		"Type": "AI",
+		"Energy": 45,
+		"Target": "Enemy",
+		"Description": "A Tsunami of Junk AI-Generated Images",
+		"Animation": {
+			"Type": "ObjectGust",
+			"Sprites": [
+				"res://Resources/Images/BattleAnimations/AI images/1.png",
+				"res://Resources/Images/BattleAnimations/AI images/2.png",
+				"res://Resources/Images/BattleAnimations/AI images/3.png",
+				"res://Resources/Images/BattleAnimations/AI images/4.png",
+				"res://Resources/Images/BattleAnimations/AI images/5.png",
+				"res://Resources/Images/BattleAnimations/AI images/6.png",
+				"res://Resources/Images/BattleAnimations/AI images/7.png",
+				"res://Resources/Images/BattleAnimations/AI images/8.png"
+			],
+			"Speed": 2000,
+			"Spinning": true
+		}
+	},
 	"Pizzathrow": {
-		"Power": 75,
+		"Power": 70,
 		"Chance": 70,
 		"Move type": "Fisica",
 		"Type": "Food",
-		"Energy": 50,
+		"Energy": 70,
 		"Target": "All",
 		"Animation": {
 			"Type": "ThrowObject",
@@ -61,20 +141,31 @@
 			"Speed": 0.15,
 			"Spinning": true
 		},
-		"Description": "Laancia la pizza all'aversario"
+		"Description": "NOOOOOOO!! DON'T WASTE MY PIZZA!!"
+	},
+	"Kernel overload": {
+		"Power": 75,
+		"Chance": 85,
+		"Energy":45,
+		"Target": "Enemy",
+		"Move type": "Special",
+		"Type": "Hacker",
+		"Description": "Spam data to the kernel of the opponent PC"
 	},
 	"Taskill": {
 		"Power": 65,
 		"Chance": 90,
 		"Energy":45,
-		"Move type": "Speciale",
+		"Target": "Enemy",
+		"Move type": "Special",
 		"Type": "Player",
-		"Description": "Esegue Taskill sul CMD"
+		"Description": "Execute Taskill on the CMD"
 	},
 	"Debug Mode": {
 		"Chance": 100,
 		"Move type": "Status",
 		"Type": "Player",
+		"Target": "Self",
 		"Energy": 30,
 		"Stat": [
 		  {
@@ -82,13 +173,13 @@
 			"Power": 2
 		  }
 		],
-		"Description": "Attiva la modalità debug aumentando significativamente la difesa."
+		"Description": "Activate debug mode significantly increasing defense"
   },
 	"Roar": {
 		"Chance": 100,
 		"Move type": "Status",
-		"Has Target": true,
 		"Type": "Normal",
+		"Target": "Enemy",
 		"Energy": 15,
 		"Stat":[
 			{
@@ -96,13 +187,20 @@
 				"Power": -1
 			},
 		],
-		"Description": "ROAR (traduzione: abbassa l'attaco avversario)"
+		"Description": "ROAR (translation: lowers the opponent's attack)",
+		"Animation": {
+			"Type": "Follow",
+			"Speed": 0.35,
+			"Damage": false,
+			"Sound": "res://Resources/Sounds/BattleSounds/Moves/Roar.mp3",
+		}
 	},
 	"Dance": {
 		"Chance": 90,
 		"Move type": "Status",
 		"Type": "Meme",
 		"Energy": 40,
+		"Target": "Self",
 		"Stat":[
 			{
 				"Stat":"ATT",
@@ -113,12 +211,13 @@
 				"Power": 1
 			}
 		],
-		"Description": "Aumenta attacco e difesa"
+		"Description": "increse attack and defense"
 	},
 	"SPINNING": {
 		"Chance": 95,
 		"Move type": "Status",
 		"Type": "Meme",
+		"Target": "Self",
 		"Energy": 40,
 		"Stat":[
 			{
@@ -130,19 +229,20 @@
 				"Power": -1
 			}
 		],
-		"Description": "Diminuisce l'intellizenza ma aumenta di molto il poteere informatico"
+		"Description": "Intelligence decreases but informatic power increases dramatically"
 	},
 	"Rickroll": {
 		"Power": 65,
 		"Chance": 90,
-		"Move type": "Speciale",
+		"Move type": "Special",
 		"Type": "Meme",
+		"Target": "Enemy",
 		"Energy": 45,
 		"Description": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
 		"Animation": {
 			"Type": "Follow",
 			"Speed": 0.1,
-			"Sound": "res://Resources/Sounds/Rickroll.mp3",
+			"Sound": "res://Resources/Sounds/BattleSounds/Moves/Rickroll.mp3",
 			"CharacterAnimation": {
 				"Sprites": "res://Resources/Images/BattleAnimations/CharacterAnimation/Rickroll/",
 				"FPS": 12,
@@ -152,9 +252,9 @@
 	},
 	"Magic heal": {
 		"Chance": 100,
-		"Has Target": true,
 		"Move type": "Status",
 		"Type": "Magic",
+		"Target": "Enemy",
 		"Energy": 50,
 		"Script": [
 			{
@@ -163,14 +263,54 @@
 				"Power": 80
 			}
 		],
-		"Description": "Cura il target"
+		"Description": "Heal the target"
+	},
+	"Magic Energy": {
+		"Chance": 100,
+		"Move type": "Status",
+		"Type": "Magic",
+		"Target": "Enemy",
+		"Energy": 15,
+		"Script": [
+			{
+				"Script": "GiveEnergy",
+				"Chance": 100,
+				"Power": 300
+			}
+		],
+		"Description": "Give energy to the target"
 	},
 	"Delete System32": {
 		"Chance": 75,
 		"Power": 120,
+		"Target": "Enemy",
 		"Energy": 70,
-		"Move type": "Speciale",
+		"Move type": "Special",
 		"Type": "Malware",
-		"Description": "FA MALE"
+		"Description": "NOOOO!! NOT MY SYSTEM32!!"
+	},
+	"Cript Data": {
+		"Chance": 85,
+		"Power": 75,
+		"Target": "Enemy",
+		"Energy": 60,
+		"Move type": "Special",
+		"Type": "Malware",
+		"Description": "Say goodbay to your data >=)",
+		"Status": {
+			"Glitch": {
+				"Chance": 33,
+				"Data": "null"
+			}
+		}
+	},
+	"Cookie spam": {
+		"Chance": 100,
+		"Power": 40,
+		"Target": "Enemy",
+		"Energy": 30,
+		"Move type": "Special",
+		"Type": "Malware",
+		"Description": "Do you accept the cookies?"
 	}
 }

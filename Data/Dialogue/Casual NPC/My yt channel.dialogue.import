@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_14"
+type="Resource"
+uid="uid://doo5xxy05lfyl"
+path="res://.godot/imported/My yt channel.dialogue-552f8555ba33ac68e18e4d549d570291.tres"
+
+[deps]
+
+source_file="res://Data/Dialogue/Casual NPC/My yt channel.dialogue"
+dest_files=["res://.godot/imported/My yt channel.dialogue-552f8555ba33ac68e18e4d549d570291.tres"]
+
+[params]
+
+defaults=true

@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_14"
+type="Resource"
+uid="uid://c4en0u8c5kry5"
+path="res://.godot/imported/dark web.dialogue-a6499a5b353cb17aa0f0437a22e7f6f7.tres"
+
+[deps]
+
+source_file="res://Data/Dialogue/Casual NPC/dark web.dialogue"
+dest_files=["res://.godot/imported/dark web.dialogue-a6499a5b353cb17aa0f0437a22e7f6f7.tres"]
+
+[params]
+
+defaults=true

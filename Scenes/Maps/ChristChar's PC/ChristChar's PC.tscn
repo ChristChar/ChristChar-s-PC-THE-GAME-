@@ -1,8 +1,8 @@
-[gd_scene load_steps=32 format=3 uid="uid://dc8gnk53v5dv"]
+[gd_scene load_steps=33 format=3 uid="uid://dc8gnk53v5dv"]
 
 [ext_resource type="Script" uid="uid://bh4nnc5ukqkxd" path="res://Scripts/InWorld/Map.gd" id="1_55c4v"]
 [ext_resource type="Script" uid="uid://bnq7rukbvf7pv" path="res://Scripts/Resources/BattleSpawnPool.gd" id="3_xbjrg"]
-[ext_resource type="Script" uid="uid://ddsm0t3kkty4w" path="res://Scripts/InWorld/InteractArea.gd" id="4_i20q6"]
+[ext_resource type="Script" uid="uid://ddsm0t3kkty4w" path="res://Scripts/InWorld/NPCs/InteractArea.gd" id="4_i20q6"]
 [ext_resource type="Script" uid="uid://dkngd86d1ulhj" path="res://Scripts/Resources/SpawnData.gd" id="4_vnrtp"]
 [ext_resource type="Texture2D" uid="uid://ftx0cn2062gf" path="res://Resources/Images/InWorld/Encounters/Virus.png" id="5_2tfhn"]
 [ext_resource type="Resource" uid="uid://b5a6vu4k6jiq5" path="res://Data/Dialogue/Gino.dialogue" id="5_xbjrg"]
@@ -11,7 +11,7 @@
 [ext_resource type="Resource" uid="uid://bbqx477v1b877" path="res://Data/Dialogue/Sassocaverna.dialogue" id="7_i20q6"]
 [ext_resource type="AudioStream" uid="uid://dnjyom8kl3bnr" path="res://Resources/Sounds/Musics/World.mp3" id="7_v8pw2"]
 [ext_resource type="Texture2D" uid="uid://c5w6myqyeapw3" path="res://Resources/Images/Characters/Timmy/InWorld/Idle.png" id="9_lb50r"]
-[ext_resource type="Script" uid="uid://c112futsqvxgx" path="res://Scripts/InWorld/MiniGameArea.gd" id="10_lk8df"]
+[ext_resource type="Script" uid="uid://c112futsqvxgx" path="res://Scripts/InWorld/NPCs/MiniGameArea.gd" id="10_lk8df"]
 [ext_resource type="Resource" uid="uid://omw187ff0346" path="res://Data/Dialogue/Timmy.dialogue" id="11_0whpa"]
 
 [sub_resource type="Resource" id="Resource_1se7k"]
@@ -24,6 +24,12 @@ metadata/_custom_type_script = "uid://dkngd86d1ulhj"
 script = ExtResource("4_vnrtp")
 Weight = 1
 Type = "Spyware"
+metadata/_custom_type_script = "uid://dkngd86d1ulhj"
+
+[sub_resource type="Resource" id="Resource_lb50r"]
+script = ExtResource("4_vnrtp")
+Weight = 2
+Type = "Ransomware"
 metadata/_custom_type_script = "uid://dkngd86d1ulhj"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4grl1"]
@@ -50,7 +56,7 @@ animations = [{
 
 [sub_resource type="Resource" id="Resource_6f1e5"]
 script = ExtResource("3_xbjrg")
-Spawn_Pool = Array[ExtResource("4_vnrtp")]([SubResource("Resource_1se7k"), SubResource("Resource_shq8t")])
+Spawn_Pool = Array[ExtResource("4_vnrtp")]([SubResource("Resource_1se7k"), SubResource("Resource_shq8t"), SubResource("Resource_lb50r")])
 World_Sprite = SubResource("SpriteFrames_ee60x")
 metadata/_custom_type_script = "uid://bnq7rukbvf7pv"
 

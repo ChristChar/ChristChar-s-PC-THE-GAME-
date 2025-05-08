@@ -1,0 +1,38 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://dv0nlnvq4dexr"
+path.s3tc="res://.godot/imported/Edificio_YT_0.png-acd5c419b3ff0f64049c552b21b46866.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "13dc46b93f17fc78ea5c9a2ab90c860d"
+}
+
+[deps]
+
+source_file="res://Resources/Models/Edifici/Edificio_YT_0.png"
+dest_files=["res://.godot/imported/Edificio_YT_0.png-acd5c419b3ff0f64049c552b21b46866.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

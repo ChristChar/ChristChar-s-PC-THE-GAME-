@@ -1,0 +1,38 @@
+[gd_resource type="SpriteFrames" load_steps=3 format=3 uid="uid://dunwelgjbd7jn"]
+
+[ext_resource type="Texture2D" uid="uid://j2b6hun34v8c" path="res://Resources/Images/Characters/Inkerbot/Idle/1.png" id="1_mf34s"]
+[ext_resource type="Texture2D" uid="uid://c8nk6eajm80n2" path="res://Resources/Images/Characters/Inkerbot/Idle/2.png" id="2_uup8v"]
+
+[resource]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"Dead",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Dying",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Fail",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_mf34s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_uup8v")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Nap",
+"speed": 5.0
+}]

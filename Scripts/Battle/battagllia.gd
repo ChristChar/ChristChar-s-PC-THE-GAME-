@@ -24,6 +24,7 @@ func _ready():
 	for personaggio in Team.team:
 		var NewCharacter = personaggio
 		NewCharacter.global_position = $Spawn.get_child(Index).global_position
+		NewCharacter.StartPosition = $Spawn.get_child(Index).global_position
 		NewCharacter.z_index = Z_INDEX[Index]
 		PlayerTeam.append(NewCharacter)
 		add_child(NewCharacter)
@@ -50,6 +51,8 @@ func setup_teams():
 		EnemyTeam.append(newEnemy)
 
 func End_round():
+	for battler in EnemyTeam + PlayerTeam:
+		battler.EndTurn()
 	TurnIndex = 0
 	TurnOrder = get_tree().get_nodes_in_group("Combattente")
 	TurnOrder.sort_custom(func(a, b): return a.Calcolate_Stat("SPEED") > b.Calcolate_Stat("SPEED"))
@@ -166,17 +169,6 @@ func Create_move_buttons(Character:CharacterData):
 		var NewButton = MoveButton.new()
 		NewButton.position.y = 50 * Index
 		NewButton.text = Move
-		var bg_color = File.RGB_to_color(Data.Type_data[Data.Move_data[Move]["Type"]]["Color"])
-		var stylebox = StyleBoxFlat.new()
-		stylebox.bg_color = bg_color
-		NewButton.add_theme_stylebox_override("normal", stylebox)
-		var color: Color
-		if File.is_closer_to_white(bg_color):
-			color = Color(0,0,0)
-		else:
-			color = Color(1,1,1)
-		NewButton.add_theme_color_override("font_color", color)
-		NewButton.add_theme_color_override("font_focus_color", color)
 		if Character.Energy < Data.Move_data[Move]["Energy"]:
 			NewButton.disabled =  true
 		$Buttons.add_child(NewButton)

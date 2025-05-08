@@ -6,7 +6,7 @@ var Selected_move = ""
 const Move_type_color = {
 	"Status":Color(0.6,0.6,0.6),
 	"Fisica":Color(1,0,0),
-	"Speciale":Color(0,1,0)
+	"Special":Color(0,1,0)
 }
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -44,16 +44,19 @@ func Update():
 		visible = true
 		var data: CharacterData = Team.CharactersData[Current_character]
 		$Name.text = Current_character + " L" + str(data.Level)
-		var NewFrames = SpriteFrames.new()
-		var Path = "res://Resources/Images/Characters/" + data.Character_type + "/Idle"
-		NewFrames.add_animation("Idle")
-		for Frame in File.get_files_in_directory(Path):
-			if Frame.get_extension() == "png":
-				NewFrames.add_frame("Idle", load(Path + "/" + Frame))
-		if data.Character_type in Data.Specific_Animations and "Idle" in Data.Specific_Animations[data.Character_type]:
-			if "Framerate" in Data.Specific_Animations[data.Character_type]["Idle"]:
-				NewFrames.set_animation_speed("Idle", Data.Specific_Animations[data.Character_type]["Idle"]["Framerate"])
-		$AnimatedSprite2D.sprite_frames = NewFrames
+		if OS.has_feature("Editor"):
+			var NewFrames = SpriteFrames.new()
+			var Path = "res://Resources/Images/Characters/" + data.Character_type + "/Idle"
+			NewFrames.add_animation("Idle")
+			for Frame in File.get_files_in_directory(Path):
+				if Frame.get_extension() == "png":
+					NewFrames.add_frame("Idle", load(Path + "/" + Frame))
+			if data.Character_type in Data.Specific_Animations and "Idle" in Data.Specific_Animations[data.Character_type]:
+				if "Framerate" in Data.Specific_Animations[data.Character_type]["Idle"]:
+					NewFrames.set_animation_speed("Idle", Data.Specific_Animations[data.Character_type]["Idle"]["Framerate"])
+			$AnimatedSprite2D.sprite_frames = NewFrames
+		else:
+			$AnimatedSprite2D.sprite_frames = load("res://Data/CharacterInBattleSpriteFrames/" + data.Character_type + ".tres")
 		$AnimatedSprite2D.play("Idle")
 		var InfoText = "Types: "
 		var Index = 0
@@ -73,7 +76,6 @@ func Update():
 			var NewButton = MoveButton.new()
 			NewButton.position.y = 50 * Index
 			NewButton.text = Move
-			NewButton.modulate = File.RGB_to_color(Data.Type_data[Data.Move_data[Move]["Type"]]["Color"])
 			$Buttons.add_child(NewButton)
 			Index += 1
 		$Exp.max_value = data.Get_Level_Up_EXP()

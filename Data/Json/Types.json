@@ -14,7 +14,16 @@
 			"Meme":0.5,
 			"Malware":2,
 			"Gun": 2,
-			"Cute": 0.5
+			"Cute": 0.5,
+			"Gamer": 2,
+			"Hacker":2
+		}
+	},
+	"Gamer":{
+		"Color":[8, 18, 18],
+		"Effectiveness": {
+			"Water": 2,
+			"Grass": 2
 		}
 	},
 	"Malware":{
@@ -26,7 +35,8 @@
 			"Fighter":2,
 			"Antivirus": 2,
 			"Gun": 2,
-			"Cute": 0.5
+			"Cute": 0.5,
+			"Hacker":2
 		}
 	},
 	"Player":{
@@ -36,7 +46,8 @@
 			"Malware":2,
 			"Evil":0.5,
 			"Antivirus": 0.5,
-			"Gun": 2
+			"Gun": 2,
+			"Hacker":2
 		}
 	},
 	"Fighter": {
@@ -47,14 +58,16 @@
 			"Food": 0.5,
 			"Evil": 0.5,
 			"Cute": 2,
-			"Gun": 2
+			"Gun": 2,
+			"Gamer": 2
 		}
 	},
 	"Cute":{
 		"Color":[255, 200, 200],
 		"Effectiveness": {
 			"Gun": 2,
-			"Magic": 0.5
+			"Magic": 0.5,
+			"Gamer": 0.5
 		}
 	},
 	"Gun":{
@@ -106,9 +119,21 @@
 		}
 	},
 	"Antivirus": {
+		"Color":[25,25,250],
+		"Effectiveness": {
+			"Fighter":0.5,
+			"Hacker":2
+		}
+	},
+	"Hacker": {
 		"Color":[0,0,255],
 		"Effectiveness": {
-			"Fighter":0.5
+			"Fighter":0.5,
+			"Antivirus":2,
+			"Magic":2,
+			"AI":0.5,
+			"Player":0.5,
+			"Malware":0.5
 		}
 	},
 	"Water":{

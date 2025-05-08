@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="MapData" load_steps=5 format=3 uid="uid://54dre2l8t1xw"]
+
+[ext_resource type="Texture2D" uid="uid://6xtj7i0fduwj" path="res://Resources/Images/Maps/Icons/ChristChar's PC.jpg" id="1_lfxjn"]
+[ext_resource type="Texture2D" uid="uid://cuh1c2hcf7xih" path="res://Resources/Images/Maps/Preview/ChristChar's PC.png" id="2_db0a2"]
+[ext_resource type="PackedScene" uid="uid://csedbei70wxhs" path="res://Scenes/Maps/Inkerbot's PC/Inkerbot's PC.tscn" id="3_lfxjn"]
+[ext_resource type="Script" uid="uid://cbprm8smb1ptw" path="res://Scripts/Resources/MapDeclaretion.gd" id="4_vesg3"]
+
+[resource]
+script = ExtResource("4_vesg3")
+Name = "Inkerbot's PC"
+Description = "This is the Inkerbot's PC. We write a lot of stories here!"
+Unlock = true
+Scene = ExtResource("3_lfxjn")
+Preview = ExtResource("2_db0a2")
+Icon = ExtResource("1_lfxjn")
+CharactersToFindFlags = Array[String](["Inkerbot"])
+metadata/_custom_type_script = "uid://cbprm8smb1ptw"

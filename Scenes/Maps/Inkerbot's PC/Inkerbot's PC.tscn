@@ -1,0 +1,109 @@
+[gd_scene load_steps=19 format=3 uid="uid://csedbei70wxhs"]
+
+[ext_resource type="Script" uid="uid://bh4nnc5ukqkxd" path="res://Scripts/InWorld/Map.gd" id="1_v6fmp"]
+[ext_resource type="Script" uid="uid://bnq7rukbvf7pv" path="res://Scripts/Resources/BattleSpawnPool.gd" id="2_urmkb"]
+[ext_resource type="Script" uid="uid://dkngd86d1ulhj" path="res://Scripts/Resources/SpawnData.gd" id="3_kc0yi"]
+[ext_resource type="Texture2D" uid="uid://ftx0cn2062gf" path="res://Resources/Images/InWorld/Encounters/Virus.png" id="4_guum4"]
+[ext_resource type="AudioStream" uid="uid://dnjyom8kl3bnr" path="res://Resources/Sounds/Musics/World.mp3" id="5_ihfxi"]
+[ext_resource type="Script" uid="uid://ddsm0t3kkty4w" path="res://Scripts/InWorld/NPCs/InteractArea.gd" id="7_7sq0d"]
+[ext_resource type="Resource" uid="uid://coacmd8sorrru" path="res://Data/Dialogue/Inkerbot.dialogue" id="7_up31e"]
+[ext_resource type="PackedScene" uid="uid://cldi3tqrpmucy" path="res://Resources/Models/Inkerbot.gltf" id="8_cfmf1"]
+
+[sub_resource type="Resource" id="Resource_1se7k"]
+script = ExtResource("3_kc0yi")
+Weight = 2
+Type = "Trojan"
+metadata/_custom_type_script = "uid://dkngd86d1ulhj"
+
+[sub_resource type="Resource" id="Resource_shq8t"]
+script = ExtResource("3_kc0yi")
+Weight = 1
+Type = "Spyware"
+metadata/_custom_type_script = "uid://dkngd86d1ulhj"
+
+[sub_resource type="Resource" id="Resource_lb50r"]
+script = ExtResource("3_kc0yi")
+Weight = 2
+Type = "Ransomware"
+metadata/_custom_type_script = "uid://dkngd86d1ulhj"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4grl1"]
+atlas = ExtResource("4_guum4")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wgcyy"]
+atlas = ExtResource("4_guum4")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ee60x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4grl1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wgcyy")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[sub_resource type="Resource" id="Resource_6f1e5"]
+script = ExtResource("2_urmkb")
+Spawn_Pool = Array[ExtResource("3_kc0yi")]([SubResource("Resource_1se7k"), SubResource("Resource_shq8t"), SubResource("Resource_lb50r")])
+World_Sprite = SubResource("SpriteFrames_ee60x")
+metadata/_custom_type_script = "uid://bnq7rukbvf7pv"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_olno0"]
+size = Vector3(10, 0.01, 10)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_nadxs"]
+size = Vector2(10, 10)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lhlek"]
+size = Vector3(2.36058, 1.02582, 0.85639)
+
+[node name="Map" type="Node3D"]
+script = ExtResource("1_v6fmp")
+EnemyCount = 0
+SpaenPool = Dictionary[String, ExtResource("2_urmkb")]({
+"Virus": SubResource("Resource_6f1e5")
+})
+Music = ExtResource("5_ihfxi")
+Camera_fov = 60.0
+
+[node name="Pavimento" type="StaticBody3D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pavimento"]
+shape = SubResource("BoxShape3D_olno0")
+debug_color = Color(0, 0.6, 0.7, 0.42)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pavimento"]
+mesh = SubResource("PlaneMesh_nadxs")
+skeleton = NodePath("../..")
+
+[node name="PlayerSpawn" type="Node3D" parent="." groups=["PlayerSpawn"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.27196, 2.28861)
+
+[node name="Inkerbot" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0915747, 0, -2.42261)
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Inkerbot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00170815, 0.603, 1.06635)
+shape = SubResource("BoxShape3D_lhlek")
+debug_color = Color(0, 0.6, 0.7, 0.42)
+
+[node name="InteractArea" type="Area3D" parent="Inkerbot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.570797, 0.990061)
+script = ExtResource("7_7sq0d")
+Dialogue = ExtResource("7_up31e")
+Flag = "Inkerbot"
+metadata/_custom_type_script = "uid://ddsm0t3kkty4w"
+
+[node name="blockbench_export" parent="Inkerbot" instance=ExtResource("8_cfmf1")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)

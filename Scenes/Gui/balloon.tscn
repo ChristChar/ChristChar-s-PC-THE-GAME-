@@ -136,10 +136,10 @@ theme = SubResource("Theme_qq3yp")
 [node name="Character" type="TextureRect" parent="Balloon"]
 custom_minimum_size = Vector2(250, 250)
 layout_mode = 0
-offset_left = 60.0
-offset_top = 220.0
-offset_right = 310.0
-offset_bottom = 470.0
+offset_left = 90.0
+offset_top = 591.0
+offset_right = 340.0
+offset_bottom = 841.0
 expand_mode = 1
 
 [node name="Panel" type="Panel" parent="Balloon"]

@@ -3,7 +3,10 @@ extends GridContainer
 const Path = "res://Data/Resources/Maps/"
 
 var Maps = [
-	preload(Path + "ChristChar's PC.tres")
+	preload(Path + "ChristChar's PC.tres"),
+	preload(Path + "Pixy's PC.tres"),
+	preload(Path + "Internet.tres"),
+	preload(Path + "Inkerbot's PC.tres")
 ]
 
 func _ready():

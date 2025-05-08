@@ -5,25 +5,29 @@ func _ready():
 	body_exited.connect(_on_body_exited)
 
 func _on_body_entered(body):
-	for child in body.get_children():
+	Set_transparency(body, 0.15)
+
+func Set_transparency(node: Node, alpha: float):
+	for child in node.get_children():
 		if child is MeshInstance3D:
-			# Duplica la mesh per renderla unica
-			var mesh_copiata = child.mesh.duplicate()
-			# Duplica il materiale per renderlo unico
-			var material = mesh_copiata.surface_get_material(0).duplicate()
-			material.albedo_color = Color(1, 1, 1, 0.3)
-			mesh_copiata.surface_set_material(0, material)
-			child.mesh = mesh_copiata
-		_on_body_entered(child)
+			# Duplica il mesh e il materiale
+			var new_mesh = child.mesh.duplicate(true)
+			var mat = new_mesh.surface_get_material(0)
+			if mat:
+				mat = mat.duplicate(true)
+				# Imposta colore e canale alfa
+				mat.albedo_color = Color(1,1,1, alpha)
+				# Abilita la trasparenza in alpha‑blend
+				mat.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
+				# Opzionale: disabilita culling e regola depth draw
+				mat.cull_mode = BaseMaterial3D.CULL_DISABLED
+				mat.depth_draw_mode = BaseMaterial3D.DEPTH_DRAW_ALWAYS
+				new_mesh.surface_set_material(0, mat)
+			child.mesh = new_mesh
+		# Ricorsione sui figli
+		Set_transparency(child, alpha)
+
+	
 
 func _on_body_exited(body):
-	for child in body.get_children():
-		if child is MeshInstance3D:
-			# Duplica la mesh per renderla unica
-			var mesh_copiata = child.mesh.duplicate()
-			# Duplica il materiale per renderlo unico
-			var material = mesh_copiata.surface_get_material(0).duplicate()
-			material.albedo_color = Color(1, 1, 1, 1)
-			mesh_copiata.surface_set_material(0, material)
-			child.mesh = mesh_copiata
-		_on_body_exited(child)
+	Set_transparency(body, 1.0)

@@ -1,0 +1,11 @@
+using Team
+
+~ Start
+if not Flags["Inkerbot"]:
+	Inkerbot: Hi! I'm watching Murder Drones for the 69th time, what are you doing here?
+	ChristChar: I'm here to ask you if you want to join my awesome RPG adventure for the internet world!
+	Inkerbot: Sure! I love RPGs!
+	do! Team.ObtainCharacter("Inkerbot")
+else:
+	Inkerbot: What do you want now?
+=> END

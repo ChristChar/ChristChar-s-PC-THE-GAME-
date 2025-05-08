@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://1do7pcgorcac"]
+
+[sub_resource type="Gradient" id="Gradient_qpo1d"]
+colors = PackedColorArray(0, 0.732729, 0.164841, 1, 0.333553, 1, 0.519177, 1)
+
+[node name="Damage" type="CPUParticles2D"]
+z_index = 10
+emitting = false
+amount = 50
+emission_shape = 1
+emission_sphere_radius = 50.0
+direction = Vector2(0, -1)
+gravity = Vector2(0, -490)
+initial_velocity_min = 50.0
+initial_velocity_max = 300.0
+angle_min = -360.0
+angle_max = 360.0
+scale_amount_min = 10.0
+scale_amount_max = 20.0
+color_initial_ramp = SubResource("Gradient_qpo1d")
