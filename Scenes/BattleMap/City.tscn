@@ -1,0 +1,65 @@
+[gd_scene load_steps=7 format=3 uid="uid://djk5t00cg8uat"]
+
+[ext_resource type="PackedScene" uid="uid://dv8sls87lph4v" path="res://Resources/Models/Edifici/Edificio generico basso.gltf" id="1_65b0a"]
+[ext_resource type="PackedScene" uid="uid://cem7vcm7euamy" path="res://Resources/Models/Edifici/Edificio generico.gltf" id="2_2e1l3"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_qswjb"]
+size = Vector2(30, 15)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0t0jl"]
+sky_top_color = Color(1, 1, 1, 1)
+sky_horizon_color = Color(1.66066, 1.66066, 1.66066, 1)
+ground_bottom_color = Color(0.533037, 0.533037, 0.533037, 1)
+ground_horizon_color = Color(1.66066, 1.66066, 1.66066, 1)
+energy_multiplier = 0.75
+
+[sub_resource type="Sky" id="Sky_hta84"]
+sky_material = SubResource("ProceduralSkyMaterial_0t0jl")
+
+[sub_resource type="Environment" id="Environment_bkrha"]
+background_mode = 2
+sky = SubResource("Sky_hta84")
+ambient_light_sky_contribution = 0.5
+ambient_light_energy = 0.3
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="City" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_qswjb")
+skeleton = NodePath("")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_bkrha")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 10.2486, 0)
+light_energy = 16.0
+shadow_enabled = true
+shadow_bias = 0.01
+spot_range = 15.0
+
+[node name="1" parent="." instance=ExtResource("1_65b0a")]
+transform = Transform3D(-1.5, 0, -2.26494e-07, 0, 1.5, 0, 2.26494e-07, 0, -1.5, -13.1776, 0, -9.09666)
+
+[node name="2" parent="." instance=ExtResource("2_2e1l3")]
+transform = Transform3D(-1.5, 0, -2.26494e-07, 0, 1.5, 0, 2.26494e-07, 0, -1.5, -9.31013, 0, -9.20975)
+
+[node name="3" parent="." instance=ExtResource("1_65b0a")]
+transform = Transform3D(-1.5, 0, -2.26494e-07, 0, 1.5, 0, 2.26494e-07, 0, -1.5, -5.44526, 0, -9.09666)
+
+[node name="4" parent="." instance=ExtResource("2_2e1l3")]
+transform = Transform3D(-1.5, 0, -2.26494e-07, 0, 1.5, 0, 2.26494e-07, 0, -1.5, -1.57775, 0, -9.20975)
+
+[node name="5" parent="." instance=ExtResource("1_65b0a")]
+transform = Transform3D(-1.5, 0, -2.26494e-07, 0, 1.5, 0, 2.26494e-07, 0, -1.5, 2.28712, 0, -9.09666)
+
+[node name="6" parent="." instance=ExtResource("2_2e1l3")]
+transform = Transform3D(-1.5, 0, -2.26494e-07, 0, 1.5, 0, 2.26494e-07, 0, -1.5, 6.15463, 0, -9.20975)
+
+[node name="7" parent="." instance=ExtResource("1_65b0a")]
+transform = Transform3D(-1.5, 0, -2.26494e-07, 0, 1.5, 0, 2.26494e-07, 0, -1.5, 9.98617, 0, -9.09666)
+
+[node name="8" parent="." instance=ExtResource("2_2e1l3")]
+transform = Transform3D(-1.5, 0, -2.26494e-07, 0, 1.5, 0, 2.26494e-07, 0, -1.5, 13.8537, 0, -9.20975)

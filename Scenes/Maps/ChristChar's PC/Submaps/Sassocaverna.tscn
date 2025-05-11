@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bw81o7oma2ta1" path="res://Resources/Images/Textures/Stone.jpg" id="1_mamrf"]
 [ext_resource type="Script" uid="uid://bh4nnc5ukqkxd" path="res://Scripts/InWorld/Map.gd" id="1_y65il"]
 [ext_resource type="AudioStream" uid="uid://cfbfhdvedj24x" path="res://Resources/Sounds/Musics/Cave.mp3" id="2_8x2e2"]
-[ext_resource type="Texture2D" uid="uid://bdgribnrdrsk0" path="res://Resources/Images/BattleBackground/Cave.png" id="3_b8y1b"]
+[ext_resource type="PackedScene" uid="uid://bchbjrg40vvct" path="res://Scenes/BattleMap/Cave.tscn" id="3_b8y1b"]
 [ext_resource type="Material" uid="uid://cfcjyov2rhcx7" path="res://Resources/Materials/Stone.tres" id="4_2ea7n"]
 [ext_resource type="Script" uid="uid://ccx5pux84i63m" path="res://Scripts/InWorld/ReturnInMainMApArea.gd" id="4_g071v"]
 [ext_resource type="PackedScene" uid="uid://3o7mpjtxqimg" path="res://Resources/Models/Tavolo di rocky.gltf" id="5_g071v"]

@@ -1,16 +1,21 @@
 extends Button
 class_name MoveButton
 
+var InMenu = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	size = Vector2(200, 50)
 	connect("pressed", _on_move_button)
 	z_index = 10
 	if text != "Skip":
-		var bg_color = File.RGB_to_color(Data.Type_data[Data.Move_data[text]["Type"]]["Color"])
-		var stylebox = StyleBoxFlat.new()
-		stylebox.bg_color = bg_color
-		add_theme_stylebox_override("normal", stylebox)
+		var Style = load("res://Data/Resources/TypesStyle/" + Data.Move_data[text]["Type"] + ".tres")
+		var bg_color: Color
+		if Style is StyleBoxFlat:
+			bg_color = Style.bg_color
+		else:
+			bg_color = Color(1,1,1)
+		add_theme_stylebox_override("normal", Style)
 		var color: Color
 		if File.is_closer_to_white(bg_color):
 			color = Color(0,0,0)
@@ -23,4 +28,7 @@ func _process(delta):
 	pass
 
 func _on_move_button():
-	get_parent().get_parent().Selected_move = text
+	if InMenu:
+		get_parent().get_parent().Selected_move = text
+	else:
+		get_parent().get_parent().get_parent().Selected_move = text

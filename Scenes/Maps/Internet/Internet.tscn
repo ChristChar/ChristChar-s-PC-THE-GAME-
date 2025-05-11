@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://dc3yt213os33k"]
+[gd_scene load_steps=43 format=3 uid="uid://dc3yt213os33k"]
 
 [ext_resource type="Script" uid="uid://bh4nnc5ukqkxd" path="res://Scripts/InWorld/Map.gd" id="1_6uk2h"]
 [ext_resource type="Script" uid="uid://bnq7rukbvf7pv" path="res://Scripts/Resources/BattleSpawnPool.gd" id="2_h55wy"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://ftx0cn2062gf" path="res://Resources/Images/InWorld/Encounters/Virus.png" id="4_flw3d"]
 [ext_resource type="AudioStream" uid="uid://dnjyom8kl3bnr" path="res://Resources/Sounds/Musics/World.mp3" id="5_a46cf"]
 [ext_resource type="PackedScene" uid="uid://b83fbc4e7njwv" path="res://Resources/Models/Edifici/Edificio Google.gltf" id="6_0h2o1"]
+[ext_resource type="PackedScene" uid="uid://djk5t00cg8uat" path="res://Scenes/BattleMap/City.tscn" id="6_spxj2"]
 [ext_resource type="PackedScene" uid="uid://cem7vcm7euamy" path="res://Resources/Models/Edifici/Edificio generico.gltf" id="7_5kffo"]
 [ext_resource type="PackedScene" uid="uid://dv8sls87lph4v" path="res://Resources/Models/Edifici/Edificio generico basso.gltf" id="8_y3ysd"]
 [ext_resource type="PackedScene" uid="uid://chr0yq2huw68i" path="res://Resources/Models/Edifici/Edificio_YT.gltf" id="9_y3ysd"]
@@ -140,6 +141,7 @@ SpaenPool = Dictionary[String, ExtResource("2_h55wy")]({
 "Virus": SubResource("Resource_6f1e5")
 })
 Music = ExtResource("5_a46cf")
+BattleBackground = ExtResource("6_spxj2")
 Camera_fov = 105.0
 
 [node name="Pavimento" type="StaticBody3D" parent="."]

@@ -12,7 +12,13 @@ func _ready():
 		disabled = true
 		return
 	# Ottieni il colore dal file dei dati
-	var bg_color = File.RGB_to_color(Data.Type_data[Data.Move_data[Move]["Type"]]["Color"])
+	var Style = load("res://Data/Resources/TypesStyle/" + Data.Move_data[Move]["Type"] + ".tres")
+	var bg_color: Color
+	if Style is StyleBoxFlat:
+		bg_color = Style.bg_color
+	else:
+		bg_color = Color(1,1,1)
+	
 	
 	# Determina il colore del testo in base alla luminosità dello sfondo
 	var text_color: Color
@@ -26,9 +32,7 @@ func _ready():
 	add_theme_color_override("font_focus_color", text_color)
 	
 	# Crea uno stylebox con lo sfondo colorato
-	var stylebox = get_theme_stylebox("normal").duplicate()
-	stylebox.bg_color = bg_color
-	add_theme_stylebox_override("normal", stylebox)
+	add_theme_stylebox_override("normal", Style)
 
 
 	

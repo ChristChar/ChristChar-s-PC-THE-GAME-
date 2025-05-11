@@ -1,10 +1,32 @@
 [gd_scene load_steps=3 format=3 uid="uid://b5o8c4s6qp3he"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t8jae"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n02so"]
 bg_color = Color(1, 0, 0, 1)
+skew = Vector2(0.5, 0)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 4
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8sfpf"]
 bg_color = Color(0, 1, 0, 1)
+skew = Vector2(0.5, 0)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 4
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
 
 [node name="BarraDellaVita" type="ProgressBar"]
 offset_left = -140.0
@@ -12,7 +34,7 @@ offset_top = -8.0
 offset_right = 140.0
 offset_bottom = 8.0
 mouse_filter = 2
-theme_override_styles/background = SubResource("StyleBoxFlat_t8jae")
+theme_override_styles/background = SubResource("StyleBoxFlat_n02so")
 theme_override_styles/fill = SubResource("StyleBoxFlat_8sfpf")
 max_value = 1000.0
 step = 1.0

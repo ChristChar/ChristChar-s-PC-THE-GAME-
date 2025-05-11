@@ -1,0 +1,101 @@
+[gd_scene load_steps=9 format=3 uid="uid://bchbjrg40vvct"]
+
+[ext_resource type="Texture2D" uid="uid://bw81o7oma2ta1" path="res://Resources/Images/Textures/Stone.jpg" id="1_pwltu"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_nknoq"]
+sky_top_color = Color(0.201527, 0.201527, 0.201527, 1)
+sky_horizon_color = Color(0.452179, 0.452179, 0.452179, 1)
+ground_bottom_color = Color(0.215902, 0.215902, 0.215902, 1)
+ground_horizon_color = Color(0.452179, 0.452179, 0.452179, 1)
+energy_multiplier = 0.75
+
+[sub_resource type="Sky" id="Sky_munvg"]
+sky_material = SubResource("ProceduralSkyMaterial_nknoq")
+
+[sub_resource type="Environment" id="Environment_tmddi"]
+background_mode = 2
+sky = SubResource("Sky_munvg")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ey2e8"]
+albedo_texture = ExtResource("1_pwltu")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_4k3r1"]
+material = SubResource("StandardMaterial3D_ey2e8")
+size = Vector2(30, 15)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1bvcc"]
+albedo_texture = ExtResource("1_pwltu")
+
+[sub_resource type="BoxMesh" id="BoxMesh_ubdn2"]
+material = SubResource("StandardMaterial3D_1bvcc")
+
+[node name="Cave" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_tmddi")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_4k3r1")
+skeleton = NodePath("")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(0.0130722, 4.37077e-08, -0.999915, 0.999915, -5.71404e-10, 0.0130722, 0, -1, -4.37114e-08, -20.3224, 4.09612, 0)
+light_energy = 16.0
+shadow_enabled = true
+shadow_bias = 0.01
+spot_range = 50.0
+
+[node name="Rocks" type="Node3D" parent="."]
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Rocks"]
+transform = Transform3D(1.08848, 0, 0.688063, 0, 1, 0, -1.03209, 0, 0.725651, -9.41725, 0.5, -3.77489)
+mesh = SubResource("BoxMesh_ubdn2")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Rocks"]
+transform = Transform3D(1.34043, 0, 0.44882, 0, 1, 0, -0.67323, 0, 0.893622, -11.0799, 0.5, -4.13299)
+mesh = SubResource("BoxMesh_ubdn2")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Rocks"]
+transform = Transform3D(1.49565, 0, -0.0760752, 0, 1, 0, 0.114113, 0, 0.997102, -10.222, 1.5, -4.052)
+mesh = SubResource("BoxMesh_ubdn2")
+skeleton = NodePath("../..")
+
+[node name="Rocks2" type="Node3D" parent="."]
+transform = Transform3D(0.941294, 0, -0.337588, 0, 1, 0, 0.337588, 0, 0.941294, 19.2695, 0, 2.72284)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Rocks2"]
+transform = Transform3D(1.08848, 0, 0.688063, 0, 1, 0, -1.03209, 0, 0.725651, -9.41725, 0.5, -3.77489)
+mesh = SubResource("BoxMesh_ubdn2")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Rocks2"]
+transform = Transform3D(1.34043, 0, 0.44882, 0, 1, 0, -0.67323, 0, 0.893622, -11.0799, 0.5, -4.13299)
+mesh = SubResource("BoxMesh_ubdn2")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Rocks2"]
+transform = Transform3D(1.49565, 0, -0.0760752, 0, 1, 0, 0.114113, 0, 0.997102, -10.222, 1.5, -4.052)
+mesh = SubResource("BoxMesh_ubdn2")
+skeleton = NodePath("../..")
+
+[node name="Rocks3" type="Node3D" parent="."]
+transform = Transform3D(0.768306, 0, 0.640083, 0, 1, 0, -0.640083, 0, 0.768306, 19.4858, 0, 0.884583)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Rocks3"]
+transform = Transform3D(1.08848, 0, 0.688063, 0, 1, 0, -1.03209, 0, 0.725651, -9.41725, 0.5, -3.77489)
+mesh = SubResource("BoxMesh_ubdn2")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Rocks3"]
+transform = Transform3D(1.34043, 0, 0.44882, 0, 1, 0, -0.67323, 0, 0.893622, -11.0799, 0.5, -4.13299)
+mesh = SubResource("BoxMesh_ubdn2")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Rocks3"]
+transform = Transform3D(1.49565, 0, -0.0760752, 0, 1, 0, 0.114113, 0, 0.997102, -10.222, 1.5, -4.052)
+mesh = SubResource("BoxMesh_ubdn2")
+skeleton = NodePath("../..")

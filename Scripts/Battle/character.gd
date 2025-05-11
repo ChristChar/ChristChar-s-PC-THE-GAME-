@@ -1,4 +1,4 @@
-extends Area2D
+extends Area3D
 class_name CharacterData
 
 # Variabili del personaggio
@@ -11,8 +11,9 @@ var DamagePartclesTimer = 0
 var ReturnToIdle = 0
 var Energy = 0
 var MaxEnergy = 0
+var Protected = 0
 var HP: int
-var StartPosition: Vector2
+var StartPosition: Vector3
 var Current_Moves = []
 var Learnable_Moves = []
 var Status = {}
@@ -25,7 +26,9 @@ var AttTarget: CharacterData
 var animation: Dictionary
 
 var LifeBar := ProgressBar.new()
-var AnimatedSprite := AnimatedSprite2D.new()
+var AnimatedSprite := AnimatedSprite3D.new()
+var SV := SubViewport.new()
+var Shield := Sprite2D.new()
 
 const HealthBar = "res://Scenes/BarraDellaVita.tscn"
 const Particles = {
@@ -45,7 +48,8 @@ const  Audios = {
 	"Sleep": "res://Resources/Sounds/BattleSounds/Sleep.mp3",
 	"Heal": "res://Resources/Sounds/BattleSounds/Heal.mp3",
 	"UpperStatS": "res://Resources/Sounds/BattleSounds/UpperStat.mp3",
-	"LowerStatS": "res://Resources/Sounds/BattleSounds/LowerStat.mp3"
+	"LowerStatS": "res://Resources/Sounds/BattleSounds/LowerStat.mp3",
+	"Shield": "res://Resources/Sounds/BattleSounds/Shield.mp3"
 }
 const StatModificMoltp = {
 	-6: 0.25,
@@ -87,12 +91,18 @@ func Poison():
 	Take_damage(Calcolate_Stat("HP") * Status["Poison"] / 100)
 	Start_Particles("Poison")
 
-func EndTurn():
+func EndRound():
 	if Faint:
 		return
 	for s in Status:
 		if "Function" in StatusData[s]:
 			StatusData[s]["Function"].call()
+
+func EndTurn():
+	if Faint:
+		return
+	if Protected > 0:
+		Protected -= 1
 
 func UpdateEffectsIcon():
 	var Grid: GridContainer = LifeBar.get_node("Effects")
@@ -108,17 +118,14 @@ func _init(type, level:int = 10):
 	if type is CharacterSave:
 		Level = type.Level
 		Character_type = type.Character_type
-		HP = type.HP
 		EXP = type.EXP
 		Current_Moves = type.Current_Moves
 		Learnable_Moves = type.Learnable_Moves
-		Energy = type.Energy
-		Faint = type.Faint
 	else:
 		Character_type = type
 		Level = level
-		HP = Calcolate_Stat("HP")
-		Energy = MaxEnergy
+	Energy = MaxEnergy
+	HP = Calcolate_Stat("HP")
 	Calcolate_Learnable_Moves()
 	if Current_Moves == []:
 		assign_moves()
@@ -139,9 +146,9 @@ func _ready():
 	StartPosition = global_position
 	add_to_group("Combattente")
 	# Configurazione CollisionShape2D
-	var NewShape = CollisionShape2D.new()
-	var Shape = RectangleShape2D.new()
-	Shape.size = Vector2(300, 300)
+	var NewShape = CollisionShape3D.new()
+	var Shape = BoxShape3D.new()
+	Shape.size = Vector3(3,3,0.5)
 	NewShape.shape = Shape
 	add_child(NewShape)
 	# Configurazione AnimatedSprite2D
@@ -164,21 +171,41 @@ func _ready():
 	AnimatedSprite.sprite_frames = NewFrames
 	if IsEnemy:
 		AnimatedSprite.flip_h = true
-	AnimatedSprite.name = "AnimatedSprite"
+	AnimatedSprite.texture_filter = BaseMaterial3D.TEXTURE_FILTER_NEAREST
+	AnimatedSprite.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_ON
+		# 4. Abilita la modalità di alpha cut pre‐pass
+	AnimatedSprite.alpha_cut     = SpriteBase3D.ALPHA_CUT_OPAQUE_PREPASS
+	AnimatedSprite.alpha_scissor_threshold = 0.5
+	AnimatedSprite.billboard = BaseMaterial3D.BILLBOARD_DISABLED
 	add_child(AnimatedSprite)
 	AnimatedSprite.play("Idle")
-
+	SV.size = Vector2(600,600)
+	SV.render_target_update_mode = SubViewport.UPDATE_ALWAYS
+	SV.transparent_bg = true
+	add_child(SV)
+	var Sprt = Sprite3D.new()
+	Sprt.position.z = 0.2
+	Sprt.texture = SV.get_texture()
+	add_child(Sprt)
+	Shield.texture = preload("res://Resources/Images/BattleAnimations/Shield.png")
+	Shield.modulate = Color(1,1,1,0.65)
+	Shield.scale = Vector2(5,5)
+	Shield.position = Vector2(300,300)
+	Shield.visible = false
+	SV.add_child(Shield)
 	# Configurazione barra della vita
 	LifeBar = load(HealthBar).instantiate()
-	LifeBar.position = Vector2(-140, -175)
+	LifeBar.position = Vector2(-140 + 300, -175 + 300)
 	LifeBar.max_value = HP
-	add_child(LifeBar)
+	SV.add_child(LifeBar)
 	
 	#Configurazione particles
 	for Particle in Particles:
 		var NewParticle = load(Particles[Particle]).instantiate()
 		NewParticle.name = Particle
-		add_child(NewParticle)
+		NewParticle.scale = Vector2(2,2)
+		NewParticle.position = Vector2(300,300)
+		SV.add_child(NewParticle)
 	
 	#Configurazione suoni
 	var Path = "res://Resources/Sounds/Characters/" + Character_type
@@ -191,11 +218,9 @@ func _ready():
 		else:
 			NewAudioStreamPlayer.stream = load(Audios[Sound])
 		add_child(NewAudioStreamPlayer)
-	
 	# Collegamento segnali
 	connect("mouse_entered", Info)
 	connect("mouse_exited", Not_Info)
-	Original_ZIndex = z_index
 	UpdateEffectsIcon()
 	
 
@@ -209,7 +234,7 @@ func Not_Info():
 
 func FocusSwitch(on:bool):
 	var color = Color(0.9, 0.9, 0.9, 0.6) if on else Color(1, 1, 1)
-	modulate = color
+	AnimatedSprite.modulate = color
 	Focus = on
 
 func DIE():
@@ -230,11 +255,15 @@ func Reset():
 	LifeBar.value = Calcolate_Stat("HP")
 	AnimatedSprite.play("Idle")
 	Energy = MaxEnergy
-	Status = {}
+	if Status.size() > 0:
+		Status = {}
+		UpdateEffectsIcon()
 
 func DoIDoParticles() -> bool:
 	if "Damage" in animation:
 		return animation["Damage"]
+	elif AttTarget.Protected > 0:
+		return false
 	return true
 
 func _process(delta):
@@ -244,19 +273,18 @@ func _process(delta):
 	if Attacking:
 		match animation["Type"]:
 			"Follow":
-				if global_position.distance_to(AttTarget.global_position) < 10:
+				if global_position.distance_to(AttTarget.global_position) < 0.2:
 					Attacking = false
 					if DoIDoParticles():
 						AttTarget.Start_Particles("Damage")
 					global_position = StartPosition
 					AnimatedSprite.play("Idle")
-					z_index = Original_ZIndex
 					Finish_Attack.emit()
 				else:
 					global_position = lerp(global_position, AttTarget.global_position, animation["Speed"])
 			"ThrowObject":
 				if $Object:
-					if $Object.global_position.distance_to(AttTarget.global_position) < 10:
+					if $Object.global_position.distance_to(AttTarget.global_position) < 0.2:
 						Attacking = false
 						if DoIDoParticles():
 							AttTarget.Start_Particles("Damage")
@@ -266,67 +294,76 @@ func _process(delta):
 					else:
 						$Object.global_position = lerp($Object.global_position, AttTarget.global_position, animation["Speed"])
 						if animation["Spinning"]:
-							$Object.rotation += delta * 10
+							$Object.rotation.x += delta * 10
 				else:
-					var NewObject = Sprite2D.new()
+					var NewObject = Sprite3D.new()
 					NewObject.texture = load(animation["Sprite"])
 					NewObject.name = "Object"
-					NewObject.z_index = 3
 					add_child(NewObject)
 			"Laser":
-				if $Object:
-					if $Object.get_point_position(1).distance_to($Object.to_local(AttTarget.global_position)) < 10:
+				if $LaserCylinder:
+					var cyl   = $LaserCylinder as MeshInstance3D
+					var end   = AttTarget.global_position
+					var dist  = cyl.global_position.distance_to(end)
+
+					cyl.global_position = cyl.global_position.move_toward(end, delta * 25)
+				
+					# 5) Fine azione
+					if dist < 0.2:
+						cyl.queue_free()
 						Attacking = false
 						if DoIDoParticles():
 							AttTarget.Start_Particles("Damage")
-						$Object.queue_free()
 						AnimatedSprite.play("Idle")
 						Finish_Attack.emit()
-					else:
-						var LinePosition = $Object.get_point_position(1)
-						$Object.clear_points()
-						$Object.add_point(Vector2(0,0))
-						$Object.add_point(lerp(LinePosition,$Object.to_local(AttTarget.global_position), 0.15))
 				else:
-					var NewObject = Line2D.new()
-					NewObject.name = "Object"
-					NewObject.width = animation["Width"]
-					NewObject.default_color = File.RGB_to_color(animation["Color"])
-					NewObject.z_index = 1
-					add_child(NewObject)
-					$Object.add_point(Vector2(0,0))
-					$Object.add_point(Vector2(0,0))
+					# Creazione iniziale identica
+					var cyl = MeshInstance3D.new()
+					cyl.name = "LaserCylinder"
+					var mesh = CylinderMesh.new()
+					mesh.top_radius    = 0.25
+					mesh.bottom_radius = 0.25
+					mesh.height        = 1
+					cyl.mesh = mesh
+					cyl.rotation = Vector3(0,0, TAU/4)
+					add_child(cyl)
 			"ExpandingCircle":
-				queue_redraw()
-				if "CurrentRadius" in animation:
+				if animation.has("CurrentRadius") and $CircleMesh:
+					animation["CurrentRadius"] += animation["Speed"] * delta
+					$CircleMesh.scale = Vector3.ONE * animation["CurrentRadius"]
 					if animation["CurrentRadius"] >= animation["Radius"]:
+						$CircleMesh.queue_free()
 						Attacking = false
-						AnimatedSprite.play("Idle")
-						if DoIDoParticles():
-							AttTarget.Start_Particles("Damage")
-						Finish_Attack.emit()
-						animation["CurrentRadius"] = 1
-					else:
-						animation["CurrentRadius"] += animation["Speed"] * delta
+						emit_signal("Finish_Attack")
 				else:
-					animation["CurrentRadius"] = 1
+					animation["CurrentRadius"] = 1.0
+					# inline spawn
+					var cm = MeshInstance3D.new()
+					cm.name = "CircleMesh"
+					var sm = SphereMesh.new()
+					var mt = StandardMaterial3D.new()
+					mt.albedo_color = File.RGB_to_color(animation["Color"])
+					mt.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA_HASH
+					sm.material = mt
+					cm.mesh = sm
+					cm.scale = Vector3.ONE * animation["CurrentRadius"]
+					add_child(cm)
 			"ObjectGust":
 				if "objects" in animation:
 					animation["NewObjectCountdown"] -= delta
 					if animation["NewObjectCountdown"] <= 0 and animation["ObjetcsCount"] + animation["objects"].size() < 10:
 						animation["NewObjectCountdown"] = randf_range(0.1,0.25)
-						var NewSprite = Sprite2D.new()
+						var NewSprite = Sprite3D.new()
 						NewSprite.texture = load(animation["Sprites"].pick_random())
-						NewSprite.z_index = 12
 						if animation["Spinning"]:
-							NewSprite.rotation = randf_range(0, TAU)
+							NewSprite.rotation = Vector3(0,0,randf_range(0, TAU))
 						animation["objects"].append(NewSprite)
 						add_child(NewSprite)
-					for object: Sprite2D in animation["objects"]:
+					for object: Sprite3D in animation["objects"]:
 						object.global_position = object.global_position.move_toward(AttTarget.global_position, animation["Speed"] * delta)
 						if animation["Spinning"]:
-							object.rotation += delta * 10
-						if object.global_position.distance_to(AttTarget.global_position) < 10:
+							object.rotation.z += delta * 10
+						if object.global_position.distance_to(AttTarget.global_position) < 0.2:
 							if DoIDoParticles():
 								AttTarget.Start_Particles("Damage")
 								AttTarget.Play_Sound("Hit")
@@ -344,8 +381,8 @@ func _process(delta):
 					animation["objects"] = []
 					animation["ObjetcsCount"] = 0
 					animation["NewObjectCountdown"] = 0.0
-
-	var DamageParticles: CPUParticles2D = get_node(CurrentParticle)
+	Shield.visible = Protected > 0
+	var DamageParticles: CPUParticles2D = SV.get_node(CurrentParticle)
 	if DamagePartclesTimer > 0:
 		DamageParticles.emitting = true
 		DamagePartclesTimer -= delta
@@ -356,15 +393,8 @@ func _process(delta):
 	else:
 		ReturnToIdle -= delta
 
-func _draw():
-	if Attacking:
-		match animation["Type"]:
-			"ExpandingCircle":
-				var pos = to_local(AttTarget.global_position) if animation["Opponent"] else Vector2.ZERO
-				draw_circle(pos, animation["CurrentRadius"], File.RGB_to_color(animation["Color"]))
-
 func Start_Particles(Type: String, time: float = 0.4):
-	get_node(CurrentParticle).emitting = false
+	SV.get_node(CurrentParticle).emitting = false
 	CurrentParticle = Type
 	DamagePartclesTimer = time
 
@@ -389,10 +419,10 @@ func Take_damage(Damage: int):
 	LifeBar.value = HP
 	if Damage > 0:
 		Play_Sound("Hit")
-		get_node("DamageText").Start(str(Damage), Color(1,0,0))
+		SV.get_node("DamageText").Start(str(Damage), Color(1,0,0))
 	else:
 		Play_Sound("Heal")
-		get_node("DamageText").Start(str(-Damage), Color(0,1,0))
+		SV.get_node("DamageText").Start(str(-Damage), Color(0,1,0))
 	if HP <= 0:
 		DIE()
 
@@ -576,8 +606,7 @@ func SetupAttackAnimation():
 				AnimatedSprite.sprite_frames.set_animation_speed(animation["CharacterAnimation"]["AnimName"], animation["CharacterAnimation"]["FPS"])
 		AnimatedSprite.play(animation["CharacterAnimation"]["AnimName"])
 	match  animation["Type"]:
-		"Follow":
-			z_index = 20
+		pass
 
 func Use_Move(Move: String, Target: CharacterData):
 	get_parent().TextUpdate(Character_type + " use " + Move + " on " + Target.Character_type + "!!!")
@@ -597,66 +626,80 @@ func Use_Move(Move: String, Target: CharacterData):
 				}
 			SetupAttackAnimation()
 			await Finish_Attack
-		if Data.Move_data[Move]["Move type"] != "Status":
-			var Texts = []
-			var power = Data.Move_data[Move]["Power"]
-			var attack = Calcolate_Stat("ATT") if Data.Move_data[Move]["Move type"] == "Fisica" else Calcolate_Stat("PI")
-			var defens = Target.Calcolate_Stat("DIF")
-			var stab = 1.5 if Data.Move_data[Move]["Type"] in Data.Character_Data[Character_type]["Types"] else 1.0
-			var type_bonus = 1.0
-			for type in Data.Character_Data[Target.Character_type]["Types"]:
-				if Data.Move_data[Move]["Type"] in Data.Type_data[type]["Effectiveness"]:
-					type_bonus *= Data.Type_data[type]["Effectiveness"][Data.Move_data[Move]["Type"]]
-			if type_bonus == 0:
-				Texts.append("It has no effect")
-			elif type_bonus > 1:
-				Texts.append("IT HURTS")
-			elif type_bonus < 1:
-				Texts.append("He didn't do anything special to him")
-			var damage = (((2 * Level / 5.0 + 2) * power * attack / defens) / 50.0 + 2) * stab * type_bonus * randf_range(0.9,1.1)
-			if randf() < 0.05:
-				damage *= 2
-				Texts.append("CRITICAL HIT")
-			Target.Take_damage(max(1, round(damage)))
-			for text in Texts:
-				await get_tree().create_timer(0.01).timeout
-				get_parent().TextUpdate(text)
-				await get_parent().Enter
-		if "Script" in Data.Move_data[Move]:
-			var Index = 0
-			for ScriptData in Data.Move_data[Move]["Script"]:
-				var script = load("res://Scripts/Move Scripts/"+ ScriptData["Script"] +".gd").new()
-				add_child(script)
-				script.script(self, Target, Move, Index)
-				script.queue_free()
-				Index += 1
-		if "Stat" in Data.Move_data[Move]:
-			for Stat in Data.Move_data[Move]["Stat"]:
-				if Target.StatModific[Stat["Stat"]] == 6 or Target.StatModific[Stat["Stat"]] == -6:
+		if Target != self and Target.IsEnemy != IsEnemy and Target.Protected > 0:
+			Target.Play_Sound("Shield")
+			await get_tree().create_timer(0.01).timeout
+			get_parent().TextUpdate("But " + Target.Character_type + "  protected!")
+			await get_parent().Enter
+		else:
+			if Data.Move_data[Move]["Move type"] != "Status":
+				var Texts = []
+				var power = Data.Move_data[Move]["Power"]
+				var attack = Calcolate_Stat("ATT") if Data.Move_data[Move]["Move type"] == "Fisica" else Calcolate_Stat("PI")
+				var defens = Target.Calcolate_Stat("DIF")
+				var stab = 1.5 if Data.Move_data[Move]["Type"] in Data.Character_Data[Character_type]["Types"] else 1.0
+				var type_bonus = 1.0
+				for type in Data.Character_Data[Target.Character_type]["Types"]:
+					if Data.Move_data[Move]["Type"] in Data.Type_data[type]["Effectiveness"]:
+						type_bonus *= Data.Type_data[type]["Effectiveness"][Data.Move_data[Move]["Type"]]
+				if type_bonus == 0:
+					Texts.append("It has no effect")
+				elif type_bonus > 1:
+					Texts.append("IT HURTS")
+				elif type_bonus < 1:
+					Texts.append("He didn't do anything special to him")
+				var damage = (((2 * Level / 5.0 + 2) * power * attack / defens) / 50.0 + 2) * stab * type_bonus * randf_range(0.9,1.1)
+				if randf() < 0.05:
+					damage *= 2
+					Texts.append("CRITICAL HIT")
+				Target.Take_damage(max(1, round(damage)))
+				for text in Texts:
 					await get_tree().create_timer(0.01).timeout
-					get_parent().TextUpdate(Stat["Stat"] + " of " + Target.Character_type + "  can no longer increase")
+					get_parent().TextUpdate(text)
 					await get_parent().Enter
-				else:
-					Target.StatModific[Stat["Stat"]] = max(min(Target.StatModific[Stat["Stat"]] +  Stat["Power"], 6), -6)
-					await get_tree().create_timer(0.01).timeout
-					var PlusOrMinus: String
-					if Stat["Power"] < 0:
-						PlusOrMinus = " decrease!!"
-						Target.Start_Particles("LowerStat")
-						Target.Play_Sound("LowerStatS")
+			if "Script" in Data.Move_data[Move]:
+				var Index = 0
+				for ScriptData in Data.Move_data[Move]["Script"]:
+					var script = load("res://Scripts/Move Scripts/"+ ScriptData["Script"] +".gd").new()
+					add_child(script)
+					script.script(self, Target, Move, Index)
+					script.queue_free()
+					Index += 1
+			if "Stat" in Data.Move_data[Move]:
+				for Stat in Data.Move_data[Move]["Stat"]:
+					if Target.StatModific[Stat["Stat"]] == 6 or Target.StatModific[Stat["Stat"]] == -6:
+						await get_tree().create_timer(0.01).timeout
+						get_parent().TextUpdate(Stat["Stat"] + " of " + Target.Character_type + "  can no longer increase")
+						await get_parent().Enter
 					else:
-						PlusOrMinus = " increases!!"
-						Target.Start_Particles("UpperStat")
-						Target.Play_Sound("UpperStatS")
-					get_parent().TextUpdate(Stat["Stat"] + " of " + Target.Character_type + PlusOrMinus)
-					await get_parent().Enter
-		if "Status" in Data.Move_data[Move]:
-			for Statuss in Data.Move_data[Move]["Status"]:
-				if randf() <= Data.Move_data[Move]["Status"][Statuss]["Chance"] / 100:
-					Target.AddStatus(Statuss ,Data.Move_data[Move]["Status"][Statuss]["Data"])  
-					await get_tree().create_timer(0.01).timeout
-					get_parent().TextUpdate(Target.Character_type + " now has " + Statuss)
-					await get_parent().Enter
+						Target.StatModific[Stat["Stat"]] = max(min(Target.StatModific[Stat["Stat"]] +  Stat["Power"], 6), -6)
+						await get_tree().create_timer(0.01).timeout
+						var PlusOrMinus: String
+						if Stat["Power"] < 0:
+							PlusOrMinus = " decrease!!"
+							Target.Start_Particles("LowerStat")
+							Target.Play_Sound("LowerStatS")
+						else:
+							PlusOrMinus = " increases!!"
+							Target.Start_Particles("UpperStat")
+							Target.Play_Sound("UpperStatS")
+						get_parent().TextUpdate(Stat["Stat"] + " of " + Target.Character_type + PlusOrMinus)
+						await get_parent().Enter
+			if "Status" in Data.Move_data[Move]:
+				for Statuss in Data.Move_data[Move]["Status"]:
+					if randf() <= Data.Move_data[Move]["Status"][Statuss]["Chance"] / 100:
+						Target.AddStatus(Statuss ,Data.Move_data[Move]["Status"][Statuss]["Data"])  
+						await get_tree().create_timer(0.01).timeout
+						get_parent().TextUpdate(Target.Character_type + " now has " + Statuss)
+						await get_parent().Enter
+			if "Effect" in Data.Move_data[Move]:
+				for Effect in  Data.Move_data[Move]["Effect"]:
+					match Effect:
+						"Protected":
+							if Data.Move_data[Move]["Effect"]["Protected"]["Target"] == "Target":
+								Target.Protected += Data.Move_data[Move]["Effect"]["Protected"]["Time"]
+							else:
+								Protected += Data.Move_data[Move]["Effect"]["Protected"]["Time"]
 	else:
 		Start_anmation("Fail", 1.5)
 		Play_Sound("Fail")

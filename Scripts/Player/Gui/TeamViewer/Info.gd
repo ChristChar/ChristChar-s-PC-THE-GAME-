@@ -44,7 +44,7 @@ func Update():
 		visible = true
 		var data: CharacterData = Team.CharactersData[Current_character]
 		$Name.text = Current_character + " L" + str(data.Level)
-		if OS.has_feature("Editor"):
+		if OS.has_feature("editor"):
 			var NewFrames = SpriteFrames.new()
 			var Path = "res://Resources/Images/Characters/" + data.Character_type + "/Idle"
 			NewFrames.add_animation("Idle")
@@ -76,6 +76,7 @@ func Update():
 			var NewButton = MoveButton.new()
 			NewButton.position.y = 50 * Index
 			NewButton.text = Move
+			NewButton.InMenu = true
 			$Buttons.add_child(NewButton)
 			Index += 1
 		$Exp.max_value = data.Get_Level_Up_EXP()

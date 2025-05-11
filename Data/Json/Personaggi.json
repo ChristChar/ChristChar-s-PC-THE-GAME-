@@ -78,7 +78,7 @@
 			"INT":  60,
 			"SPEED":40
 		},
-		"Moves": {"1":["Magic heal", "Rickroll","Magic Energy"]},
+		"Moves": {"1":["Magic heal", "Rickroll","Magic Energy", "Protect"]},
 		"Exp": 200,
 		"Category": "Friends",
 		"MaxEnergia": 100,
@@ -95,7 +95,7 @@
 			"INT":   50,
 			"SPEED": 150
 		},
-		"Moves": {"1":["Punch","Taskill"]},
+		"Moves": {"1":["Punch","Taskill", "Protect"]},
 		"Exp": 200,
 		"Category": "Friends",
 		"MaxEnergia": 300,
@@ -112,11 +112,28 @@
 			"INT":  80,
 			"SPEED":120
 		},
-		"Moves": {"1":["Shot", "Cutenesswave","Punch"]},
+		"Moves": {"1":["Shot", "Cutenesswave","Punch", "Protect"]},
 		"Exp": 200,
 		"Category": "Friends",
 		"MaxEnergia": 200,
 		"EnergiaRegeneration": 40
+	},
+	"Cat":{
+		"IsEnemy": false,
+		"Types": ["Cute","Meme"],
+		"Stats": {
+			"HP":   60,
+			"ATT":  100,
+			"PI":   2,
+			"DIF":  60,
+			"INT":  25,
+			"SPEED":180
+		},
+		"Moves": {"1":["Roar", "Cute Gaze", "Hit"]},
+		"Exp": 200,
+		"Category": "Animal",
+		"MaxEnergia": 300,
+		"EnergiaRegeneration": 50
 	},
 	"Trojan": {
 		"IsEnemy": true,
@@ -197,7 +214,7 @@
 			"INT":   20,
 			"SPEED": 301
 		},
-		"Moves": {"1":["Hit","Cookie spam"]},
+		"Moves": {"1":["Hit","Cookie spam", "Protect"]},
 		"Exp": 52,
 		"Category": "Enemy",
 		"MaxEnergia": 150,

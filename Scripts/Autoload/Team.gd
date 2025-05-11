@@ -1,4 +1,3 @@
-@tool
 extends Node
 
 var Flags = {}
@@ -10,6 +9,7 @@ var LastBattleResult = true
 var Maps
 var Inventory: Dictionary[ItemData, int] = {}
 var LastTalker: Node3D
+var Game: Node3D
 
 const animations = ["Idle","Dead","Fail", "Dying", "Nap"]
 const BattlePath = "res://Scenes/battagllia.tscn"
@@ -61,6 +61,7 @@ func _ready():
 	CharactersData["Bob"] =  CharacterData.new("Bob", 10)
 	CharactersData["ChristChar"] =  CharacterData.new("ChristChar", 10)
 	CharactersData["Pixy"] =  CharacterData.new("Pixy", 16)
+	CharactersData["Cat"] =  CharacterData.new("Cat", 12)
 	team = [CharactersData["ChristChar"], CharactersData["Bob"]]
 	LoadData()
 
@@ -103,8 +104,10 @@ func StartBattle(Enemys:Array[CharacterData]):
 	await get_tree().get_first_node_in_group("Player").BattleAnimationFinished
 	var Battle = load(BattlePath).instantiate()
 	Battle.EnemyTeam = Enemys
+	get_tree().root.remove_child(Game)
 	get_tree().root.add_child(Battle)
 	await Battle.Finish_Battle
+	get_tree().root.add_child(Game)
 	Battle.queue_free()
 	Pause = false
 	Is_in_battle = false

@@ -4,7 +4,7 @@ class_name Map
 @export var EnemyCount: int = 40
 @export var SpaenPool: Dictionary[String, SpawnPool]
 @export var Music: AudioStream
-@export var BattleBackground: Texture2D
+@export var BattleBackground: PackedScene
 @export var SpawnRange: int = 50
 @export var Camera_fov: float = 75.0
 

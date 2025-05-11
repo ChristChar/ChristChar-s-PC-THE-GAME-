@@ -1,0 +1,6 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://pyfuh1o4odfg"]
+
+[ext_resource type="Texture2D" uid="uid://bu2j43dogm722" path="res://Resources/Images/Gamer.jpeg" id="1_km76h"]
+
+[resource]
+texture = ExtResource("1_km76h")

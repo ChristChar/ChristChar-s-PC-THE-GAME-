@@ -8,6 +8,35 @@
 		"Type": "Normal",
 		"Description": "hits the opponent with low power"
 	},
+	"Cute Gaze": {
+		"Power": 35,
+		"Chance": 95,
+		"Energy": 35,
+		"Target": "Enemy",
+		"Move type": "Fisica",
+		"Type": "Cute",
+		"Description": "Look the opponent with a cute gaze, thanks at your cuteness you can't be hit fot 2 turns",
+		"Effect": {
+			"Protected": {
+				"Time": 4,
+				"Target": "Self"
+			}
+		}
+	},
+	"Protect": {
+		"Chance": 100,
+		"Energy": 30,
+		"Target": "Self",
+		"Move type": "Status",
+		"Type": "Normal",
+		"Description": "Yes, I don't have so much originality",
+		"Effect": {
+			"Protected": {
+				"Time": 8,
+				"Target": "Self"
+			}
+		}
+	},
 	"Toxic Player": {
 		"Power": 40,
 		"Chance": 90,
@@ -30,7 +59,7 @@
 				"res://Resources/Images/BattleAnimations/Toxic Texts/3.png",
 				"res://Resources/Images/BattleAnimations/Toxic Texts/4.png"
 			],
-			"Speed": 1750,
+			"Speed": 17.5,
 			"Spinning": false
 		}
 	},
@@ -53,10 +82,10 @@
 		"Description": "hits all the oppnents with its cuteness",
 		"Animation": {
 			"Type": "ExpandingCircle",
-			"Speed": 2500,
+			"Speed": 40,
 			"Opponent": false,
 			"Color": [255, 200, 200, 150],
-			"Radius": 1500
+			"Radius": 20
 		}
 	},
 	"HYPER BEAM": {
@@ -124,7 +153,7 @@
 				"res://Resources/Images/BattleAnimations/AI images/7.png",
 				"res://Resources/Images/BattleAnimations/AI images/8.png"
 			],
-			"Speed": 2000,
+			"Speed": 20,
 			"Spinning": true
 		}
 	},
