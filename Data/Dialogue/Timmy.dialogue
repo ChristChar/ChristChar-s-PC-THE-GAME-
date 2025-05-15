@@ -9,6 +9,7 @@ Timmy: I will join your team only if you give to me 30 chicken nuggets
 Timmy: Wow, you did it!
 Timmy: I will join your stupid team
 do! Team.ObtainCharacter("Timmy")
+do! Team.AddQuestProgress("Timmy")
 => END
 
 ~ Lose

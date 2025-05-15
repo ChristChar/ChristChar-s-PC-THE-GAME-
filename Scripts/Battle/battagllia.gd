@@ -6,10 +6,48 @@ var TurnOrder = []
 var TurnIndex = 0
 var Mause_in_battle_area = false
 
+const Move_type_color = {
+	"Status":Color(0.6,0.6,0.6),
+	"Fisica":Color(1,0,0),
+	"Special":Color(0,1,0)
+}
+
 signal Enter()
 signal Finish_Turn()
 signal Finish_Battle()
 signal Finished_Death_Animation()
+
+func Update_Move(Move: String = ""):
+	if Move != "" and Move != "Skip":
+		$CanvasLayer/MoveInfo.visible = true
+		var Style = load("res://Data/Resources/TypesStyle/" + Data.Move_data[Move]["Type"] + ".tres")
+		$CanvasLayer/MoveInfo.add_theme_stylebox_override("panel", Style)
+		var bg_color: Color
+		if Style is StyleBoxFlat:
+			bg_color = Style.bg_color
+		else:
+			bg_color = Color(1,1,1)
+		var color: Color
+		if File.is_closer_to_white(bg_color):
+			color = Color(0,0,0)
+		else:
+			color = Color(1,1,1)
+		$CanvasLayer/MoveInfo/Name.add_theme_color_override("font_color", color)
+		$CanvasLayer/MoveInfo/Name.text = Move
+		$CanvasLayer/MoveInfo/Dscription.text = Data.Move_data[Move]["Description"]
+		$CanvasLayer/MoveInfo/Dscription.add_theme_color_override("font_color", color)
+		$CanvasLayer/MoveInfo/MoveType.color = Move_type_color[Data.Move_data[Move]["Move type"]]
+		var Power
+		if "Power" in Data.Move_data[Move]:
+			Power = str(Data.Move_data[Move]["Power"])
+		else:
+			Power = "-"
+		$CanvasLayer/MoveInfo/Data.text = "Type: " + Data.Move_data[Move]["Type"] + "\nPotenza: " + Power
+		$CanvasLayer/MoveInfo/Data2.text = "Precisione: " + str(Data.Move_data[Move]["Chance"]) + "\nEnergy: " + str(Data.Move_data[Move]["Energy"])
+		$CanvasLayer/MoveInfo/Data.add_theme_color_override("font_color", color)
+		$CanvasLayer/MoveInfo/Data2.add_theme_color_override("font_color", color)
+	else:
+		$CanvasLayer/MoveInfo.visible = false
 
 func _ready():
 	randomize()
@@ -116,14 +154,14 @@ func ViewDeathScreen():  # Play the sound immediately
 func Check_for_finish_of_the_battle():
 	var Enemys_Alive = 0
 	for Enemy in EnemyTeam:
-		if not Enemy.Faint:
+		if not Enemy.Faint and not "Puppet" in Enemy.Status:
 			Enemys_Alive += 1
 	if Enemys_Alive == 0:
 		return "Player win"
 
 	var Players_Alive = 0
-	for Teamate in PlayerTeam:
-		if not Teamate.Faint:
+	for Teamate: CharacterData in PlayerTeam:
+		if not Teamate.Faint and not "Puppet" in Teamate.Status:
 			Players_Alive += 1
 	if Players_Alive == 0:
 		return "Enemys win"
@@ -148,7 +186,19 @@ func Change_info(Character: CharacterData):
 	$CanvasLayer/InfoBox/Name.text = Character.Character_type + " L" + str(Character.Level)
 	var Stats = Character.Calcolate_Stats()
 	for Stat in Stats:
-		$CanvasLayer/InfoBox/Stats.get_node(Stat + "/Label").text = str(Stats[Stat])
+		var StatLabel: Label = $CanvasLayer/InfoBox/Stats.get_node(Stat + "/Label")
+		StatLabel.text = str(Stats[Stat])
+		var color = Color(0,0,0)
+		var Moltp = 1
+		Moltp *= Character.StatModificMoltp[int(Character.StatModific[Stat])]
+		for status in Character.Status:
+			if "Stat" in Character.StatusData[status] and Stat in Character.StatusData[status]["Stat"]:
+				Moltp *=  Character.StatusData[status]["Stat"][Stat]
+		if Moltp < 1:
+			color = Color(1,0,0)
+		elif Moltp > 1:
+			color = Color(0,1,0)
+		StatLabel.add_theme_color_override("font_color", color)
 	$CanvasLayer/InfoBox/ProgressBar.max_value = Character.MaxEnergy
 	$CanvasLayer/InfoBox/ProgressBar.value = Character.Energy
 	$CanvasLayer/InfoBox/ProgressBar/Label.text = str(Character.Energy) + "/" + str(Character.MaxEnergy)
@@ -168,12 +218,13 @@ func Create_move_buttons(Character:CharacterData):
 		child.queue_free()
 	var Index = 0
 	for Move in Character.Current_Moves:
-		var NewButton = MoveButton.new()
-		NewButton.position.y = 50 * Index
-		NewButton.text = Move
-		if Character.Energy < Data.Move_data[Move]["Energy"]:
-			NewButton.disabled =  true
-		$CanvasLayer/Buttons.add_child(NewButton)
+		if not "Repeat" in Character.Status or Character.LastMoveUsed == Move:
+			var NewButton = MoveButton.new()
+			NewButton.position.y = 50 * Index
+			NewButton.text = Move
+			if Character.Energy < Data.Move_data[Move]["Energy"]:
+				NewButton.disabled =  true
+			$CanvasLayer/Buttons.add_child(NewButton)
 		Index += 1
 	var NewButton = MoveButton.new()
 	NewButton.position.y = 50 * Index

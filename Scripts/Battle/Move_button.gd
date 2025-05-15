@@ -7,6 +7,7 @@ var InMenu = false
 func _ready():
 	size = Vector2(200, 50)
 	connect("pressed", _on_move_button)
+	connect("mouse_entered", UpdateInfos)
 	z_index = 10
 	if text != "Skip":
 		var Style = load("res://Data/Resources/TypesStyle/" + Data.Move_data[text]["Type"] + ".tres")
@@ -27,8 +28,14 @@ func _ready():
 func _process(delta):
 	pass
 
+func UpdateInfos():
+	if not InMenu:
+		get_parent().get_parent().get_parent().Update_Move(text)
+
+
 func _on_move_button():
 	if InMenu:
 		get_parent().get_parent().Selected_move = text
 	else:
 		get_parent().get_parent().get_parent().Selected_move = text
+		get_parent().get_parent().get_parent().Update_Move()

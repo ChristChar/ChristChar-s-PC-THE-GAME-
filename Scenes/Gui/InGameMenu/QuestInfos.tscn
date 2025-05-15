@@ -1,0 +1,62 @@
+[gd_scene load_steps=5 format=3 uid="uid://clc3i1v6hklr5"]
+
+[ext_resource type="Script" uid="uid://cn0vtl71nymmh" path="res://Scripts/Player/Gui/QuestInfos.gd" id="1_gexbe"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fsj7d"]
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gexbe"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c6qiw"]
+bg_color = Color(3.46541e-06, 0.67668, 0.823565, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="CharacterInfos" type="PanelContainer"]
+custom_minimum_size = Vector2(400, 0)
+offset_right = 400.0
+offset_bottom = 113.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_fsj7d")
+script = ExtResource("1_gexbe")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Name" type="Label" parent="VBoxContainer"]
+custom_minimum_size = Vector2(310, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Kill 10 Enemys"
+
+[node name="Description" type="Label" parent="VBoxContainer"]
+custom_minimum_size = Vector2(310, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "You need to kill 10 enemys with a powerfull gun AHAHHAHAHA"
+autowrap_mode = 3
+
+[node name="Progress" type="ProgressBar" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_gexbe")
+theme_override_styles/fill = SubResource("StyleBoxFlat_c6qiw")
+value = 50.0
+
+[node name="Key" type="Label" parent="VBoxContainer/Progress"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Enemys"

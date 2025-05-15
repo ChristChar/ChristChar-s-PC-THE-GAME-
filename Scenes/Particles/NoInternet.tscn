@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://d1innff6os5jt"]
+
+[ext_resource type="Texture2D" uid="uid://cxqh38der4vpf" path="res://Resources/Images/Icone/Effect/NoInternet.png" id="1_yunp2"]
+
+[sub_resource type="Gradient" id="Gradient_qpo1d"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 0.631902, 0.376808, 1)
+
+[node name="Damage" type="CPUParticles2D"]
+z_index = 10
+emitting = false
+amount = 20
+texture = ExtResource("1_yunp2")
+direction = Vector2(0, -1)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 200.0
+initial_velocity_max = 500.0
+angular_velocity_min = -50.0
+angular_velocity_max = 50.0
+scale_amount_max = 1.5
+color_initial_ramp = SubResource("Gradient_qpo1d")

@@ -6,4 +6,5 @@ ChristChar: Come on Gino, you know it
 Gino: nope... Alright, I will join your team becouse we are best friends!
 ChritCahr: YIPPIE!
 do! Team.ObtainCharacter("Gino")
+do! Team.AddQuestProgress("Gino")
 => END

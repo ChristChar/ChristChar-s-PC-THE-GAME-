@@ -1,0 +1,29 @@
+[gd_resource type="SpriteFrames" load_steps=3 format=3 uid="uid://c25wyacywhxd3"]
+
+[ext_resource type="Texture2D" uid="uid://dcvs50sehdmo7" path="res://Resources/Images/Characters/Chrome dino/Idle/1.png" id="1_umfry"]
+[ext_resource type="Texture2D" uid="uid://bt58bqx4slwta" path="res://Resources/Images/Characters/Chrome dino/Idle/2.png" id="2_ay0og"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_umfry")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ay0og")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_umfry")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ay0og")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 8.0
+}]

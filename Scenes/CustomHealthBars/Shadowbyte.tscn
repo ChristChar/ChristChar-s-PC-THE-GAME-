@@ -1,0 +1,61 @@
+[gd_scene load_steps=4 format=3 uid="uid://b04sekg0kypow"]
+
+[ext_resource type="Texture2D" uid="uid://dqtcikfpoge6f" path="res://Resources/Images/CustomBars/Shadowbyte.png" id="1_dvs6w"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n02so"]
+bg_color = Color(1, 0, 0, 1)
+skew = Vector2(0.5, 0)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 4
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8sfpf"]
+bg_color = Color(0.275648, 0.317921, 0.532339, 1)
+skew = Vector2(0.5, 0)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 4
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+
+[node name="BarraDellaVita" type="ProgressBar"]
+offset_left = -140.0
+offset_top = -12.0
+offset_right = 140.0
+offset_bottom = 12.0
+mouse_filter = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_n02so")
+theme_override_styles/fill = SubResource("StyleBoxFlat_8sfpf")
+max_value = 1000.0
+step = 1.0
+value = 500.0
+show_percentage = false
+
+[node name="Effects" type="GridContainer" parent="."]
+layout_mode = 0
+offset_top = 18.0
+offset_right = 40.0
+offset_bottom = 50.0
+columns = 7
+
+[node name="Shadowbyte" type="TextureRect" parent="."]
+z_index = -1
+layout_mode = 0
+offset_left = 76.0
+offset_top = -40.0
+offset_right = 140.0
+offset_bottom = 10.0
+scale = Vector2(2, 2)
+texture = ExtResource("1_dvs6w")

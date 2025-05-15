@@ -9,7 +9,7 @@
 script = ExtResource("4_qmsbe")
 Name = "Internet"
 Description = "THE WORLD WIDE WEB, A PLACE WHERE YOU CAN DO A LOT OF THINGS"
-Unlock = true
+Unlock = false
 Scene = ExtResource("3_rc7df")
 Preview = ExtResource("2_gsp88")
 Icon = ExtResource("1_rc7df")

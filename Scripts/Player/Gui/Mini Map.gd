@@ -4,6 +4,7 @@ extends SubViewport
 @onready var cam := Camera3D.new()
 
 var Encounters = {}
+var Quests = {}
 
 func _ready():
 	# 1) Configura SubViewport
@@ -31,6 +32,12 @@ func _ready():
 		NewIcon.texture = preload("res://Resources/Images/Gui/Map/Enemy.png")
 		Encounters[encounter] = NewIcon
 		add_child(NewIcon)
+	for quest: Quest in Team.Quests.values():
+		if quest.MapLocation == get_tree().get_first_node_in_group("Game").data.Name and quest.CordLocation:
+			var NewIcon = TextureRect.new()
+			NewIcon.texture = preload("res://Resources/Images/Gui/Map/Quest.png")
+			Quests[quest] = NewIcon
+			add_child(NewIcon)
 
 func _process(delta):
 	var PlayerPos: Vector3 = get_tree().get_first_node_in_group("Player").global_position
@@ -45,3 +52,11 @@ func _process(delta):
 		else:
 			Encounters[encounter].queue_free()
 			Encounters.erase(encounter)
+	for quest: Quest in Quests.keys():
+		if quest.MapLocation == get_tree().get_first_node_in_group("Game").data.Name and quest.CordLocation:
+			var relative_pos = quest.CordLocation - Vector2(PlayerPos.x, PlayerPos.z)
+			var MapPos = relative_pos * 5 + Vector2(128,128)
+			MapPos.x = max(min(MapPos.x, 232), -10)
+			MapPos.y = max(min(MapPos.y, 232), -10)
+			Quests[quest].position = MapPos
+	

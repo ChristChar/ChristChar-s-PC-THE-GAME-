@@ -27,7 +27,7 @@
 			"INT":  15,
 			"SPEED": 100
 		},
-		"Moves": {"1":["Pizzathrow", "Rickroll", "Dance", "Roar","Toxic Player", "Punch"]},
+		"Moves": {"1":["Pizzathrow", "Rickroll", "Dance", "Roar","Toxic Player", "Punch", "Close combat"]},
 		"Exp": 200,
 		"Category": "Main",
 		"MaxEnergia": 300,
@@ -61,7 +61,7 @@
 			"INT":  120,
 			"SPEED":120
 		},
-		"Moves": {"1":["Hit","Rickroll","SPINNING"], "5":["Taskill"], "12":["Debug Mode"]},
+		"Moves": {"1":["Hit","Rickroll","SPINNING","Copy Paste", "While true"], "5":["Taskill"], "12":["Debug Mode"]},
 		"Exp": 200,
 		"Category": "Main",
 		"MaxEnergia": 200,
@@ -78,7 +78,7 @@
 			"INT":  60,
 			"SPEED":40
 		},
-		"Moves": {"1":["Magic heal", "Rickroll","Magic Energy", "Protect"]},
+		"Moves": {"1":["Magic heal", "Rickroll","Magic Energy", "Protect","Copy Paste"]},
 		"Exp": 200,
 		"Category": "Friends",
 		"MaxEnergia": 100,
@@ -95,7 +95,7 @@
 			"INT":   50,
 			"SPEED": 150
 		},
-		"Moves": {"1":["Punch","Taskill", "Protect"]},
+		"Moves": {"1":["Punch","Taskill", "Protect", "Ban hammer","Copy Paste"]},
 		"Exp": 200,
 		"Category": "Friends",
 		"MaxEnergia": 300,
@@ -129,10 +129,44 @@
 			"INT":  25,
 			"SPEED":180
 		},
-		"Moves": {"1":["Roar", "Cute Gaze", "Hit"]},
+		"Moves": {"1":["Roar", "Cute Gaze", "Hit", "Half Cut"]},
 		"Exp": 200,
 		"Category": "Animal",
 		"MaxEnergia": 300,
+		"EnergiaRegeneration": 50
+	},
+	"Chrome dino":{
+		"IsEnemy": false,
+		"Types": ["AI"],
+		"Stats": {
+			"HP":   75,
+			"ATT":  75,
+			"PI":   75,
+			"DIF":  75,
+			"INT":  20,
+			"SPEED":230
+		},
+		"Moves": {"1":["Roar", "Hit","Jump", "No internet?"]},
+		"Exp": 200,
+		"Category": "Animal",
+		"MaxEnergia": 200,
+		"EnergiaRegeneration": 40
+	},
+	"Windows defenders":{
+		"IsEnemy": false,
+		"Types": ["Antivirus","AI"],
+		"Stats": {
+			"HP":   150,
+			"ATT":  80,
+			"PI":   120,
+			"DIF":  200,
+			"INT":  40,
+			"SPEED":50
+		},
+		"Moves": {"1":["Protect", "Scan kill", "System recovery"]},
+		"Exp": 200,
+		"Category": "Main",
+		"MaxEnergia": 150,
 		"EnergiaRegeneration": 50
 	},
 	"Trojan": {
@@ -146,7 +180,7 @@
 			"INT":  5,
 			"SPEED":125
 		},
-		"Moves": {"1":["Hit"], "10":["Delete System32"]},
+		"Moves": {"1":["Hit"], "10":["Delete System32", "No internet?"]},
 		"Exp": 164,
 		"Category": "Virus",
 		"MaxEnergia": 350,
@@ -197,11 +231,12 @@
 			"INT":  100,
 			"SPEED":300
 		},
-		"Moves": {"1":["Hit","Delete System32","Debug Mode","Kernel overload"]},
+		"Moves": {"1":["Delete System32","Debug Mode","Kernel overload","Puppet Control"]},
 		"Exp": 250,
 		"Category": "Enemy",
 		"MaxEnergia": 200,
-		"EnergiaRegeneration": 30
+		"EnergiaRegeneration": 30,
+		"CustomBar": "res://Scenes/CustomHealthBars/Shadowbyte.tscn"
 	},
 	"Glitchybot": {
 		"IsEnemy": true,
@@ -214,11 +249,62 @@
 			"INT":   20,
 			"SPEED": 301
 		},
-		"Moves": {"1":["Hit","Cookie spam", "Protect"]},
+		"Moves": {"1":["Cookie spam", "Protect","Copy Paste", "While true"]},
 		"Exp": 52,
 		"Category": "Enemy",
 		"MaxEnergia": 150,
 		"EnergiaRegeneration": 50
+	},
+	"Jomni": {
+		"IsEnemy": true,
+		"Types": ["Hacker"],
+		"Stats": {
+			"HP":   170,
+			"ATT":  50,
+			"PI":   170,
+			"DIF":   170,
+			"INT":   50,
+			"SPEED": 170
+		},
+		"Moves": {"1":["HYPER BEAM","Puppet Control","Kernel overload"]},
+		"Exp": 350,
+		"Category": "Enemy",
+		"MaxEnergia": 400,
+		"EnergiaRegeneration": 35
+	},
+	"Ghino": {
+		"IsEnemy": true,
+		"Types": ["Malware", "AI"],
+		"Stats": {
+			"HP":   70,
+			"ATT":  100,
+			"PI":   100,
+			"DIF":   100,
+			"INT":   30,
+			"SPEED": 35
+		},
+		"Moves": {"1":["HYPER BEAM","Delete System32","Cript Data", "No internet?"]},
+		"Exp": 350,
+		"Category": "Enemy",
+		"MaxEnergia": 100,
+		"EnergiaRegeneration": 60
+	},
+	"Timy": {
+		"IsEnemy": true,
+		"Types": ["Malware", "AI"],
+		"Stats": {
+			"HP":   250,
+			"ATT":  10,
+			"PI":   10,
+			"DIF":   250,
+			"INT":   10,
+			"SPEED": 10
+		},
+		"Moves": {"1":["Toxic Player","Cript Data","Copy Paste"]},
+		"Exp": 350,
+		"Category": "Enemy",
+		"MaxEnergia": 150,
+		"EnergiaRegeneration": 20
 	},
 	"Mucca":{
 		"IsEnemy": true,

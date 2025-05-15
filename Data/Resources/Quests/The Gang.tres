@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Quest" load_steps=2 format=3 uid="uid://declnlrp42w4y"]
+
+[ext_resource type="Script" uid="uid://ctpglg2iifoui" path="res://Scripts/Resources/Quest.gd" id="1_q5jav"]
+
+[resource]
+script = ExtResource("1_q5jav")
+Name = "The gang!"
+ID = "GANG"
+Description = "Recruit all the characters of the main gang!"
+Objectives = Dictionary[String, int]({
+"Gino": 1,
+"Rocky": 1,
+"Timmy": 1
+})
+MapLocation = "ChristChar's PC"
+CordLocation = Vector2(0, 0)
+metadata/_custom_type_script = "uid://ctpglg2iifoui"

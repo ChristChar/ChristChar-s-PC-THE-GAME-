@@ -39,7 +39,7 @@ window/stretch/mode="canvas_items"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg", "res://addons/generaspriteframes/plugin.cfg", "res://addons/tnowe_extra_controls/plugin.cfg")
+enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg", "res://addons/generaspriteframes/plugin.cfg", "res://addons/sprite-shader-mixer/plugin.cfg", "res://addons/tnowe_extra_controls/plugin.cfg")
 
 [importer_defaults]
 

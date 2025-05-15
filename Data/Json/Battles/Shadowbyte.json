@@ -1,18 +1,19 @@
 [
 	{
 		"Type": "Shadowbyte",
-		"Level": 35
+		"Level": 40,
+		"Boss": true
 	},
 	{
 		"Type": "Glitchybot",
-		"Level": 25
+		"Level": 10
 	},
 	{
 		"Type": "Glitchybot",
-		"Level": 25
+		"Level": 10
 	},
 	{
 		"Type": "Glitchybot",
-		"Level": 25
+		"Level": 10
 	}
 ]

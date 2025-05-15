@@ -135,3 +135,24 @@ script = ExtResource("7_p7b75")
 BattleJson = "res://Data/Json/Battles/Shadowbyte.json"
 Dialogue = ExtResource("8_m7o65")
 metadata/_custom_type_script = "uid://ddsm0t3kkty4w"
+
+[node name="Pixy2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.11855, 0.529312, 0)
+collision_layer = 3
+collision_mask = 3
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Pixy2"]
+transform = Transform3D(4, 0, 0, 0, 3.8637, 1.03528, 0, -1.03528, 3.8637, 0, 0.365066, 0)
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_tj33d")
+animation = &"Idle"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pixy2"]
+shape = SubResource("SphereShape3D_h7qeb")
+debug_color = Color(0, 0.6, 0.7, 0.42)
+
+[node name="InteractArea" type="Area3D" parent="Pixy2"]
+script = ExtResource("7_p7b75")
+BattleJson = "res://Data/Json/Battles/Jomni.json"
+Dialogue = ExtResource("8_m7o65")
+metadata/_custom_type_script = "uid://ddsm0t3kkty4w"

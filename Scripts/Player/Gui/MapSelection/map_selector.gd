@@ -29,9 +29,11 @@ func UpdateInfos():
 		$Infos.visible = false
 
 
+
 func _on_start_pressed():
 	var Game = GameScene.instantiate()
 	Game.data = SelectedMap
 	Team.Game = Game
 	get_tree().root.add_child(Game)
 	get_parent().visible = false
+	Team.EnterInMap.emit(SelectedMap.Name)

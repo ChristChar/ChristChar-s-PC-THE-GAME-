@@ -1,0 +1,38 @@
+[gd_resource type="SpriteFrames" load_steps=3 format=3 uid="uid://d05eb2b3m6mbi"]
+
+[ext_resource type="Texture2D" uid="uid://5c4nw4nhen5u" path="res://Resources/Images/Characters/Ghino/Idle/1.png" id="1_ej30c"]
+[ext_resource type="Texture2D" uid="uid://rpls8x45kssm" path="res://Resources/Images/Characters/Ghino/Idle/2.png" id="2_1w60l"]
+
+[resource]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"Dead",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Dying",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Fail",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ej30c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_1w60l")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Nap",
+"speed": 5.0
+}]

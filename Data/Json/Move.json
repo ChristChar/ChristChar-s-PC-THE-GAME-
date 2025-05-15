@@ -8,6 +8,114 @@
 		"Type": "Normal",
 		"Description": "hits the opponent with low power"
 	},
+	"Scan kill": {
+		"Power": 55,
+		"Chance": 95,
+		"Energy": 50,
+		"Target": "All",
+		"Move type": "Special",
+		"Type": "Antivirus",
+		"Animation": {
+			"Type": "ExpandingCircle",
+			"Speed": 40,
+			"Opponent": false,
+			"Color": [150, 255, 150, 150],
+			"Radius": 20
+		},
+		"Description": "Scan and try to kill all the enemies"
+	},
+	"Jump": {
+		"Power": 55,
+		"Chance": 85,
+		"Energy": 35,
+		"Target": "Enemy",
+		"Move type": "Fisica",
+		"Type": "Normal",
+		"Stat": [
+		  {
+			"Stat": "SPEED",
+			"Power": 1,
+			"Target": "Self"
+		  }
+		],
+		"Description": "Jump on the target, increase your speed"
+	},
+	"Copy Paste": {
+		"Chance": 100,
+		"Energy": 45,
+		"Target": "Enemy",
+		"Move type": "Status",
+		"Type": "Player",
+		"Script": [
+			{
+				"Script": "CopyMove"
+			}
+		],
+		"Description": "Copy the last move used by the target"
+	},
+	"Ban hammer": {
+		"Power": 65,
+		"Chance": 85,
+		"Energy": 65,
+		"Target": "Enemy",
+		"Move type": "Special",
+		"Type": "Player",
+		"Description": "Ban temporarily the Target, while he is banned he can’t act”",
+		"Status": {
+			"Ban": {
+				"Chance": 100,
+				"Data": 8
+			}
+		}
+	},
+	"Half Cut": {
+		"Chance": 100,
+		"ChanceScript": "LowForLevel",
+		"Energy": 35,
+		"Target": "Enemy",
+		"Move type": "Status",
+		"Type": "Normal",
+		"Status": {
+			"Half": {
+				"Chance": 100,
+				"Data": "Null"
+			}
+		},
+		"Script": [
+			{
+				"Script": "HalfHealth"
+			}
+		],
+		"Animation": {
+			"Type": "Follow",
+			"Speed": 0.45,
+		},
+		"Description": "Halves the target’s HP and literally cuts them in two"
+	},
+	"Puppet Control": {
+		"Chance": 70,
+		"ChanceScript": "LowForLevel",
+		"Energy": 80,
+		"Target": "Enemy",
+		"Move type": "Status",
+		"Type": "Hacker",
+		"Status": {
+			"Puppet": {
+				"Chance": 100,
+				"Data": 15
+			}
+		},
+		"Script": [
+			{
+				"Script": "InvertTeam"
+			}
+		],
+		"Animation": {
+			"Type": "Follow",
+			"Speed": 0.25,
+		},
+		"Description": "you take control of the target and switch it to your side"
+	},
 	"Cute Gaze": {
 		"Power": 35,
 		"Chance": 95,
@@ -15,7 +123,7 @@
 		"Target": "Enemy",
 		"Move type": "Fisica",
 		"Type": "Cute",
-		"Description": "Look the opponent with a cute gaze, thanks at your cuteness you can't be hit fot 2 turns",
+		"Description": "Look the opponent with a cute gaze, thanks to your cuteness, you can’t be hit for 4 turns",
 		"Effect": {
 			"Protected": {
 				"Time": 4,
@@ -38,17 +146,16 @@
 		}
 	},
 	"Toxic Player": {
-		"Power": 40,
 		"Chance": 90,
-		"Energy": 40,
+		"Energy": 20,
 		"Target": "Enemy",
 		"Move type": "Status",
 		"Type": "Gamer",
-		"Description": "Ez",
+		"Description": "Ez (Poisons the target)",
 		"Status": {
 			"Poison": {
 				"Chance": 100,
-				"Data": 20
+				"Data": 12
 			}
 		},
 		"Animation": {
@@ -63,6 +170,20 @@
 			"Spinning": false
 		}
 	},
+	"While true": {
+		"Chance": 90,
+		"Energy": 50,
+		"Target": "Enemy",
+		"Move type": "Status",
+		"Type": "Player",
+		"Description": "Repeats the target’s last move for 5 turns Repeats the target’s last move for 5 turns Repeats the target’s last move for 5 turns...",
+		"Status": {
+			"Repeat": {
+				"Chance": 100,
+				"Data": 5
+			}
+		},
+	},
 	"Punch": {
 		"Power": 40,
 		"Chance": 90,
@@ -72,6 +193,22 @@
 		"Type": "Fighter",
 		"Description": "A PUNCH IN THE FACE"
 	},
+	"Close combat": {
+		"Power": 135,
+		"Chance": 95,
+		"Energy": 50,
+		"Target": "Enemy",
+		"Move type": "Fisica",
+		"Type": "Fighter",
+		"Description": "DIRECTLY FROM POKEMON, WE HAVE THE COMPETITIVE MOVE (Yes, the move decrese your defense)",
+		"Stat": [
+		  {
+			"Stat": "DIF",
+			"Power": -2,
+			"Target": "Self"
+		  }
+		],
+	},
 	"Cutenesswave": {
 		"Power": 55,
 		"Chance": 100,
@@ -79,7 +216,7 @@
 		"Move type": "Special",
 		"Type": "Cute",
 		"Target": "All",
-		"Description": "hits all the oppnents with its cuteness",
+		"Description": "hits all the enemys with its cuteness",
 		"Animation": {
 			"Type": "ExpandingCircle",
 			"Speed": 40,
@@ -199,7 +336,8 @@
 		"Stat": [
 		  {
 			"Stat": "DIF",
-			"Power": 2
+			"Power": 2,
+			"Target": "Self"
 		  }
 		],
 		"Description": "Activate debug mode significantly increasing defense"
@@ -213,7 +351,8 @@
 		"Stat":[
 			{
 				"Stat":"ATT",
-				"Power": -1
+				"Power": -1,
+				"Target": "Target"
 			},
 		],
 		"Description": "ROAR (translation: lowers the opponent's attack)",
@@ -233,11 +372,13 @@
 		"Stat":[
 			{
 				"Stat":"ATT",
-				"Power": 1
+				"Power": 1,
+				"Target": "Self"
 			},
 			{
 				"Stat": "DIF",
-				"Power": 1
+				"Power": 1,
+				"Target": "Self"
 			}
 		],
 		"Description": "increse attack and defense"
@@ -251,11 +392,13 @@
 		"Stat":[
 			{
 				"Stat":"PI",
-				"Power": 3
+				"Power": 3,
+				"Target": "Self"
 			},
 			{
 				"Stat": "INT",
-				"Power": -1
+				"Power": -1,
+				"Target": "Self"
 			}
 		],
 		"Description": "Intelligence decreases but informatic power increases dramatically"
@@ -290,6 +433,21 @@
 				"Script": "Heal",
 				"Chance": 100,
 				"Power": 80
+			}
+		],
+		"Description": "Heal the target"
+	},
+	"System recovery": {
+		"Chance": 90,
+		"Move type": "Status",
+		"Type": "Antivirus",
+		"Target": "Enemy",
+		"Energy": 50,
+		"Script": [
+			{
+				"Script": "Heal",
+				"Chance": 100,
+				"Power": 120
 			}
 		],
 		"Description": "Heal the target"
@@ -329,6 +487,20 @@
 		"Status": {
 			"Glitch": {
 				"Chance": 33,
+				"Data": 6
+			}
+		}
+	},
+	"No internet?": {
+		"Chance": 85,
+		"Target": "Enemy",
+		"Energy": 35,
+		"Move type": "Status",
+		"Type": "Malware",
+		"Description": "No more internet for you >=)",
+		"Status": {
+			"NoInternet": {
+				"Chance": 100,
 				"Data": "null"
 			}
 		}

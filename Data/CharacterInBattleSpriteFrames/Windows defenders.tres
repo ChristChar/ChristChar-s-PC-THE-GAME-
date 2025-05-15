@@ -1,0 +1,34 @@
+[gd_resource type="SpriteFrames" load_steps=2 format=3 uid="uid://ncqp3qc6k5bo"]
+
+[ext_resource type="Texture2D" uid="uid://impbake61wnn" path="res://Resources/Images/Characters/Windows defenders/Idle/1.png" id="1_mtnit"]
+
+[resource]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"Dead",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Dying",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Fail",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_mtnit")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Nap",
+"speed": 5.0
+}]

@@ -1,0 +1,1355 @@
+[
+	{
+		"name": "Floating",
+		"group": "distort",
+		"description": "The texture moves giving the oportunity to select different movement patterns.",
+		"author": "spheras",
+		"link": "-",
+		"adaptedBy": "spheras",
+		"license": "MIT",
+		"version": "1.0",
+		"filename": "floating.gdshader",
+		"activation": "FLOATING_active",
+		"function": "floating",
+		"parameters": [
+			{
+				"name": "FLOATING_amount",
+				"description": "The amount of movement"
+			},
+			{
+				"name": "FLOATING_type",
+				"description": "Type of movement pattern."
+			},
+			{
+				"name": "FLOATING_speed",
+				"description": "Speed of the movement."
+			}
+		]
+	},
+	{
+		"name": "Aura",
+		"group": "distort",
+		"description": "The effect gives to the texture an aura effect rounding, based on a noise texture. You can control color, and others.",
+		"author": "spheras",
+		"link": "-",
+		"adaptedBy": "spheras",
+		"license": "MIT",
+		"version": "1.0",
+		"filename": "aura.gdshader",
+		"activation": "AURA_active",
+		"function": "aura",
+		"parameters": [
+			{
+				"name": "AURA_speedX",
+				"description": "speed on the X axis of the noise movement"
+			},
+			{
+				"name": "AURA_speedY",
+				"description": "speed on the Y axis of the noise movement."
+			},
+			{
+				"name": "AURA_amount",
+				"description": "amount of aura surrounding the texture."
+			},
+			{
+				"name": "AURA_auraColor",
+				"description": "The main color of the aura"
+			},
+			{
+				"name": "AURA_distanceSaturation",
+				"description": "some kind of saturation to give dark colors near to the center. You determine the distance to reach the maximum color."
+			},
+			{
+				"name": "AURA_redDist",
+				"description": "extra red distance of the color to apply."
+			},
+			{
+				"name": "AURA_greenDist",
+				"description": "extra green distance of the color to apply."
+			},
+			{
+				"name": "AURA_blueDist",
+				"description": "extra blue distance of the color to apply."
+			},
+			{
+				"name": "AURA_noiseTexture",
+				"description": "Noise texture to be the source of the Aura effect. Check with different noises.",
+				"texture": "noise/noise3.png"
+			}
+		]
+	},
+	{
+		"name": "WindWave",
+		"group": "distort",
+		"description": "The effect gives you control to wave the texture. You can determine limits from wich the texture doesnt move to the maximum wave movement. Can be used as wind effect too.",
+		"author": "spheras",
+		"link": "-",
+		"adaptedBy": "spheras",
+		"license": "MIT",
+		"version": "1.0",
+		"filename": "windwave.gdshader",
+		"activation": "WINDWAVE_active",
+		"function": "windWave",
+		"parameters": [
+			{
+				"name": "WINDWAVE_speed",
+				"description": "The speed of the wave animation"
+			},
+			{
+				"name": "WINDWAVE_modifier1",
+				"description": "modifier1 of the wave, just fun."
+			},
+			{
+				"name": "WINDWAVE_modifier2",
+				"description": "modifier2 of the wave, just fun."
+			},
+			{
+				"name": "WINDWAVE_maxY",
+				"description": "max Y limit in which the effect start to reduce the movement"
+			},
+			{
+				"name": "WINDWAVE_minY",
+				"description": "min Y limit in which the effect is null, and the texture doesn't move"
+			},
+			{
+				"name": "WINDWAVE_debugLines",
+				"description": "debug flag to show the limits and control the effect correctly."
+			}
+		]
+	},
+	{
+		"name": "Zoom And Rotation",
+		"group": "distort",
+		"description": "Zoom and Rotate the texture",
+		"author": "-",
+		"link": "-",
+		"adaptedBy": "spheras",
+		"license": "MIT",
+		"version": "1.0",
+		"filename": "zoomandrotate.gdshader",
+		"activation": "ZOOMANDROTATION_active",
+		"function": "zoomAndRotation",
+		"parameters": [
+			{
+				"name": "ZOOMANDROTATION_pivot",
+				"description": "pivot point to perform zoom and rotation"
+			},
+			{
+				"name": "ZOOMANDROTATION_zoom",
+				"description": "zoom amount"
+			},
+			{
+				"name": "ZOOMANDROTATION_rotate",
+				"description": "rotation amount"
+			}
+		]
+	},
+	{
+		"name": "Lightning",
+		"group": "fx",
+		"description": "This shader creates a lightning effect in the middle of the sprite. (Low down the resolution then you will have pixel art lightning effect).  A bit modified from the original to produce the effect inside the sprite",
+		"author": "vanviethieuanh",
+		"link": "https://godotshaders.com/shader/2d-lightning/",
+		"adaptedBy": "spheras",
+		"license": "MIT",
+		"version": "1.0",
+		"filename": "lightning.gdshader",
+		"activation": "LIGHTNING_active",
+		"function": "lightning",
+		"parameters": [
+			{
+				"name": "LIGHTNING_lightningColor",
+				"description": "specify color"
+			},
+			{
+				"name": "LIGHTNING_size",
+				"description": "how thick bolt line should be"
+			},
+			{
+				"name": "LIGHTNING_width",
+				"description": "how long the range of the bolt should be"
+			},
+			{
+				"name": "LIGHTNING_speed",
+				"description": "how fast the lightning should change"
+			},
+			{
+				"name": "LIGHTNING_cycle",
+				"description": "how many cycles the zigzag should be"
+			},
+			{
+				"name": "LIGHTNING_ratio",
+				"description": "?"
+			},
+			{
+				"name": "LIGHTNING_time_shift",
+				"description": "because we use the sine function as a random, the same `TIME` will produce the same bolt, so if we create different bolts, we need to shift the time a little bit"
+			}
+		]
+	},
+	{
+		"name": "Water2D",
+		"group": "vertex",
+		"description": "Simulation of Water.",
+		"author": "TODO",
+		"link": "TODO",
+		"adaptedBy": "spheras",
+		"license": "CC0",
+		"version": "1.0",
+		"filename": "windwaker2dwater.gdshader",
+		"activation": "WINDWAKER2DWATER_active",
+		"function": "windWaker2DWater",
+		"vertex": true,
+		"vertexCallCode": "windwaker2dwater_vertex.gdshader",
+		"parameters": [
+			{
+				"name": "TODO",
+				"description": "..."
+			}
+		]
+	},
+	{
+		"name": "Pseudo3D",
+		"group": "vertex",
+		"description": "Simulation of 3D.",
+		"author": "Hei",
+		"link": "https://simonhartcher.com/3d-look-rotations-in-2d-with-godot-4",
+		"adaptedBy": "spheras",
+		"license": "MIT",
+		"version": "1.0",
+		"filename": "pseudo3d.gdshader",
+		"activation": "PSEUDO3D_active",
+		"function": "pseudo3d",
+		"vertex": true,
+		"vertexCallCode": "pseudo3d_vertex.gdshader",
+		"parameters": [
+			{
+				"name": "TODO",
+				"description": "..."
+			}
+		]
+	},
+	{
+		"name": "Teleport",
+		"group": "disolve",
+		"description": "Make an object dissapear in a bright glow, like it is being teleported away. See the effect in action in the animation below.",
+		"author": "pend00",
+		"link": "https://godotshaders.com/shader/teleport-effect/",
+		"adaptedBy": "spheras",
+		"license": "CC0",
+		"version": "1.0",
+		"filename": "teleport.gdshader",
+		"activation": "TELEPORT_active",
+		"function": "teleport",
+		"parameters": [
+			{
+				"name": "TELEPORT_progress",
+				"description": "progress of the disapear effect"
+			},
+			{
+				"name": "TELEPORT_noise_desnity",
+				"description": "Density of the generated noise?"
+			},
+			{
+				"name": "TELEPORT_beam_size",
+				"description": "noise beam size"
+			},
+			{
+				"name": "TELEPORT_color",
+				"description": "Color of the noise generated"
+			}
+		]
+	},
+	{
+		"name": "Color Manipulator",
+		"group": "color",
+		"description": "This is a simple color manipulator, it support brightness, contrast, saturation, tint and more.",
+		"author": "randomDam",
+		"link": "https://godotshaders.com/shader/color-manipulator/",
+		"adaptedBy": "spheras",
+		"license": "CC0",
+		"version": "1.0",
+		"filename": "colormanipulator.gdshader",
+		"activation": "COLORMANIPULATOR_active",
+		"function": "colorManipulator",
+		"parameters": [
+			{
+				"name": "...",
+				"description": "..."
+			}
+		]
+	},
+	{
+		"name": "Almost Invisible",
+		"group": "disolve",
+		"description": "Given a sprite, this shader gives it the ability to become invisible and fade into the background. But the ability is not flawless and the background is slightly deformed by the invisibility cloaking.",
+		"author": "CasualGarageCoder",
+		"link": "https://godotshaders.com/shader/almost-invisible-character/",
+		"adaptedBy": "spheras",
+		"license": "CC0",
+		"version": "1.0",
+		"filename": "almostinvisible.gdshader",
+		"activation": "ALMOSTINVISIBLE_active",
+		"function": "almostInvisible",
+		"customCall": "uv, screen_uv, TEXTURE, size, TEXTURE_PIXEL_SIZE, color, FRAGCOORD",
+		"parameters": [
+			{
+				"name": "ALMOSTINVISIBLE_alpha",
+				"description": "alpha, ranging from 0 (no cloaked) to 1 (fully cloaked)"
+			},
+			{
+				"name": "ALMOSTINVISIBLE_dist",
+				"description": "dist, specifying the offset of the background in pixels"
+			}
+		]
+	},
+	{
+		"name": "Border Noise",
+		"group": "outline",
+		"description": "Border with gradient and Noise effect, seems like mana of your sprite. Some minor tweaks done to adapt.",
+		"author": "9exa",
+		"link": "https://godotshaders.com/shader/animated-and-gradient-outlines/",
+		"adaptedBy": "spheras",
+		"license": "CC0",
+		"version": "1.0",
+		"filename": "bordernoise.gdshader",
+		"activation": "BORDERNOISE_active",
+		"function": "borderNoise",
+		"parameters": [
+			{
+				"name": "...",
+				"description": "..."
+			}
+		]
+	},
+	{
+		"name": "Chromatic Aberration",
+		"group": "color",
+		"description": "Chromatic Aberration effect. This shader only affect to the sprite.",
+		"author": "chatgpt",
+		"link": "",
+		"adaptedBy": "spheras",
+		"license": "CC0",
+		"version": "1.0",
+		"filename": "chromaticaberration.gdshader",
+		"activation": "CHROMATICABERRATION_active",
+		"function": "chromaticAberration",
+		"parameters": [
+			{
+				"name": "CHROMATICABERRATION_red_displacement",
+				"description": "Displacement of the red channel."
+			},
+			{
+				"name": "CHROMATICABERRATION_green_displacement",
+				"description": "Displacement of the green channel."
+			},
+			{
+				"name": "CHROMATICABERRATION_blue_displacement",
+				"description": "Displacement of the blue channel."
+			},
+			{
+				"name": "CHROMATICABERRATION_red_vertical",
+				"description": "If the displacement of the channel is vertical or horizontal."
+			},
+			{
+				"name": "CHROMATICABERRATION_green_vertical",
+				"description": "If the displacement of the channel is vertical or horizontal."
+			},
+			{
+				"name": "CHROMATICABERRATION_blue_vertical",
+				"description": "If the displacement of the channel is vertical or horizontal."
+			},
+			{
+				"name": "CHROMATICABERRATION_scale",
+				"description": "Scale to apply to the displacement. Use this to allow high separation of channels."
+			}
+		]
+	},
+	{
+		"name": "Circle Pixel",
+		"group": "distort",
+		"description": "Pixelate the texture to circle pixels with curstom radius",
+		"author": "jijiji",
+		"link": "https://godotshaders.com/shader/circle-pixel/",
+		"adaptedBy": "spheras",
+		"license": "CC0",
+		"version": "1.0",
+		"filename": "circlepixel.gdshader",
+		"activation": "CIRCLEPIXEL_active",
+		"function": "circlePixel",
+		"parameters": [
+			{
+				"name": "CIRCLEPIXEL_amount_x",
+				"description": "Amount of pixels in the X axis."
+			},
+			{
+				"name": "CIRCLEPIXEL_amount_y",
+				"description": "Amount of pixels in the Y axis."
+			}
+		]
+	},
+	{
+		"name": "Pixel Disolve",
+		"group": "disolve",
+		"description": "Disolve the texture by pixels, and custom resolution of pixels",
+		"author": "cak3_lover",
+		"link": "https://godotshaders.com/shader/pixelate-into-view-custom-resolution/",
+		"adaptedBy": "spheras",
+		"license": "CC0",
+		"version": "1.0",
+		"filename": "pixeldisolve.gdshader",
+		"activation": "PIXELDISOLVE_active",
+		"function": "pixelDisolve",
+		"parameters": [
+			{
+				"name": "PIXELDISOLVE_time",
+				"description": "To control the time to disolve the texture."
+			},
+			{
+				"name": "PIXELDISOLVE_custom_resolution",
+				"description": "Resolution of pixels to disolve."
+			}
+		]
+	},
+	{
+		"name": "Shield",
+		"group": "outline",
+		"description": "Shield Fx over the texture",
+		"author": "Erich_L",
+		"link": "https://godotshaders.com/shader/unit-selected-oscillating-circle/",
+		"adaptedBy": "spheras",
+		"license": "CC0",
+		"version": "1.0",
+		"filename": "shield.gdshader",
+		"activation": "SHIELD_active",
+		"function": "shield",
+		"parameters": [
+			{
+				"name": "SHIELD_ring_radius",
+				"description": "Radius of the shield circle around the texture."
+			},
+			{
+				"name": "SHIELD_thickness_scalar",
+				"description": "Thickness of the circle."
+			},
+			{
+				"name": "SHIELD_oscillation_scalar",
+				"description": "?"
+			},
+			{
+				"name": "SHIELD_speed",
+				"description": "speed of the effect during the time"
+			},
+			{
+				"name": "SHIELD_main_color",
+				"description": "main color of the shield. Shield goes from one color to other."
+			},
+			{
+				"name": "SHIELD_lerp_color",
+				"description": "final color of the shield. Shield goes from one color to other."
+			}
+		]
+	},
+	{
+		"name": "Plasma Waves",
+		"group": "distort",
+		"description": "Plasma Waves adapted to texture",
+		"author": "kcfresh53 -> scarletshark",
+		"link": "https://godotshaders.com/shader/plasma-waves/",
+		"adaptedBy": "spheras",
+		"license": "CC0",
+		"version": "1.0",
+		"filename": "plasmawaves.gdshader",
+		"activation": "PLASMAWAVES_active",
+		"function": "plasmaWaves",
+		"customCall": "uv, TEXTURE, size, TEXTURE_PIXEL_SIZE, color,FRAGCOORD,SCREEN_PIXEL_SIZE",
+		"parameters": [
+			{
+				"name": "....",
+				"description": "There are a lot! make fun."
+			}
+		]
+	},
+	{
+		"name": "Speed Lines",
+		"group": "fx",
+		"description": "based on a speedlines shader by axilirate, this one is more psicodelic and like super saiyan power.",
+		"author": "axilirate",
+		"link": "https://godotshaders.com/shader/speed-lines-shader-for-godot-4/",
+		"adaptedBy": "spheras",
+		"license": "CC0",
+		"version": "1.0",
+		"filename": "speedlines.gdshader",
+		"activation": "SPEEDLINES_active",
+		"function": "speedlines",
+		"parameters": [
+			{
+				"name": "SPEEDLINES_noise",
+				"description": "noise applied to the shader",
+				"texture": "noise/noise1.png"
+			},
+			{
+				"name": "SPEEDLINES_line_color",
+				"description": "line color for the speedlines."
+			},
+			{
+				"name": "SPEEDLINES_line_count",
+				"description": "Number of lines"
+			},
+			{
+				"name": "SPEEDLINES_line_density",
+				"description": "Density of lines"
+			},
+			{
+				"name": "SPEEDLINES_line_faloff",
+				"description": "Fallof of lines over the time"
+			},
+			{
+				"name": "SPEEDLINES_mask_size",
+				"description": "Size of the masks"
+			},
+			{
+				"name": "SPEEDLINES_mask_edge",
+				"description": ""
+			},
+			{
+				"name": "SPEEDLINES_animation_speed",
+				"description": "speed of the animation"
+			},
+			{
+				"name": "SPEEDLINES_flash",
+				"description": "Whether to enable the flash with the texture or not"
+			}
+		]
+	},
+	{
+		"name": "Circular Waves",
+		"group": "fx",
+		"description": "Based on Circular Waves 2D around your texture (original author Erich_L), but modified a bit to produce more psicodelic results.",
+		"author": "Erich_L",
+		"link": "https://godotshaders.com/shader/circular-waves-2d/",
+		"adaptedBy": "spheras",
+		"license": "CC0",
+		"version": "1.0",
+		"filename": "circularwaves.gdshader",
+		"activation": "CIRCULARWAVES_active",
+		"function": "circularWaves",
+		"parameters": [
+			{
+				"name": "CIRCULARWAVES_amplitude",
+				"description": "amplitude of the circle"
+			},
+			{
+				"name": "CIRCULARWAVES_frequency",
+				"description": "frequency of the circle."
+			},
+			{
+				"name": "CIRCULARWAVES_rippleRate",
+				"description": "?"
+			},
+			{
+				"name": "CIRCULARWAVES_speed",
+				"description": "Speed of the effect during the time"
+			},
+			{
+				"name": "CIRCULARWAVES_waveDeformation",
+				"description": "Deformation of the wave"
+			},
+			{
+				"name": "CIRCULARWAVES_waveAmplitude",
+				"description": "Amplitude of the Wave"
+			},
+			{
+				"name": "CIRCULARWAVES_waveFrequency",
+				"description": "Frequency of the Wave"
+			},
+			{
+				"name": "CIRCULARWAVES_blendingAmount",
+				"description": "Blending percent color of the waves"
+			},
+			{
+				"name": "CIRCULARWAVES_waveColor1",
+				"description": "Color1 of the Wave"
+			},
+			{
+				"name": "CIRCULARWAVES_waveColor2",
+				"description": "Color 2 of the Wave"
+			},
+			{
+				"name": "CIRCULARWAVES_mode1, 2 and 3",
+				"description": "Thre different modes operation of the shader. Experiment mixing modes."
+			}
+		]
+	},
+	{
+		"name": "Color Swap Hue",
+		"group": "color",
+		"description": "This shader will convert a color to another with a margin of tolerance while trying to account for the slights variations in hue and saturations artists use when adding shades/highlights.",
+		"author": "Noidexe",
+		"link": "https://godotshaders.com/shader/color-swap-with-hue-variation-preservation/",
+		"adaptedBy": "spheras",
+		"license": "CC0",
+		"version": "1.0",
+		"filename": "colorswaphue.gdshader",
+		"activation": "COLORSWAPHUE_active",
+		"function": "colorSwapHue",
+		"parameters": [
+			{
+				"name": "COLORSWAPHUE_from",
+				"description": "Color to be replace"
+			},
+			{
+				"name": "COLORSWAPHUE_to",
+				"description": "Color Replacement."
+			},
+			{
+				"name": "COLORSWAPHUE_tolerance",
+				"description": "Tolerance from the color selected to be replaced"
+			}
+		]
+	},
+	{
+		"name": "Line Art",
+		"group": "distort",
+		"description": "simple line art effect, change threshold to modify detail.",
+		"author": "Ayano",
+		"link": "https://godotshaders.com/shader/line-art/",
+		"adaptedBy": "spheras",
+		"license": "CC0",
+		"version": "1.0",
+		"filename": "lineart.gdshader",
+		"activation": "LINEART_active",
+		"function": "lineart",
+		"parameters": [
+			{
+				"name": "LINEART_threshold",
+				"description": "threshold to define borders over the texture"
+			},
+			{
+				"name": "LINEART_color",
+				"description": "Color of the lineart."
+			},
+			{
+				"name": "LINEART_mix",
+				"description": "Mix of the result color with the previous shader"
+			}
+		]
+	},
+	{
+		"name": "RippleGradient",
+		"group": "color",
+		"description": "This is as simple ripple gradient shader. Similar to Rainbow.",
+		"author": "Miisannn",
+		"link": "https://godotshaders.com/shader/ripple-gradient-shader/",
+		"adaptedBy": "spheras",
+		"license": "CC0",
+		"version": "1.0",
+		"filename": "ripplegradient.gdshader",
+		"activation": "RIPPLEGRADIENT_active",
+		"function": "rippleGradient",
+		"parameters": [
+			{
+				"name": "RIPPLEGRADIENT_speed",
+				"description": "speed of the efect during the time"
+			},
+			{
+				"name": "RIPPLEGRADIENT_frequency",
+				"description": "frequency of the sin waves."
+			},
+			{
+				"name": "RIPPLEGRADIENT_amplitude",
+				"description": "Amplitude of the frequency waves"
+			},
+			{
+				"name": "RIPPLEGRADIENT_pastelColors",
+				"description": "Check to use pastel colors"
+			},
+			{
+				"name": "RIPPLEGRADIENT_mix",
+				"description": "Mix of the effect with previous shader"
+			}
+		]
+	},
+	{
+		"name": "Hologram",
+		"group": "fx",
+		"description": "Makes the sprites look like a hologram",
+		"author": "Vaquers",
+		"link": "https://godotshaders.com/shader/hologram-simple-canvasitem-shader/",
+		"adaptedBy": "spheras",
+		"license": "CC0",
+		"version": "1.0",
+		"filename": "hologram.gdshader",
+		"activation": "HOLOGRAM_active",
+		"function": "hologram",
+		"parameters": [
+			{
+				"name": "HOLOGRAM_mix",
+				"description": "mix color with previous shader"
+			},
+			{
+				"name": "HOLOGRAM_lines",
+				"description": "Number of lines produced by the effect."
+			},
+			{
+				"name": "HOLOGRAM_color1",
+				"description": "First color band of the hologram"
+			},
+			{
+				"name": "HOLOGRAM_color2",
+				"description": "Second color band of the hologram"
+			},
+			{
+				"name": "HOLOGRAM_speed",
+				"description": "Speed of the effect"
+			},
+			{
+				"name": "HOLOGRAM_alpha",
+				"description": "Transparency percent of the effect"
+			},
+			{
+				"name": "HOLOGRAM_noise_amount",
+				"description": "Noise effect percent of the hologram"
+			},
+			{
+				"name": "HOLOGRAM_effect_factor",
+				"description": "Hologram effect amount"
+			}
+		]
+	},
+	{
+		"name": "Wipe",
+		"group": "disolve",
+		"description": "Wipe an image horizontally or vertically using a custom alpha. Supports wiping sprites that have multiple frames.",
+		"author": "Zibetnu",
+		"link": "https://godotshaders.com/shader/multi-frame-wipe/",
+		"adaptedBy": "spheras",
+		"license": "CC0",
+		"version": "1.0",
+		"filename": "wipe.gdshader",
+		"activation": "WIPE_active",
+		"function": "wipe",
+		"parameters": [
+			{
+				"name": "WIPE_percentage",
+				"description": "wipe percentaje"
+			},
+			{
+				"name": "WIPE_hidden_alpha",
+				"description": "alpha of the hidden texture."
+			},
+			{
+				"name": "WIPE_flip",
+				"description": "Whether to flip the wipe or not"
+			},
+			{
+				"name": "WIPE_horizontal",
+				"description": "Horizontal or Vertical wipe"
+			},
+			{
+				"name": "WIPE_frames",
+				"description": "Number of Frames of the effect"
+			}
+		]
+	},
+	{
+		"name": "Color Swap",
+		"group": "color",
+		"description": "8 Color ColorSwap that shows grayscaled strips on unswapped colors.",
+		"author": "nullMolotov",
+		"link": "https://godotshaders.com/shader/8-color-colorswap/",
+		"adaptedBy": "spheras",
+		"license": "CC0",
+		"version": "1.0",
+		"filename": "colorswap.gdshader",
+		"activation": "COLORSWAP_active",
+		"function": "colorswap",
+		"parameters": [
+			{
+				"name": "COLORSWAP_mix",
+				"description": "Mix percent of the shader color with previous one"
+			},
+			{
+				"name": "COLORSWAP_max_colors",
+				"description": "Max number of colors to evaluate. Set this value to the max number of color the shader must evaluate to optimize the shader"
+			},
+			{
+				"name": "COLORSWAP_show_stripes",
+				"description": "Whether to show stripes with colors not replaced"
+			},
+			{
+				"name": "COLORSWAP_tolerance",
+				"description": "tolerance with colors to be matched"
+			},
+			{
+				"name": "COLORSWAP_input_colorX",
+				"description": "This is a sample of any color number. color x to search. This color will be replaced"
+			},
+			{
+				"name": "COLORSWAP_output_colorX",
+				"description": "This is a sample of any color number. Color X to replace with"
+			}
+		]
+	},
+	{
+		"name": "Pulse",
+		"group": "color",
+		"description": "With this shader you can apply a pulse effect.",
+		"author": "alberto",
+		"link": "https://godotshaders.com/shader/pulse-effect-godot-4/",
+		"adaptedBy": "spheras",
+		"license": "CC0",
+		"version": "1.0",
+		"filename": "pulse.gdshader",
+		"activation": "PULSE_active",
+		"function": "pulse",
+		"parameters": [
+			{
+				"name": "PULSE_shine_color",
+				"description": "Shine color to apply to the Texture"
+			},
+			{
+				"name": "PULSE_alpha_limit",
+				"description": "Only apply the shine if the pixel alpha color is equals or greater than this value. (Usefull if you wonât to apply the shine to shadows for example)"
+			},
+			{
+				"name": "PULSE_cycle_speed",
+				"description": "The speed of the pulse to apply the shine"
+			},
+			{
+				"name": "PULSE_full_pulse_cycle",
+				"description": "If true, the pulse is continuosly, otherwise, it makes a pause in each cycle"
+			}
+		]
+	},
+	{
+		"name": "Matrix",
+		"group": "fx",
+		"description": "Some kind of matrix effect, but if you replace the noise, you can find cool effects",
+		"author": "duongvituan",
+		"link": "https://github.com/duongvituan/godot-sprite-shader/blob/master/godot/addons/godot_sprite_shader/assets/shader/matrix.shader",
+		"adaptedBy": "spheras",
+		"license": "MIT",
+		"version": "1.0",
+		"filename": "matrix.gdshader",
+		"activation": "MATRIX_active",
+		"function": "matrix",
+		"parameters": [
+			{
+				"name": "MATRIX_direction",
+				"description": "Direction of the effect, top - down, down-top"
+			},
+			{
+				"name": "MATRIX_velocity",
+				"description": "Velocity of the effect"
+			},
+			{
+				"name": "MATRIX_ROW",
+				"description": "Number of rows of the texture to subdivide"
+			},
+			{
+				"name": "MATRIX_value",
+				"description": "value transition in time to control the effect"
+			},
+			{
+				"name": "MATRIX_chars_tex",
+				"description": "Texture to apply to the effect. Fun with this.",
+				"texture": "noise/chars_texture3x3.png"
+			},
+			{
+				"name": "MATRIX_number_row_char_texture",
+				"description": "number of rows of the char texture to subdivide"
+			},
+			{
+				"name": "MATRIX_number_column_char_texture",
+				"description": "number of columns of the char texture to subdivide"
+			},
+			{
+				"name": "MATRIX_tint_color",
+				"description": "tint color of the effect"
+			},
+			{
+				"name": "MATRIX_line_thickness",
+				"description": "thickness of eache column/row?"
+			}
+		]
+	},
+	{
+		"name": "Holowave",
+		"group": "distort",
+		"description": "Holographic Wave effect.",
+		"author": "duongvituan",
+		"link": "https://github.com/duongvituan/godot-sprite-shader/blob/master/godot/addons/godot_sprite_shader/assets/shader/holo_wave.shader",
+		"adaptedBy": "spheras",
+		"license": "MIT",
+		"version": "1.0",
+		"filename": "holowave.gdshader",
+		"activation": "HOLOWAVE_active",
+		"function": "holowave",
+		"parameters": [
+			{
+				"name": "HOLOGRAPHIC_noiseTex",
+				"description": "Noise Texture used to perform the holographic shader",
+				"texture": "noise/noise1.png"
+			},
+			{
+				"name": "HOLOGRAPHIC_value",
+				"description": "holographic transition during the time"
+			},
+			{
+				"name": "HOLOGRAPHIC_noiseX",
+				"description": "?"
+			},
+			{
+				"name": "HOLOGRAPHIC_speed",
+				"description": "speed of the automatic transition during the time. Se 0 to position manually with value"
+			},
+			{
+				"name": "HOLOGRAPHIC_mix",
+				"description": "mix percent with color of the previous shader"
+			}
+		]
+	},
+	{
+		"name": "Holographic",
+		"group": "fx",
+		"description": "Holographic effect.",
+		"author": "duongvituan",
+		"link": "https://github.com/duongvituan/godot-sprite-shader/blob/master/godot/addons/godot_sprite_shader/assets/shader/holographic.shader",
+		"adaptedBy": "spheras",
+		"license": "MIT",
+		"version": "1.0",
+		"filename": "holographic.gdshader",
+		"activation": "HOLOGRAPHIC_active",
+		"function": "holographic",
+		"parameters": [
+			{
+				"name": "HOLOGRAPHIC_noiseTex",
+				"description": "Noise Texture used to perform the holographic shader",
+				"texture": "noise/noise1.png"
+			},
+			{
+				"name": "HOLOGRAPHIC_value",
+				"description": "holographic transition during the time"
+			},
+			{
+				"name": "HOLOGRAPHIC_noiseX",
+				"description": "?"
+			},
+			{
+				"name": "HOLOGRAPHIC_speed",
+				"description": "speed of the automatic transition during the time. Se 0 to position manually with value"
+			},
+			{
+				"name": "HOLOGRAPHIC_mix",
+				"description": "mix percent with color of the previous shader"
+			}
+		]
+	},
+	{
+		"name": "CorssFade Circle",
+		"group": "disolve",
+		"description": "Cross Fade of the texture using a circle to fade out or fade in.",
+		"author": "Rpics Studio",
+		"link": "https://godotshaders.com/shader/particle-star/",
+		"adaptedBy": "spheras",
+		"license": "CC0",
+		"version": "1.0",
+		"filename": "crossfadecircle.gdshader",
+		"activation": "CROSSFADE_CIRCLE_active",
+		"function": "crossfadeCircle",
+		"parameters": [
+			{
+				"name": "CROSSFADE_CIRCLE_transparency",
+				"description": "transparency of the circle which is the base of the fade"
+			},
+			{
+				"name": "CROSSFADE_CIRCLE_position",
+				"description": "position of the circle over the transparency."
+			},
+			{
+				"name": "CROSSFADE_CIRCLE_dissolveColor",
+				"description": "Disoolve color to perform the transition fade"
+			},
+			{
+				"name": "CROSSFADE_CIRCLE_circleSize",
+				"description": "size of the circle to perform the fade transition"
+			}
+		]
+	},
+	{
+		"name": "Disolve Burn",
+		"group": "disolve",
+		"description": "Burn effect disolving the texture.",
+		"author": "duongvituan",
+		"link": "https://github.com/duongvituan/godot-sprite-shader/blob/master/godot/addons/godot_sprite_shader/assets/shader/dissolve_burn.shader",
+		"adaptedBy": "spheras",
+		"license": "MIT",
+		"version": "1.0",
+		"filename": "disolveburn.gdshader",
+		"activation": "DISOLVEBURN_active",
+		"function": "disolveBurn",
+		"parameters": [
+			{
+				"name": "DISOLVEBURN_noise_tex",
+				"description": "Noise texture to apply during the disolve effect",
+				"texture": "noise/noise2.png"
+			},
+			{
+				"name": "DISOLVEBURN_burn_color",
+				"description": "Color to apply during the burn effect."
+			},
+			{
+				"name": "DISOLVEBURN_mix",
+				"description": "mixing color percent of the effect"
+			}
+		]
+	},
+	{
+		"name": "Shadow",
+		"group": "outline",
+		"description": "Add a 2D shadow behind your texture. IMPORTANT: This shader should be the last one in position to be effective.",
+		"author": "deakcor",
+		"link": "https://godotshaders.com/shader/shadow-2d/",
+		"adaptedBy": "spheras",
+		"license": "CC0",
+		"version": "1.0",
+		"filename": "shadow.gdshader",
+		"activation": "SHADOW_active",
+		"function": "shadow",
+		"parameters": [
+			{
+				"name": "SHADOW_deform",
+				"description": "deformation of the shadow"
+			},
+			{
+				"name": "SHADOW_offset",
+				"description": "distance of the shadow to the sprite."
+			},
+			{
+				"name": "SHADOW_modulate",
+				"description": "modulation of the shadow to make perspective effect"
+			}
+		]
+	},
+	{
+		"name": "Burn",
+		"group": "disolve",
+		"description": "The shader apply a burn effect over the texture.",
+		"author": "duongvituan",
+		"link": "https://github.com/duongvituan/godot-sprite-shader/blob/master/godot/addons/godot_sprite_shader/assets/shader/dissolve_burn.shader",
+		"adaptedBy": "spheras",
+		"license": "MIT",
+		"version": "1.0",
+		"filename": "burn.gdshader",
+		"activation": "BURN_active",
+		"function": "burn",
+		"parameters": [
+			{
+				"name": "BURN_offset",
+				"description": "position of the effect over the texture"
+			},
+			{
+				"name": "BURN_speed",
+				"description": "speed of the fx during the time."
+			},
+			{
+				"name": "BURN_burnValue",
+				"description": "mix of the color with the previous shader. 0->No Mix, 1->full mix"
+			}
+		]
+	},
+	{
+		"name": "Gold",
+		"group": "fx",
+		"description": "The shader apply a gold effects over the texture.",
+		"author": "duongvituan",
+		"link": "https://github.com/duongvituan/godot-sprite-shader/blob/master/godot/addons/godot_sprite_shader/assets/shader/transform_gold.shader",
+		"adaptedBy": "spheras",
+		"license": "MIT",
+		"version": "1.0",
+		"filename": "gold.gdshader",
+		"activation": "GOLD_active",
+		"function": "gold",
+		"parameters": [
+			{
+				"name": "GOLD_offset",
+				"description": "position of the effect over the texture"
+			},
+			{
+				"name": "GOLD_speed",
+				"description": "speed of the fx during the time. This affect to the brights changes over the time."
+			},
+			{
+				"name": "GOLD_mix",
+				"description": "mix of the color with the previous shader. 0->No Mix, 1->full mix"
+			}
+		]
+	},
+	{
+		"name": "Freeze",
+		"group": "fx",
+		"description": "The shader apply a freeze effects over the texture.",
+		"author": "duongvituan",
+		"link": "https://github.com/duongvituan/godot-sprite-shader/blob/master/godot/addons/godot_sprite_shader/assets/shader/transform_metal.shader",
+		"adaptedBy": "spheras",
+		"license": "MIT",
+		"version": "1.0",
+		"filename": "freeze.gdshader",
+		"activation": "FREEZE_active",
+		"function": "freeze",
+		"parameters": [
+			{
+				"name": "FREEZE_offset",
+				"description": "position of the effect over the texture"
+			},
+			{
+				"name": "FREEZE_speed",
+				"description": "speed of the fx during the time. This affect to the brights changes over the time."
+			},
+			{
+				"name": "FREEZE_mix",
+				"description": "mix of the color with the previous shader. 0->No Mix, 1->full mix"
+			}
+		]
+	},
+	{
+		"name": "Metal",
+		"group": "fx",
+		"description": "The shader apply a metal effects over the texture.",
+		"author": "duongvituan",
+		"link": "https://github.com/duongvituan/godot-sprite-shader/blob/master/godot/addons/godot_sprite_shader/assets/shader/transform_metal.shader",
+		"adaptedBy": "spheras",
+		"license": "MIT",
+		"version": "1.0",
+		"filename": "metal.gdshader",
+		"activation": "METAL_active",
+		"function": "metal",
+		"parameters": [
+			{
+				"name": "METAL_offset",
+				"description": "position of the effect over the texture"
+			},
+			{
+				"name": "METAL_speed",
+				"description": "speed of the fx during the time. This affect to the brights changes over the time."
+			},
+			{
+				"name": "METAL_mix",
+				"description": "mix of the color with the previous shader."
+			}
+		]
+	},
+	{
+		"name": "Shiny",
+		"group": "fx",
+		"description": "This shader adds a shine effect to the texture.",
+		"author": "duongvituan",
+		"link": "https://github.com/duongvituan/godot-sprite-shader/blob/master/godot/addons/godot_sprite_shader/assets/shader/emptyoutline.shader",
+		"adaptedBy": "spheras",
+		"license": "MIT",
+		"version": "1.0",
+		"filename": "shiny.gdshader",
+		"activation": "SHINY_active",
+		"function": "shiny",
+		"parameters": [
+			{
+				"name": "SHINY_processValue",
+				"description": "position of the bright over the texture"
+			},
+			{
+				"name": "SHINY_size",
+				"description": "size of the bright band"
+			},
+			{
+				"name": "SHINY_smoothLight",
+				"description": "smooth of the bright at the borders, concentrating light more or less"
+			},
+			{
+				"name": "SHINY_intensity",
+				"description": "Intensity of the bright"
+			},
+			{
+				"name": "SHINY_angle",
+				"description": "Angle of the bright over the sprite"
+			}
+		]
+	},
+	{
+		"name": "Empty Outline",
+		"group": "outline",
+		"description": "Outline wihtout content",
+		"author": "duongvituan",
+		"link": "https://github.com/duongvituan/godot-sprite-shader/blob/master/godot/addons/godot_sprite_shader/assets/shader/emptyoutline.shader",
+		"adaptedBy": "spheras",
+		"license": "MIT",
+		"version": "1.0",
+		"filename": "emptyoutline.gdshader",
+		"activation": "EMPTYOUTLINE_active",
+		"function": "emptyOutline",
+		"parameters": [
+			{
+				"name": "EMPTYOUTLINE_lineColor",
+				"description": "Color of the outline"
+			},
+			{
+				"name": "EMPTYOUTLINE_lineThickness",
+				"description": "thicknes of the outline"
+			}
+		]
+	},
+	{
+		"name": "Outline",
+		"group": "outline",
+		"description": "Outline effect",
+		"author": "duongvituan",
+		"link": "https://github.com/duongvituan/godot-sprite-shader/blob/master/godot/addons/godot_sprite_shader/assets/shader/outline.shader",
+		"adaptedBy": "spheras",
+		"license": "MIT",
+		"version": "1.0",
+		"filename": "outline.gdshader",
+		"activation": "OUTLINE_active",
+		"function": "outline",
+		"parameters": [
+			{
+				"name": "OUTLINE_thickness",
+				"description": "Thickness of the outline border, in pixels"
+			},
+			{
+				"name": "OUTLINE_color",
+				"description": "Color of the outline"
+			}
+		]
+	},
+	{
+		"name": "Blur",
+		"group": "distort",
+		"description": "Blur effect",
+		"author": "chatgpt",
+		"link": "https://chat.openai.com/",
+		"adaptedBy": "spheras",
+		"license": "MIT",
+		"version": "1.0",
+		"filename": "blur.gdshader",
+		"activation": "BLUR_active",
+		"function": "blur",
+		"parameters": [
+			{
+				"name": "BLUR_radius",
+				"description": "Radius of pixels to consider the blur effect"
+			},
+			{
+				"name": "BLUR_mix",
+				"description": "Percent of mixing color with the previous Shader. 0->No Mix, 1->full mix"
+			}
+		]
+	},
+	{
+		"name": "Glitch",
+		"group": "distort",
+		"description": "Glitch effect",
+		"author": "duongvituan",
+		"link": "https://github.com/duongvituan/godot-sprite-shader/blob/master/godot/addons/godot_sprite_shader/assets/shader/glitch.shader",
+		"adaptedBy": "spheras",
+		"license": "MIT",
+		"version": "1.0",
+		"filename": "glitch.gdshader",
+		"activation": "GLITCH_active",
+		"function": "glitch",
+		"parameters": [
+			{
+				"name": "GLITCH_offset",
+				"description": "Distance of the particles"
+			},
+			{
+				"name": "GLITCH_speed",
+				"description": "speed at which the effect runs"
+			},
+			{
+				"name": "GLITCH_size",
+				"description": "Size of the effect particles"
+			},
+			{
+				"name": "GLITCH_amount",
+				"description": "Amount of effect particles"
+			},
+			{
+				"name": "GLITCH_mix",
+				"description": "Color Mix Percent with the previous Shader.. 0->No Mix, 1->full mix"
+			}
+		]
+	},
+	{
+		"name": "Greyscale",
+		"group": "color",
+		"description": "Replace colors with a grayscale. Posibility to set the tone.",
+		"author": "chatgpt",
+		"link": "https://chat.openai.com/",
+		"adaptedBy": "spheras",
+		"license": "MIT",
+		"version": "1.0",
+		"filename": "greyscale.gdshader",
+		"activation": "GREYSCALE_active",
+		"function": "greyscale",
+		"parameters": [
+			{
+				"name": "GREYSCALE_tintColor",
+				"description": "Color to apply to the fx."
+			},
+			{
+				"name": "GREYSCALE_Luminosity",
+				"description": "Luminosity of the effect."
+			},
+			{
+				"name": "GREYSCALE_Blend",
+				"description": "Blend color percent with the tint color."
+			}
+		]
+	},
+	{
+		"name": "Rainbow",
+		"group": "color",
+		"description": "Fx to change color tone during the time.",
+		"author": "chatgpt",
+		"link": "https://github.com/spheras/godot-sprite-shader-mixer/blob/v1/shaders/rainbow.gdshader",
+		"adaptedBy": "spheras",
+		"license": "MIT",
+		"version": "1.0",
+		"filename": "rainbow.gdshader",
+		"activation": "RAINBOW_active",
+		"function": "rainbow",
+		"parameters": [
+			{
+				"name": "RAINBOW_speed",
+				"description": "Speed of the change color effect."
+			},
+			{
+				"name": "RAINBOW_redFactor",
+				"description": "Red factor to apply to the color effect during transitions."
+			},
+			{
+				"name": "RAINBOW_greenFactor",
+				"description": "Green factor to apply to the color effect during transitions."
+			},
+			{
+				"name": "RAINBOW_blueFactor",
+				"description": "Blue factor to apply to the color effect during transitions."
+			}
+		]
+	},
+	{
+		"name": "Half",
+		"group": "Custom",
+		"description": "E",
+		"author": "ChristChar",
+		"link": "https://github.com/spheras/godot-sprite-shader-mixer/blob/v1/shaders/rainbow.gdshader",
+		"adaptedBy": "spheras",
+		"license": "MIT",
+		"version": "1.0",
+		"filename": "Half.gdshader",
+		"activation": "HALF_active",
+		"function": "Half",
+		"parameters": [
+		]
+	}
+]

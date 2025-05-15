@@ -25,5 +25,10 @@
 		"Idle": {
 			"Framerate": 10
 		}
+	},
+	"Jomni":{
+		"Idle": {
+			"Framerate": 10
+		}
 	}
 }

@@ -32,3 +32,20 @@ func RGB_to_color(RGB:Array):
 func is_closer_to_white(color: Color) -> bool:
 	var brightness = 0.299 * color.r + 0.587 * color.g + 0.114 * color.b
 	return brightness > 0.5  # True se è più vicino al bianco, False se al nero
+
+func GetShader(Name: String):
+	for shader in Read_json("res://addons/sprite-shader-mixer/assets/shaders/shaders.json"):
+		if shader.name == Name:
+			return shader
+
+func Create_Shader_Mixed(Shaders:Array) -> ShaderMaterial:
+	var ShaderInfosArray: Array[ShaderInfo] = []
+	for shader in Shaders:
+		var NewShaderInfo = ShaderInfo.new()
+		NewShaderInfo.loadShaderInfo(GetShader(shader))
+		ShaderInfosArray.append(NewShaderInfo)
+	var code = ShaderInfo.generateShaderCode(ShaderInfosArray)
+	# Richiesta di generazione: il mixer crea un .tres in memoria
+	var mat := ShaderMaterial.new() 
+	mat.shader = code
+	return mat

@@ -1,16 +1,14 @@
 extends GridContainer
 
-const Path = "res://Data/Resources/Maps/"
+func Update():
+	for child in get_children():
+		child.queue_free()
+	for map: MapData in Team.MapsData:
+		if map.Unlock:
+			var NewButton = MapButton.new()
+			NewButton.data = map
+			add_child(NewButton)
 
-var Maps = [
-	preload(Path + "ChristChar's PC.tres"),
-	preload(Path + "Pixy's PC.tres"),
-	preload(Path + "Internet.tres"),
-	preload(Path + "Inkerbot's PC.tres")
-]
 
 func _ready():
-	for map in Maps:
-		var NewButton = MapButton.new()
-		NewButton.data = map
-		add_child(NewButton)
+	Update()

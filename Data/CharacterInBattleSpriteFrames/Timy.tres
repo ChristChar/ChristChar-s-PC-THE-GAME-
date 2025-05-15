@@ -1,0 +1,34 @@
+[gd_resource type="SpriteFrames" load_steps=2 format=3 uid="uid://bkj28ahs0xuas"]
+
+[ext_resource type="Texture2D" uid="uid://llxa4tfqrpsy" path="res://Resources/Images/Characters/Timy/Idle/1.png" id="1_cwpwy"]
+
+[resource]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"Dead",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Dying",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Fail",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_cwpwy")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Nap",
+"speed": 5.0
+}]

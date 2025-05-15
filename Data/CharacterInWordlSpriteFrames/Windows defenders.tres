@@ -1,0 +1,36 @@
+[gd_resource type="SpriteFrames" load_steps=4 format=3 uid="uid://c5vdbohr872x2"]
+
+[ext_resource type="Texture2D" uid="uid://xvo4pxtmefsv" path="res://Resources/Images/Characters/Windows defenders/InWorld/Idle.png" id="1_da6l7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mhwqd"]
+atlas = ExtResource("1_da6l7")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3aocy"]
+atlas = ExtResource("1_da6l7")
+region = Rect2(48, 0, 48, 48)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mhwqd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3aocy")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mhwqd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3aocy")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 5.0
+}]

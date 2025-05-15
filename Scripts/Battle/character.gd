@@ -4,6 +4,7 @@ class_name CharacterData
 # Variabili del personaggio
 var Character_type: String = "Gino"
 var CurrentParticle = "Damage"
+var LastMoveUsed = "Hit" 
 var Level = 5
 var EXP = 0
 var Original_ZIndex: int
@@ -19,6 +20,7 @@ var Learnable_Moves = []
 var Status = {}
 var StatModific = {"HP":0,"ATT":0,"DIF":0,"PI":0,"INT":0,"SPEED":0}
 var IsEnemy = false
+var Boss = false
 var Faint = false
 var Focus = false
 var Attacking = false
@@ -26,11 +28,12 @@ var AttTarget: CharacterData
 var animation: Dictionary
 
 var LifeBar := ProgressBar.new()
-var AnimatedSprite := AnimatedSprite3D.new()
+var AnimatedSprite := AnimatedSprite2D.new()
 var SV := SubViewport.new()
 var Shield := Sprite2D.new()
 
-const HealthBar = "res://Scenes/BarraDellaVita.tscn"
+var HealthBar = "res://Scenes/BarraDellaVita.tscn"
+
 const Particles = {
 	"Damage":"res://Scenes/Particles/Damage.tscn",
 	"DamageText":"res://Scenes/Particles/DamageText.tscn",
@@ -39,7 +42,8 @@ const Particles = {
 	"LowerStat": "res://Scenes/Particles/LowerStat.tscn",
 	"UpperStat": "res://Scenes/Particles/UpperStat.tscn",
 	"Angry": "res://Scenes/Particles/Angry.tscn",
-	"Glitch": "res://Scenes/Particles/Glitch.tscn"
+	"Glitch": "res://Scenes/Particles/Glitch.tscn",
+	"NoInternet": "res://Scenes/Particles/NoInternet.tscn"
 }
 const  Audios = {
 	"Hit":  "res://Resources/Sounds/BattleSounds/Hit.mp3",
@@ -71,6 +75,9 @@ var StatusData: = {
 	"Poison": {
 		"Function":Poison
 		},
+	"Puppet": {
+		"Function":Poison
+		},
 	"Angry": {
 		"Stat":{
 			"ATT": 1.5,
@@ -78,42 +85,81 @@ var StatusData: = {
 		}
 	},
 	"Glitch": {
-		"Skip": 33.3,
+		"Function":Poison,
+		"Skip": 25,
 		"Stat": {
-			"PI": 0.8
-		}
+			"PI": 0.75
+		},
+		"Shader": "Glitch"
+	},
+	"NoInternet": {
+		"Skip": 40,
+		"Stat": {
+			"SPEED": 0.5
+		},
+		"Shader": "Glitch"
+	},
+	"Half": {
+		"Stat": {
+			"ATT": 0.5
+		},
+		"Shader": "Half"
+	},
+	"Ban": {
+		"Skip": 100,
+		"Shader": "Greyscale",
+		"TurnFunction":RemoveEffect
+	},
+	"Repeat": {
+		"Function":RemoveEffect
 	}
 }
 
 signal Finish_Attack()
 
-func Poison():
-	Take_damage(Calcolate_Stat("HP") * Status["Poison"] / 100)
-	Start_Particles("Poison")
+func Poison(Effect:String):
+	Take_damage(Calcolate_Stat("HP") * Status[Effect] / 100)
+	Start_Particles(Effect)
+
+func RemoveEffect(Effect:String):
+	Status[Effect] -= 1
+	if Status[Effect] <= 0:
+		Status.erase(Effect)
+		UpdateEffectsIcon()
 
 func EndRound():
 	if Faint:
 		return
 	for s in Status:
 		if "Function" in StatusData[s]:
-			StatusData[s]["Function"].call()
+			StatusData[s]["Function"].call(s)
 
 func EndTurn():
 	if Faint:
 		return
 	if Protected > 0:
 		Protected -= 1
+	for s in Status:
+		if "TurnFunction" in StatusData[s]:
+			StatusData[s]["TurnFunction"].call(s)
 
 func UpdateEffectsIcon():
 	var Grid: GridContainer = LifeBar.get_node("Effects")
 	for child in Grid.get_children():
 		child.queue_free()
+	var shaders = []
 	for s in Status:
+		if "Shader" in StatusData[s]:
+			shaders.append(StatusData[s]["Shader"])
 		var texture = TextureRect.new()
 		texture.texture = load("res://Resources/Images/Icone/Effect/" + s + ".png")
 		Grid.add_child(texture)
+	if shaders.size() > 0:
+		AnimatedSprite.material = File.Create_Shader_Mixed(shaders)
+	else:
+		AnimatedSprite.material = null
 
-func _init(type, level:int = 10):
+func _init(type, level:int = 10, boss: bool = false):
 	MaxEnergy = Data.Character_Data[Character_type]["MaxEnergia"]
 	if type is CharacterSave:
 		Level = type.Level
@@ -124,6 +170,7 @@ func _init(type, level:int = 10):
 	else:
 		Character_type = type
 		Level = level
+		Boss = boss
 	Energy = MaxEnergy
 	HP = Calcolate_Stat("HP")
 	Calcolate_Learnable_Moves()
@@ -171,22 +218,26 @@ func _ready():
 	AnimatedSprite.sprite_frames = NewFrames
 	if IsEnemy:
 		AnimatedSprite.flip_h = true
-	AnimatedSprite.texture_filter = BaseMaterial3D.TEXTURE_FILTER_NEAREST
-	AnimatedSprite.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_ON
-		# 4. Abilita la modalità di alpha cut pre‐pass
-	AnimatedSprite.alpha_cut     = SpriteBase3D.ALPHA_CUT_OPAQUE_PREPASS
-	AnimatedSprite.alpha_scissor_threshold = 0.5
-	AnimatedSprite.billboard = BaseMaterial3D.BILLBOARD_DISABLED
-	add_child(AnimatedSprite)
 	AnimatedSprite.play("Idle")
+	AnimatedSprite.position = Vector2(300,300)
 	SV.size = Vector2(600,600)
 	SV.render_target_update_mode = SubViewport.UPDATE_ALWAYS
 	SV.transparent_bg = true
 	add_child(SV)
 	var Sprt = Sprite3D.new()
 	Sprt.position.z = 0.2
+	if Boss:
+		Sprt.scale = Vector3(1.25,1.25,1.25)
+		position.y *= 1.25
 	Sprt.texture = SV.get_texture()
 	add_child(Sprt)
+	Sprt.texture_filter = BaseMaterial3D.TEXTURE_FILTER_NEAREST
+	Sprt.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_ON
+		# 4. Abilita la modalità di alpha cut pre‐pass
+	Sprt.alpha_cut     = SpriteBase3D.ALPHA_CUT_OPAQUE_PREPASS
+	Sprt.alpha_scissor_threshold = 0.5
+	Sprt.billboard = BaseMaterial3D.BILLBOARD_DISABLED
+	SV.add_child(AnimatedSprite)
 	Shield.texture = preload("res://Resources/Images/BattleAnimations/Shield.png")
 	Shield.modulate = Color(1,1,1,0.65)
 	Shield.scale = Vector2(5,5)
@@ -194,7 +245,12 @@ func _ready():
 	Shield.visible = false
 	SV.add_child(Shield)
 	# Configurazione barra della vita
-	LifeBar = load(HealthBar).instantiate()
+	var BarScene: String
+	if "CustomBar" in Data.Character_Data[Character_type]:
+		BarScene = Data.Character_Data[Character_type]["CustomBar"]
+	else:
+		BarScene = HealthBar
+	LifeBar = load(BarScene).instantiate()
 	LifeBar.position = Vector2(-140 + 300, -175 + 300)
 	LifeBar.max_value = HP
 	SV.add_child(LifeBar)
@@ -233,8 +289,8 @@ func Not_Info():
 	FocusSwitch(false)
 
 func FocusSwitch(on:bool):
-	var color = Color(0.9, 0.9, 0.9, 0.6) if on else Color(1, 1, 1)
-	AnimatedSprite.modulate = color
+	var scaleValue = 1.3 if on else 1
+	AnimatedSprite.scale = Vector2(scaleValue,scaleValue)
 	Focus = on
 
 func DIE():
@@ -246,6 +302,9 @@ func DIE():
 	else:
 		AnimatedSprite.play("Dead")
 	Play_Sound("Dead")
+	if IsEnemy:
+		Team.AddQuestProgress("Enemy")
+		Team.AddQuestProgress("Enemy " + Character_type)
 
 func Reset():
 	HP = Calcolate_Stat("HP")
@@ -255,6 +314,8 @@ func Reset():
 	LifeBar.value = Calcolate_Stat("HP")
 	AnimatedSprite.play("Idle")
 	Energy = MaxEnergy
+	Protected = 0
+	IsEnemy = false
 	if Status.size() > 0:
 		Status = {}
 		UpdateEffectsIcon()
@@ -394,9 +455,10 @@ func _process(delta):
 		ReturnToIdle -= delta
 
 func Start_Particles(Type: String, time: float = 0.4):
-	SV.get_node(CurrentParticle).emitting = false
-	CurrentParticle = Type
-	DamagePartclesTimer = time
+	if SV.get_node(Type):
+		SV.get_node(CurrentParticle).emitting = false
+		CurrentParticle = Type
+		DamagePartclesTimer = time
 
 func Start_anmation(Anim:String, time:float = 1):
 	if AnimatedSprite.sprite_frames.get_frame_count(Anim) > 0:
@@ -462,7 +524,8 @@ func Calcolate_Stats():
 func Calcolate_Stat(Stat: String) -> int:
 	var Base_Stat = Data.Character_Data[Character_type]["Stats"][Stat]
 	if Stat == "HP":
-		return int(Base_Stat / 50 * Level + Level + 10)
+		var Molt = 2 if Boss else 1
+		return int(Base_Stat / 50 * Level + Level + 10) * Molt
 	else:
 		var modificatore = StatModificMoltp[int(StatModific[Stat])]
 		for s in Status:
@@ -493,22 +556,33 @@ func assign_moves():
 				selected_indices.append(random_index)
 				Current_Moves.append(Learnable_Moves[random_index])
 
-func AI(AILevel: int = 0):
+func GetUsableMoves():
 	var UsableMoves = []
 	for move in Current_Moves:
 		if Energy >= Data.Move_data[move]["Energy"]:
 			UsableMoves.append(move)
+	return UsableMoves
+
+func AI(AILevel: int = 0):
+	var UsableMoves = GetUsableMoves()
 	if UsableMoves.size() == 0:
 		return ["Skip"]
 	match AILevel:
 		0:
-			var Move = UsableMoves.pick_random()
+			var Move
+			if "Repeat" in Status:
+				if LastMoveUsed in UsableMoves:
+					Move = LastMoveUsed
+				else:
+					return ["Skip"]
+			else:
+				Move = UsableMoves.pick_random()
 			var PlayerTeam = get_parent().PlayerTeam
 			var Target
 			match Data.Move_data[Move]["Target"]:
 				"Enemy":
 					Target = PlayerTeam.pick_random()
-					while Target.Faint:
+					while Target.Faint or Target == self:
 						Target = PlayerTeam.pick_random()
 				"All":
 					Target = PlayerTeam
@@ -609,9 +683,16 @@ func SetupAttackAnimation():
 		pass
 
 func Use_Move(Move: String, Target: CharacterData):
+	LastMoveUsed = Move 
 	get_parent().TextUpdate(Character_type + " use " + Move + " on " + Target.Character_type + "!!!")
 	await get_parent().Enter
-	if randf() < Data.Move_data[Move]["Chance"] / 100:
+	var AdditionalChance = 0
+	if "ChanceScript" in Data.Move_data[Move]:
+		var script = load("res://Scripts/Chance Scripts/" +  Data.Move_data[Move]["ChanceScript"] +".gd").new()
+		add_child(script)
+		AdditionalChance += script.script(self, Target, Move)
+		script.queue_free()
+	if randf() < (Data.Move_data[Move]["Chance"] + AdditionalChance) / 100:
 		if Data.Move_data[Move]["Move type"] == "Fisica" and "Angry" in Status:
 			Start_Particles("Angry")
 		AttTarget = Target
@@ -667,23 +748,28 @@ func Use_Move(Move: String, Target: CharacterData):
 					Index += 1
 			if "Stat" in Data.Move_data[Move]:
 				for Stat in Data.Move_data[Move]["Stat"]:
-					if Target.StatModific[Stat["Stat"]] == 6 or Target.StatModific[Stat["Stat"]] == -6:
+					var ThisTarget: CharacterData
+					if Stat["Target"] == "Self":
+						ThisTarget = self
+					else:
+						ThisTarget = Target
+					if ThisTarget.StatModific[Stat["Stat"]] == 6 or ThisTarget.StatModific[Stat["Stat"]] == -6:
 						await get_tree().create_timer(0.01).timeout
-						get_parent().TextUpdate(Stat["Stat"] + " of " + Target.Character_type + "  can no longer increase")
+						get_parent().TextUpdate(Stat["Stat"] + " of " + ThisTarget.Character_type + "  can no longer increase")
 						await get_parent().Enter
 					else:
-						Target.StatModific[Stat["Stat"]] = max(min(Target.StatModific[Stat["Stat"]] +  Stat["Power"], 6), -6)
+						ThisTarget.StatModific[Stat["Stat"]] = max(min(ThisTarget.StatModific[Stat["Stat"]] +  Stat["Power"], 6), -6)
 						await get_tree().create_timer(0.01).timeout
 						var PlusOrMinus: String
 						if Stat["Power"] < 0:
 							PlusOrMinus = " decrease!!"
-							Target.Start_Particles("LowerStat")
-							Target.Play_Sound("LowerStatS")
+							ThisTarget.Start_Particles("LowerStat")
+							ThisTarget.Play_Sound("LowerStatS")
 						else:
 							PlusOrMinus = " increases!!"
-							Target.Start_Particles("UpperStat")
-							Target.Play_Sound("UpperStatS")
-						get_parent().TextUpdate(Stat["Stat"] + " of " + Target.Character_type + PlusOrMinus)
+							ThisTarget.Start_Particles("UpperStat")
+							ThisTarget.Play_Sound("UpperStatS")
+						get_parent().TextUpdate(Stat["Stat"] + " of " + ThisTarget.Character_type + PlusOrMinus)
 						await get_parent().Enter
 			if "Status" in Data.Move_data[Move]:
 				for Statuss in Data.Move_data[Move]["Status"]:

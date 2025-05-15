@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://b2rfce4icuvm"]
+[gd_scene load_steps=6 format=3 uid="uid://b2rfce4icuvm"]
 
 [ext_resource type="Script" uid="uid://b0jbyv1alnxq5" path="res://Scripts/Player/Gui/game_menu.gd" id="1_2yx3q"]
 [ext_resource type="Texture2D" uid="uid://dhf6a0ln255wq" path="res://Resources/Images/Gui/InvBackground.png" id="1_ri6w6"]
+[ext_resource type="PackedScene" uid="uid://5gp8r5p64hs6" path="res://Scenes/Gui/Inventory/Inventory.tscn" id="3_32a5l"]
+[ext_resource type="PackedScene" uid="uid://1g6hpkx5cup3" path="res://Scenes/Gui/Team/TeamViewer.tscn" id="4_noiew"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2yx3q"]
 bg_color = Color(0, 0, 0, 0.392157)
@@ -24,10 +26,10 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_2yx3q")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 layout_mode = 2
-offset_left = 698.0
-offset_top = 211.0
-offset_right = 812.0
-offset_bottom = 349.0
+offset_left = 456.0
+offset_top = 177.0
+offset_right = 704.0
+offset_bottom = 360.0
 scale = Vector2(4, 4)
 mouse_filter = 0
 texture = ExtResource("1_ri6w6")
@@ -38,10 +40,10 @@ patch_margin_bottom = 6
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
-offset_left = 723.0
-offset_top = 234.0
-offset_right = 1127.0
-offset_bottom = 801.0
+offset_left = 513.0
+offset_top = 210.0
+offset_right = 917.0
+offset_bottom = 873.0
 
 [node name="Resume" type="Button" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 100)
@@ -49,6 +51,22 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 50
 button_mask = 5
 text = "Resume"
+
+[node name="Team" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+button_mask = 5
+text = "Team
+"
+
+[node name="Inventory" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+button_mask = 5
+text = "Inventory
+"
 
 [node name="Settings" type="Button" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 100)
@@ -64,5 +82,35 @@ theme_override_font_sizes/font_size = 50
 button_mask = 5
 text = "Back to menu"
 
+[node name="TeamInfos" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 964.0
+offset_top = 209.0
+offset_right = 1364.0
+offset_bottom = 559.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 0
+offset_left = 964.0
+offset_top = 604.0
+offset_right = 1374.0
+offset_bottom = 879.0
+
+[node name="QuestInfos" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+
+[node name="Primary" type="VBoxContainer" parent="ScrollContainer/QuestInfos"]
+layout_mode = 2
+
+[node name="Inventory" parent="." instance=ExtResource("3_32a5l")]
+visible = false
+layout_mode = 1
+
+[node name="TeamViewer" parent="." instance=ExtResource("4_noiew")]
+visible = false
+layout_mode = 1
+
 [connection signal="pressed" from="VBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="VBoxContainer/Team" to="." method="_on_team_pressed"]
+[connection signal="pressed" from="VBoxContainer/Inventory" to="." method="_on_inventory_pressed"]
 [connection signal="pressed" from="VBoxContainer/BackToMenu" to="." method="_on_back_to_menu_pressed"]

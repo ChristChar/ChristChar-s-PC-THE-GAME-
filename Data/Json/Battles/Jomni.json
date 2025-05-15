@@ -1,0 +1,15 @@
+[
+	{
+		"Type": "Jomni",
+		"Level": 30,
+		"Boss": true
+	},
+	{
+		"Type": "Ghino",
+		"Level": 15
+	},
+	{
+		"Type": "Timy",
+		"Level": 15
+	}
+]

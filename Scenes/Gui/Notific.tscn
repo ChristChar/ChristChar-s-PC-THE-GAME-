@@ -1,0 +1,139 @@
+[gd_scene load_steps=7 format=3 uid="uid://dcrqxts3hcu17"]
+
+[ext_resource type="Script" uid="uid://ddiywwclvlcoh" path="res://Scripts/Player/Gui/notific.gd" id="1_ig8xv"]
+[ext_resource type="AudioStream" uid="uid://b5xe5ki2l5wtp" path="res://Resources/Sounds/Notific.mp3" id="2_ig8xv"]
+
+[sub_resource type="Animation" id="Animation_2eys0"]
+resource_name = "Notific"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.466667, 3.03333, 4),
+"transitions": PackedFloat32Array(0.406126, 0.5, 0.31864, 1),
+"update": 0,
+"values": [Vector2(0, -200), Vector2(0, 0), Vector2(0, 0), Vector2(-800, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2.96667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer:pitch_scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.4, 2.46667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [1.0, 1.0, 0.5]
+}
+
+[sub_resource type="Animation" id="Animation_2b81n"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer:pitch_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_f77yl"]
+_data = {
+&"Notific": SubResource("Animation_2eys0"),
+&"RESET": SubResource("Animation_2b81n")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ig8xv"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0, 0.662745, 1, 0.854902)
+border_width_left = 25
+border_width_top = 25
+border_width_right = 25
+border_width_bottom = 25
+border_color = Color(0, 0.556863, 0.843137, 1)
+border_blend = true
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+shadow_size = 10
+shadow_offset = Vector2(40, 40)
+
+[node name="Notific" type="Control"]
+z_index = 5
+custom_minimum_size = Vector2(750, 150)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 750.0
+offset_bottom = 150.0
+script = ExtResource("1_ig8xv")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_f77yl")
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_ig8xv")
+
+[node name="Control" type="Control" parent="."]
+anchors_preset = 0
+offset_left = -800.0
+offset_right = -760.0
+offset_bottom = 40.0
+
+[node name="Panel" type="Panel" parent="Control"]
+layout_mode = 2
+offset_right = 750.0
+offset_bottom = 150.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ig8xv")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
+layout_mode = 2
+offset_right = 750.0
+offset_bottom = 150.0
+alignment = 1
+
+[node name="Label" type="Label" parent="Control/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 25
+theme_override_font_sizes/font_size = 50
+text = "New quest: ENEMY!"
+
+[node name="TextureRect" type="TextureRect" parent="Control/HBoxContainer"]
+layout_mode = 2
