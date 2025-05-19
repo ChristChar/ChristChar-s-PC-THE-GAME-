@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="Quest" load_steps=2 format=3 uid="uid://7i7b0dkj3lyv"]
 
-[ext_resource type="Script" uid="uid://ctpglg2iifoui" path="res://Scripts/Resources/Quest.gd" id="1_pt713"]
+[ext_resource type="Script" uid="uid://ctpglg2iifoui" path="res://Scripts/Resources/Quest.gd" id="1_dod1n"]
 
 [resource]
-script = ExtResource("1_pt713")
+script = ExtResource("1_dod1n")
 Name = "Test"
 ID = "ENEMYS"
 Description = "Kill 10 enemys"
@@ -11,6 +11,9 @@ Objectives = Dictionary[String, int]({
 "Enemy": 4,
 "Enemy Trojan": 1
 })
+Reward = {
+"IPoints": 50
+}
 MapLocation = "Internet"
 CordLocation = Vector2(5, -5)
 Type = "Secondary"

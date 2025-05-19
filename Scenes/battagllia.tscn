@@ -1,7 +1,7 @@
 [gd_scene load_steps=18 format=3 uid="uid://c3cftyawb7ueu"]
 
 [ext_resource type="Script" uid="uid://dfq8e1kryrbeb" path="res://Scripts/Battle/battagllia.gd" id="1_bgf7q"]
-[ext_resource type="FontFile" uid="uid://ds5snyvlfuynj" path="res://Resources/Others/DeathFont.otf" id="3_wyd80"]
+[ext_resource type="FontFile" uid="uid://ds5snyvlfuynj" path="res://Resources/Fonts/DeathFont.otf" id="3_wyd80"]
 [ext_resource type="AudioStream" uid="uid://clbcsyegxlpgm" path="res://Resources/Sounds/Death.mp3" id="4_hm82a"]
 [ext_resource type="Texture2D" uid="uid://ckoum6b3kyr05" path="res://Resources/Images/Icone/Stat/HP.png" id="4_vdukg"]
 [ext_resource type="Texture2D" uid="uid://b3fusq6hh5gkg" path="res://Resources/Images/Icone/Stat/ATT.png" id="5_ctmbl"]

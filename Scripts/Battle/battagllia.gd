@@ -117,7 +117,10 @@ func Turn():
 				await get_tree().create_timer(0.01).timeout
 				TextUpdate(Teamate.Character_type + " has earned " + str(TotalExp) + " Exp!!")
 				await Enter
-				Teamate.Gain_EXP(TotalExp)
+				if Teamate.Gain_EXP(TotalExp):
+					await get_tree().create_timer(0.01).timeout
+					TextUpdate(Teamate.Character_type + " cannot exceed the lavel cap!")
+					await Enter
 				if OldLevel != Teamate.Level:
 					await get_tree().create_timer(0.01).timeout
 					TextUpdate(Teamate.Character_type + " has reached level " + str(Teamate.Level) + "!!")

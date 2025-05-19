@@ -137,3 +137,4 @@ text = "New quest: ENEMY!"
 
 [node name="TextureRect" type="TextureRect" parent="Control/HBoxContainer"]
 layout_mode = 2
+expand_mode = 2

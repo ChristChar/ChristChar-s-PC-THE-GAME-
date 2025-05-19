@@ -1,10 +1,36 @@
-[gd_scene load_steps=6 format=3 uid="uid://dmfih6652kuif"]
+[gd_scene load_steps=12 format=3 uid="uid://dmfih6652kuif"]
 
 [ext_resource type="Script" uid="uid://d02e1j002x5qt" path="res://Scripts/Player/Gui/MapSelection/map_selector.gd" id="1_1f5gq"]
 [ext_resource type="Script" uid="uid://dpqab475g8ewm" path="res://Scripts/Player/Gui/MapSelection/MapsButtonsGeneration.gd" id="1_1fdk6"]
+[ext_resource type="Script" uid="uid://qgji4qgxwo1n" path="res://Scripts/Player/menu.gd" id="1_4hsua"]
 [ext_resource type="Texture2D" uid="uid://cuh1c2hcf7xih" path="res://Resources/Images/Maps/Preview/ChristChar's PC.png" id="1_5kh2e"]
 [ext_resource type="Script" uid="uid://cq18xelra6581" path="res://Scripts/Player/Gui/MapSelection/MapPreview.gd" id="2_ktaqm"]
 [ext_resource type="Texture2D" uid="uid://bmnavwfaafmpw" path="res://Resources/Images/Icone/People.png" id="3_ktaqm"]
+[ext_resource type="FontFile" uid="uid://cj5dsfcnt24x6" path="res://Resources/Fonts/Moodcake.ttf" id="7_2kj5y"]
+[ext_resource type="Script" uid="uid://yrowflb58kqc" path="res://Scripts/Player/loading.gd" id="7_inf8c"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_inf8c"]
+bg_color = Color(0, 0.16837, 0.212208, 1)
+border_width_left = 100
+border_width_top = 100
+border_width_right = 100
+border_width_bottom = 100
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6nxtw"]
+bg_color = Color(0, 0.376629, 0.461149, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sebjp"]
+bg_color = Color(9.81867e-06, 0.799719, 0.967086, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
 
 [node name="Menu" type="Control" groups=["Menu"]]
 layout_mode = 3
@@ -13,6 +39,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_4hsua")
 
 [node name="MapSelector" type="Control" parent="." groups=["MapSelector"]]
 anchors_preset = 0
@@ -116,5 +143,46 @@ theme_override_constants/shadow_offset_x = 5
 theme_override_constants/shadow_offset_y = 5
 theme_override_font_sizes/font_size = 100
 text = "MAP SELECTION"
+
+[node name="Loading" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("7_inf8c")
+
+[node name="Panel" type="Panel" parent="Loading"]
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 2
+offset_right = 1920.0
+offset_bottom = 1080.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_inf8c")
+
+[node name="CenterContainer" type="CenterContainer" parent="Loading"]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="HBoxContainer" type="VBoxContainer" parent="Loading/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="Label" type="Label" parent="Loading/CenterContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 50
+theme_override_fonts/font = ExtResource("7_2kj5y")
+theme_override_font_sizes/font_size = 100
+text = "Loading..."
+horizontal_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="Loading/CenterContainer/HBoxContainer"]
+custom_minimum_size = Vector2(1000, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+theme_override_styles/background = SubResource("StyleBoxFlat_6nxtw")
+theme_override_styles/fill = SubResource("StyleBoxFlat_sebjp")
+value = 50.0
 
 [connection signal="pressed" from="MapSelector/Infos/Start" to="MapSelector" method="_on_start_pressed"]

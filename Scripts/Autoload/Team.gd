@@ -1,7 +1,10 @@
 extends Node
 
-var Flags = {}
+var IPoints: int = 0
+var LevCap: int = 20
+var LoadingValue = 100
 var team: Array[CharacterData] = []
+var Flags = {}
 var CharactersData: Dictionary[String, CharacterData] = {}
 var Pause = false
 var Is_in_battle = false
@@ -9,6 +12,7 @@ var LastBattleResult = true
 var Maps
 var Inventory: Dictionary[ItemData, int] = {}
 var Quests: Dictionary[String, Quest] = {}
+var CompletedQuests: Array[String] = []
 var LastTalker: Node3D
 var Game: Node3D
 var Notifics := VBoxContainer.new()
@@ -38,6 +42,10 @@ func SaveData():
 	NewSave.Inventory = Inventory
 	for map: MapData in MapsData:
 		NewSave.MapUnlocked[map.Name] = map.Unlock
+	NewSave.InternetPoints = IPoints
+	for quest: Quest in Quests.values():
+		NewSave.Quests[quest.ID] = quest.Progress
+	NewSave.CompletedQuests = CompletedQuests
 	ResourceSaver.save(NewSave, "user://Saves/Save.tres")
 
 func LoadData():
@@ -55,12 +63,18 @@ func LoadData():
 		for map: MapData in MapsData:
 			if map.Name in save.MapUnlocked:
 				map.Unlock = save.MapUnlocked[map.Name] 
+		IPoints = save.InternetPoints
+		for quest in save.Quests:
+			var NewQuest = GetQuest(quest)
+			NewQuest.Progress = save.Quests[quest]
+			Quests[quest] = NewQuest
+		CompletedQuests = save.CompletedQuests
 
 func AddQuestProgress(ID:String):
 	for quest in Quests.values():
 		quest.Add_progress(ID)
 
-func AddQuest(quest):
+func AddQuest(quest, Notific: bool = true):
 	var NewQuest: Quest
 	if quest is Quest:
 		NewQuest = quest
@@ -70,7 +84,9 @@ func AddQuest(quest):
 	if NewQuest.ID in Quests:
 		return
 	Quests[NewQuest.ID] = NewQuest
-	AddNotific("New quest: " + NewQuest.Name + "!", preload("res://Resources/Images/Icone/Quest.png"))
+	NewQuest.complete.connect(OnQuestComplete)
+	if Notific:
+		AddNotific("New quest: " + NewQuest.Name + "!", preload("res://Resources/Images/Icone/Quest.png"))
 
 func AddNotific(Text: String, texture: Texture2D = null):
 	var NewNotific = preload("res://Scenes/Gui/Notific.tscn").instantiate()
@@ -78,6 +94,11 @@ func AddNotific(Text: String, texture: Texture2D = null):
 	if texture:
 		NewNotific.texture = texture
 	Notifics.add_child(NewNotific)
+
+func AddLevCap(Qtd: int, Notific:bool = true):
+	LevCap += Qtd
+	if Notific:
+		AddNotific("+" + str(Qtd) + " Level Cap!!!")
 
 func CheckSaveDir():
 	var dir_path = "user://Saves"
@@ -88,18 +109,43 @@ func CheckSaveDir():
 		return true
 	return false
 
+func GetQuest(ID: String) -> Quest:
+	return load("res://Data/Resources/Quests/" + ID + ".tres")
+
 func _exit_tree():
 	SaveData()
 
-func A(Name):
-	print("CONGRATULATION, YOU WIN!!", Name)
+func OnQuestComplete(quest: Quest):
+	AddNotific("Quest completed: " + quest.Name, preload("res://Resources/Images/Icone/Quest.png"))
+	for reward in quest.Reward:
+		match reward:
+			"IPoints":
+				AddIPoints(quest.Reward[reward])
+			"NewQuest":
+				AddQuest(load(quest.Reward[reward]), false)
+			"Map":
+				UnlockMap(quest.Reward[reward])
+	CompletedQuests.append(quest.ID)
+	Quests.erase(quest.ID)
+				
+
+func AddIPoints(Qtd:int, Notific: bool = true):
+	IPoints += Qtd
+	if Notific:
+		var n = ""
+		if Qtd > 1:
+			n += "+"
+		AddNotific(n + str(Qtd) + " IPoints", preload("res://Resources/Images/Icone/IPoints.png"))
+
+func RemoveIPoints(Qtd:int, Notific: bool = true):
+	if IPoints >= Qtd:
+		AddIPoints(-Qtd, Notific)
+		return true
+	return false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	add_child(Notifics)
-	AddQuest("res://Data/Resources/Quests/Test.tres")
-	AddQuest("res://Data/Resources/Quests/The Gang.tres")
-	Quests["ENEMYS"].complete.connect(A)
 	Inventory[preload("res://Data/Resources/Items/Mela.tres")] = 2
 	randomize()
 	CharactersData["Bob"] =  CharacterData.new("Bob", 10)
@@ -108,7 +154,7 @@ func _ready():
 	CharactersData["Cat"] =  CharacterData.new("Cat", 12)
 	CharactersData["Chrome dino"] =  CharacterData.new("Chrome dino", 12)
 	CharactersData["Windows defenders"] =  CharacterData.new("Windows defenders", 15)
-	team = [CharactersData["ChristChar"], CharactersData["Bob"]]
+	team = [CharactersData["ChristChar"]]
 	LoadData()
 	EnterInMap.connect(OnEnterMap)
 
@@ -136,7 +182,7 @@ func UnlockMap(map:String, Notific: bool = true):
 func OnEnterMap(map):
 	match  map:
 		"ChristChar's PC": 
-			UnlockMap("Internet", false)
+			pass
 
 func Get_max_level() -> int:
 	var MaxLevel = 0

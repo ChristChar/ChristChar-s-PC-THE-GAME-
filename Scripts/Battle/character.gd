@@ -489,13 +489,18 @@ func Take_damage(Damage: int):
 		DIE()
 
 func Gain_EXP(EXP_gain: int):
+	if Level == Team.LevCap:
+		return true
 	EXP += EXP_gain
 	Check_Level_Up()
+	return false
 
 func Check_Level_Up():
 	while EXP >= Get_Level_Up_EXP():
 		EXP -= Get_Level_Up_EXP()
 		Level_up()
+		if Level == Team.LevCap:
+			return
 
 func Level_up():
 	Level += 1

@@ -5,13 +5,14 @@ class_name Quest
 @export var ID: String
 @export_multiline var Description: String
 @export var Objectives: Dictionary[String, int] = {}
+@export var Reward: Dictionary = {}
 @export var MapLocation: String
 @export var CordLocation: Vector2
 @export_enum("Primary", "Secondary") var Type: String = "Primary"
 var Progress: Dictionary[String, int]
 var Complete = false
 
-signal complete(Name: String)
+signal complete(quest: Quest)
 
 func Add_progress(ID:String):
 	if Complete:
@@ -20,7 +21,7 @@ func Add_progress(ID:String):
 		Progress[ID] += 1
 		if CheckComplete():
 			Complete = true
-			complete.emit(Name)
+			complete.emit(self)
 
 func CheckComplete() -> bool:
 	for Key in Progress:

@@ -19,7 +19,7 @@ func _ready():
 	quest.complete.connect(onComplete)
 	name = quest.Name
 
-func onComplete(Name):
+func onComplete(quest):
 	add_theme_stylebox_override("panel", CompleteStyle)
 
 func HasBar(Key:String):

@@ -4,14 +4,19 @@ func _process(delta):
 	if Input.is_action_just_pressed("ui_cancel"):
 		if not Team.Is_in_battle:
 			visible = not visible
-			UpdateTeamInfos()
-			UpdateQuestsInfos()
+			if visible:
+				Update()
 			Team.Pause = visible
 
 
 func _on_resume_pressed():
 	visible = false
 	Team.Pause =  false
+
+func Update():
+	UpdateTeamInfos()
+	UpdateQuestsInfos()
+	$IPoints/Label.text = str(Team.IPoints)
 
 func UpdateTeamInfos():
 	var Index = 0

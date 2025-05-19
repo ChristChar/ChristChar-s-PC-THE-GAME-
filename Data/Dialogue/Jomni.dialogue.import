@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_14"
+type="Resource"
+uid="uid://680823lxbrc8"
+path="res://.godot/imported/Jomni.dialogue-e09d42adba1dce5a89a14c595ac6f854.tres"
+
+[deps]
+
+source_file="res://Data/Dialogue/Jomni.dialogue"
+dest_files=["res://.godot/imported/Jomni.dialogue-e09d42adba1dce5a89a14c595ac6f854.tres"]
+
+[params]
+
+defaults=true

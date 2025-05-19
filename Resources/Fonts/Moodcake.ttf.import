@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://ds5snyvlfuynj"
-path="res://.godot/imported/DeathFont.otf-4f60d946b90d200c88775750a29938bc.fontdata"
+uid="uid://cj5dsfcnt24x6"
+path="res://.godot/imported/Moodcake.ttf-97551a29cd8000b22ffbf1cd0a794c6e.fontdata"
 
 [deps]
 
-source_file="res://Resources/Others/DeathFont.otf"
-dest_files=["res://.godot/imported/DeathFont.otf-4f60d946b90d200c88775750a29938bc.fontdata"]
+source_file="res://Resources/Fonts/Moodcake.ttf"
+dest_files=["res://.godot/imported/Moodcake.ttf-97551a29cd8000b22ffbf1cd0a794c6e.fontdata"]
 
 [params]
 
@@ -22,7 +22,7 @@ msdf_size=48
 allow_system_fallback=true
 force_autohinter=false
 hinting=1
-subpixel_positioning=1
+subpixel_positioning=4
 keep_rounding_remainders=true
 oversampling=0.0
 Fallbacks=null

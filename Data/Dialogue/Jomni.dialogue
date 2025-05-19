@@ -1,0 +1,9 @@
+~ start
+Jomni: EHY STINKY
+=> END
+
+~ AfterBattle
+ChristChar: Looser!
+Jomni: =(
+do! Team.AddLevCap(10)
+=> END

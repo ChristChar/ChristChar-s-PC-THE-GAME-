@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://b2rfce4icuvm"]
+[gd_scene load_steps=7 format=3 uid="uid://b2rfce4icuvm"]
 
 [ext_resource type="Script" uid="uid://b0jbyv1alnxq5" path="res://Scripts/Player/Gui/game_menu.gd" id="1_2yx3q"]
 [ext_resource type="Texture2D" uid="uid://dhf6a0ln255wq" path="res://Resources/Images/Gui/InvBackground.png" id="1_ri6w6"]
 [ext_resource type="PackedScene" uid="uid://5gp8r5p64hs6" path="res://Scenes/Gui/Inventory/Inventory.tscn" id="3_32a5l"]
+[ext_resource type="Texture2D" uid="uid://cnwnkbx3jlbni" path="res://Resources/Images/Icone/IPoints.png" id="3_noiew"]
 [ext_resource type="PackedScene" uid="uid://1g6hpkx5cup3" path="res://Scenes/Gui/Team/TeamViewer.tscn" id="4_noiew"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2yx3q"]
@@ -84,15 +85,15 @@ text = "Back to menu"
 
 [node name="TeamInfos" type="VBoxContainer" parent="."]
 layout_mode = 0
-offset_left = 964.0
-offset_top = 209.0
-offset_right = 1364.0
-offset_bottom = 559.0
+offset_left = 962.0
+offset_top = 266.0
+offset_right = 1362.0
+offset_bottom = 616.0
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 layout_mode = 0
 offset_left = 964.0
-offset_top = 604.0
+offset_top = 620.0
 offset_right = 1374.0
 offset_bottom = 879.0
 
@@ -101,6 +102,23 @@ layout_mode = 2
 
 [node name="Primary" type="VBoxContainer" parent="ScrollContainer/QuestInfos"]
 layout_mode = 2
+
+[node name="IPoints" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 962.0
+offset_top = 197.0
+offset_right = 1070.0
+offset_bottom = 266.0
+
+[node name="Label" type="Label" parent="IPoints"]
+layout_mode = 2
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/font_size = 50
+text = "43"
+
+[node name="TextureRect" type="TextureRect" parent="IPoints"]
+layout_mode = 2
+texture = ExtResource("3_noiew")
 
 [node name="Inventory" parent="." instance=ExtResource("3_32a5l")]
 visible = false

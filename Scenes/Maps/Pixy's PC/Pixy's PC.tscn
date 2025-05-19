@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://chchubgkl3fba"]
+[gd_scene load_steps=29 format=3 uid="uid://chchubgkl3fba"]
 
 [ext_resource type="Script" uid="uid://bh4nnc5ukqkxd" path="res://Scripts/InWorld/Map.gd" id="1_x8vo7"]
 [ext_resource type="Script" uid="uid://bnq7rukbvf7pv" path="res://Scripts/Resources/BattleSpawnPool.gd" id="2_1ggut"]
@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://colhlsp18dqiu" path="res://Resources/Images/Characters/Pixy/InWorld/Idle.png" id="6_1blce"]
 [ext_resource type="Script" uid="uid://cok8o2x1y3jxe" path="res://Scripts/InWorld/NPCs/InteractBattle.gd" id="7_p7b75"]
 [ext_resource type="Resource" uid="uid://bwamgyifsfjni" path="res://Data/Dialogue/Rocky.dialogue" id="8_m7o65"]
+[ext_resource type="Texture2D" uid="uid://b8tqiauktsff5" path="res://Resources/Images/InWorld/Npc/Jomni.png" id="9_bibvp"]
+[ext_resource type="Resource" uid="uid://680823lxbrc8" path="res://Data/Dialogue/Jomni.dialogue" id="10_p7b75"]
 
 [sub_resource type="Resource" id="Resource_1se7k"]
 script = ExtResource("3_mif0q")
@@ -91,6 +93,35 @@ animations = [{
 [sub_resource type="SphereShape3D" id="SphereShape3D_h7qeb"]
 radius = 0.660525
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_tj33d"]
+atlas = ExtResource("9_bibvp")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h7qeb"]
+atlas = ExtResource("9_bibvp")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nlsg0"]
+atlas = ExtResource("9_bibvp")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6tbqh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tj33d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h7qeb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nlsg0")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
 [node name="Map" type="Node3D"]
 script = ExtResource("1_x8vo7")
 EnemyCount = 10
@@ -142,17 +173,18 @@ collision_layer = 3
 collision_mask = 3
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Pixy2"]
-transform = Transform3D(4, 0, 0, 0, 3.8637, 1.03528, 0, -1.03528, 3.8637, 0, 0.365066, 0)
+transform = Transform3D(4, 0, 0, 0, 3.8637, 1.03528, 0, -1.03528, 3.8637, 0, 2.12232, 0)
 texture_filter = 0
-sprite_frames = SubResource("SpriteFrames_tj33d")
+sprite_frames = SubResource("SpriteFrames_6tbqh")
 animation = &"Idle"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Pixy2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75725, 0)
 shape = SubResource("SphereShape3D_h7qeb")
 debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="InteractArea" type="Area3D" parent="Pixy2"]
 script = ExtResource("7_p7b75")
 BattleJson = "res://Data/Json/Battles/Jomni.json"
-Dialogue = ExtResource("8_m7o65")
+Dialogue = ExtResource("10_p7b75")
 metadata/_custom_type_script = "uid://ddsm0t3kkty4w"
